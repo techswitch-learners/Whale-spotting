@@ -1,0 +1,12 @@
+{
+  "name": "whale-spotting",
+  "version": "1.0.0",
+  "description": "This file exists only so that we can deploy to heroku and install node (used for building the ClientApp/ folder)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
