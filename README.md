@@ -1,5 +1,9 @@
 # Whale-spotting
 
+# Setup
+Run the command `SET ASPNETCORE_Environment=Development` in your terminal.
+
+# Running the app
 To run the app run `dotnet run` in the root of the repository.
 To run the UI tests navigate ClientApp directory and run `npm test`.
 
