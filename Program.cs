@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WhaleSpotting;
 
 namespace whale_spotting
 {
@@ -14,6 +15,12 @@ namespace whale_spotting
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
+            using (var context = new WhaleSpottingContext())
+            {
+                var sightings = context.Sightings.ToArray();
+                Console.WriteLine($"We have {sightings.Length} sighting(s).");
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
