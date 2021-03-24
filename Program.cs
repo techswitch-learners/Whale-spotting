@@ -19,7 +19,7 @@ namespace whale_spotting
             using (var context = new WhaleSpottingContext())
             {
                 var sightings = context.Sightings.ToArray();
-                Console.WriteLine($"We have {sightings.Length} sighting(s).");
+                Console.WriteLine($"We have {sightings.Length} sightings.");
             }
         }
 
