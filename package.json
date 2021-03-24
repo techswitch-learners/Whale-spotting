@@ -10,7 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/react": "^11.2.5",
     "@types/react": "^17.0.3",
     "@types/react-router-dom": "^5.1.7"
+  },
+  "dependencies": {
+    "node-sass": "^4.14.1"
   }
 }
