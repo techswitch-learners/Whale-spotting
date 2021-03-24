@@ -1,0 +1,33 @@
+
+
+{ 
+    "Scotland": {
+        "name": "Gairloch, Wester Ross",
+        "imagesrc": "https://media-cdn.tripadvisor.com/media/photo-s/18/1d/f9/40/the-dubh-loch-and-fionn.jpg",
+        "description": " Wester Ross is one of the finest areas in Europe for watching marine wildlife.Nestled in amongst glorious hills and sheltered by the surrounding coastline,Gairloch looks out towards the wild seas of the Minch.The town is spread along the edge of the bay, with the bustling harbour and requisite boat trips and fisherman in the south and the sleepy hubbub of shops,cafes and museum to the north offering a wealth of spectacular scenery and activities for visitors.",
+        "whalespecies": "Minke, Sei, Sperm, Orca, Humpback, Pilot and Bottlenose Whales",
+        "besttimeofyear": "May - October.",
+        "touristinformation": "There are marine wildlife tours that can be taken from the harbour for whale watching or sea angling. These cover everything from a short trip around the bay, to fast ribs out into the open waters of the Minch to do some whale spotting. https://www.hebridean-whale-cruises.co.uk/. Gairloch and the surrounding coastline is also part of the Hebridean 'Whale Trail', and is one of the UK's hotspots for whale and cetacean spotting. The Whale Trail map can be seen here https://www.visitwester-ross.com/userfiles/file/general_info/Hebridean-Whale-Trail-map-HWDT.pdf",
+        "weather": "string"
+    },
+
+    "Canada": {
+        "name": "Newfoundland and Labrador",
+        "imagesrc": "string",
+        "description": "Newfoundland and Labrador is one of the most spectacular whale watching places on Earth. The world’s largest population of humpback whales return each year to feed on capelin, krill, and squid along the coast. Another 21 species of whales and dolphins visit along with them including the minke, sperm, pothead, blue, and orca. Catching a single glimpse of these majestic mammals is an exciting and awesome experience, whether it's from the deck of a tour boat, the side of your sea kayak, or a seaside trail.",
+        "whalespecies": "Humpback, Orca, Minke, Blue, and Fin.",
+        "besttimeofyear": "May - September",
+        "touristinformation": "What better way to see a whale than to meet one – or more – at sea? There is a variety of operators allowing you to do just that https://trinityecotours.com/",
+         "weather": "string"
+      },
+
+      "Australia": {
+        "name": "string",
+        "imagesrc": "string",
+        "description": "string",
+        "whalespecies": "string",
+        "besttimeofyear": "string",
+        "touristinformation": "string",
+        "weather": "string"
+      }
+}
