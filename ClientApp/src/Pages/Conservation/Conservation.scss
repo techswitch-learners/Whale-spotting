@@ -1,42 +1,40 @@
-
 @import "~bootstrap/scss/bootstrap";
 
-body{
-    font-family: 'Segoe UI';
+body {
+  font-family: "Segoe UI";
 }
 $margin: 30px 30px;
 $margin-top: 30px;
 $margin-bottom: 30px;
 
-.conservationTitle{
-    text-align: center;
+.conservationTitle {
+  text-align: center;
 }
 
-.text-justify{
-    margin-top: $margin-top;
-    margin-bottom: $margin-bottom;
+.text-justify {
+  margin-top: $margin-top;
+  margin-bottom: $margin-bottom;
 }
-.container-fluid{
-    margin-top: $margin-top;
-    margin-bottom: $margin-bottom;
+.container-fluid {
+  margin-top: $margin-top;
+  margin-bottom: $margin-bottom;
 }
-.border-dark{
-    margin-top: $margin-top;
-    margin-bottom: $margin-bottom;
-    margin-left: 10px;
-    margin-right: 10px;
-padding: 10px 10px;
+.border-dark {
+  margin-top: $margin-top;
+  margin-bottom: $margin-bottom;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px 10px;
 }
 
 @media only screen and (max-width: 600 px) {
-    .card{
-        width: 90%;
-    }
+  .card {
+    width: 90%;
+  }
 }
 
 @media (min-width: 992px) {
-.card {
-    width: 14rem
+  .card {
+    width: 14rem;
+  }
 }
-}
-

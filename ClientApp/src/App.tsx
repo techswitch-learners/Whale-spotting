@@ -5,8 +5,8 @@ import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import 'bootstrap';
-
 import './custom.css'
+import { SubmitSightingForm } from './Pages/SubmitSighting/SubmitSighting';
 import { Conservation } from './Pages/Conservation/Conservation';
 
 export default class App extends Component {
@@ -17,6 +17,8 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={Home} />
         <Route path='/counter' component={Counter} />
+        <Route path='/fetch-data' component={FetchData} />
+        <Route path='/submit-sighting' component={SubmitSightingForm} />
         <Route path='/conservation' component={Conservation} />
       </Layout>
     );
