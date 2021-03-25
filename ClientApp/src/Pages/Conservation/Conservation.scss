@@ -1,9 +1,23 @@
 
 @import "~bootstrap/scss/bootstrap";
 
+.conservationTitle{
+    text-align: center;
+}
+
+.text-justify{
+    margin: 20px 20px;
+}
+
+@media only screen and (max-width: 600 px) {
+    .card{
+        width: 90%;
+    }
+}
+
+@media (min-width: 992px) {
 .card {
     width: 14rem
 }
-.container-fluid{
-    text-align: center;
 }
+
