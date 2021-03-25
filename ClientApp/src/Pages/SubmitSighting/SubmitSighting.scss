@@ -2,7 +2,7 @@
 
 .submit-sighting-page {
   margin: $gutter-width;
-  
+
   .title {
     @include titleFont;
   }
@@ -11,25 +11,23 @@
 .submit-sighting-form {
   position: relative;
   left: 50%;
-  transform: translateX( -50%);
+  transform: translateX(-50%);
 
   .form-label {
     @include formLabel;
   }
-  
+
   .form-input {
     @include formInput;
   }
-  
-  .submit-button { 
+
+  .submit-button {
     @include primaryButton;
   }
 }
 
-
 @media only screen and (max-width: 600px) {
-.submit-sighting.form{
-   width: 90%;
-  
-}
+  .submit-sighting.form {
+    width: 90%;
+  }
 }
