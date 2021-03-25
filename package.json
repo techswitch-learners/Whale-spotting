@@ -8,6 +8,7 @@
   },
   "keywords": [],
   "author": "",
+<<<<<<< HEAD
   "license": "ISC",
   "devDependencies": {
     "@testing-library/react": "^11.2.5",
@@ -16,4 +17,7 @@
   "dependencies": {
     "react-router-dom": "^5.2.0"
   }
+=======
+  "license": "ISC"
+>>>>>>> main
 }

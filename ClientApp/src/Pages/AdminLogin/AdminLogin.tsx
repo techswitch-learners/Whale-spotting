@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react';
-// import './AdminLogin.scss';
+import './AdminLogin.scss';
 
 function AdminLogin() : JSX.Element {
 
@@ -13,16 +13,14 @@ function AdminLogin() : JSX.Element {
     }
 
     return (
-        <div>
+        <div className="center-column">
             <h1>Admin Login</h1>
-            <form>
+            <form className="center-column">
                 <label>
-                    Username:
-                    <input type="text" name="username" onChange={e => setUsername(e.target.value)} required />
+                    Username: <input type="text" name="username" onChange={e => setUsername(e.target.value)} required />
                 </label>
                 <label>
-                    Password:
-                    <input type="password" name="password" onChange={e => setPassword(e.target.value)} required />
+                    Password: <input type="password" name="password" onChange={e => setPassword(e.target.value)} required />
                 </label>
                 <button onClick = {submitForm}>Login</button>
             </form>            
