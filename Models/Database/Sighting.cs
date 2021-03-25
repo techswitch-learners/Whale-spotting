@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WhaleSpotting.Models.Database
+namespace whale_spotting.Models.Database
 {
     public class Sighting
     {

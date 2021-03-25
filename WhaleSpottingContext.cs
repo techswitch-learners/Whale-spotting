@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using WhaleSpotting.Models.Database;
+using whale_spotting.Models.Database;
+using System;
+using System.IO;
 
-namespace WhaleSpotting
+namespace whale_spotting
 {
     public class WhaleSpottingContext : DbContext
     {
@@ -9,7 +11,7 @@ namespace WhaleSpotting
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         { 
-            optionsBuilder.UseNpgsql(System.Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING"));
+            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL"));
         }
     }
 }

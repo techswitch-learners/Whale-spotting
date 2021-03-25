@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.3"/>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4"/>
+    <PackageReference Include="DotNetEnv" Version="2.1.1"/>
   </ItemGroup>
   <ItemGroup>
     <Content Remove="$(SpaRoot)**"/>

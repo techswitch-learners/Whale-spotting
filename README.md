@@ -12,9 +12,9 @@ If you get an error along the lines of `'rimraf' is not recognized`, navigate to
 # Preparing the database
 Create a `.env` file in the root directory, containing
 ```
-DATABASE_CONNECTION_STRING=Server=localhost;port=5432;Database=WhaleSpottingDb;user id=username;password=secret;
+DATABASE_URL=Server=localhost;port=5432;Database=WhaleSpottingDb;user id=username;password=secret;
 ```
-where the user id and password are your own PSQL credentials (note: the default username is postgres, if you're not sure!).
+where the user id and password are your own PSQL credentials (note: the default username is postgres, if you're not sure!). Make sure you add this `.env` file to the `.gitignore`!
 
 To create your own database, run `dotnet ef database update`. This will initialize an empty database.
 
