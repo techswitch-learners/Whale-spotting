@@ -1,5 +1,3 @@
-
-
 .video-container { 
     position: relative; 
     padding-bottom: 56.25%; 
@@ -7,7 +5,6 @@
     height: 0; 
     overflow: hidden; 
 }
-
 .video {
     position: absolute;
     top: 0;
@@ -15,9 +12,7 @@
     width: 100%;
     height: 100%;
 }
-// shall we make the video half the screen width for the websiste?
 @media only screen and (min-width: 1000px){
-    
     .watch-whales-container { 
         width: 50%;
         height: 26%;
@@ -25,10 +20,8 @@
     }
     .whales-sighting-container{
         padding-left: 20px;
-
     }
     .video-and-sightings-container {
-        display: flex
-        
+        display: flex    
     }
 }
