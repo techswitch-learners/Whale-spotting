@@ -1,27 +1,28 @@
 
-// .Weather_widget{
-//     background: rgb(91, 178, 236); 
-//     width: 200px; // widget width
-//     height: 300px; // widget height
-//     font-size: 24px; // main text size
-//     //subfont-size: '14px'; // sub text size
-//     color: #fff; // main text color
-    //subFontColor: '#fff'; // sub text color
-    // lin: '#fff'; // hr line color
-
-    // line chart styles
-    // lineChartPadding: [45, 30];
-    // lineChartLabelPadding: [-10, -10];
-    // lineChartColor: '#fff';
-    // lineChartLabelColor: '#fff';
-    // lineChartLabelSize: 1;
-    // lineChartHeight: '120px'
-
+.Weather_widget{
+    background: rgb(224, 41, 41); 
+    width: 200px; // widget width
+    height: 300px; // widget height
+    font-size: 20px; // main text size
+    color: #fff; // main text color
+}
 
    body {
 
    background-color: rgb(92, 111, 216);
    text-align: center;
+   }
+   h3{
+       padding-left: 5%;
+       padding-right: 5%;
+   }
+
+   .places{
+       display: flex;
+       width: 100%;
+       align-items:center;
+       flex-direction: row;
+       padding: 5%;
    }
 
    .LocationTable {

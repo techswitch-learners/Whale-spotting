@@ -19,6 +19,24 @@ enum Locations {
 function GettingStarted() {
     const [selectedLocation, setSelectedLocation] = useState(Locations.Scotland);
 
+
+    const Theme = {
+        color: '#b92b27', //  color of background
+        width: '500px', // widget width
+        height: '100px', // widget height
+        mainFontSize: '24px', // main text size
+        subFontSize: '14px', // sub text size
+        mainFontColor: '#fff', // main text color
+        subFontColor: '#fff', // sub text color
+        hrColor: '#fff', // hr line color
+        lineChartPadding: 45,
+        lineChartLabelPadding: -10,
+        lineChartColor: '#fff',
+        lineChartLabelColor: '#fff',
+        lineChartLabelSize: 1,
+        lineChartHeight: '120px'
+    }
+
     return (
         <div className="getting_started">
 
@@ -32,25 +50,27 @@ function GettingStarted() {
             </div>
 
             <div>
-          
                 {selectedLocation === Locations.Scotland ? <div>
-                <WeatherWidget className='Weather_widget' apiKey={'43887186b07bb5deaad592918ae44878'} geo={{lat: '50.503632', lon: '-4.652498'}} />
-                <LocationSummary location={LocationData.Scotland} /></div> : null}
+                    <LocationSummary location={LocationData.Scotland} />
+                    <WeatherWidget /*className='Weather_widget'*/ apiKey={'43887186b07bb5deaad592918ae44878'} theme={Theme} geo={{ lat: '50.503632', lon: '-4.652498' }} />
+                </div> : null}
+
             </div>
             <div>
                 {selectedLocation === Locations.Canada ? <div>
-            <WeatherWidget className='Weather_widget' apiKey={'43887186b07bb5deaad592918ae44878'} geo={{lat: '53.135509', lon: '-57.660435'}}/> 
-             <LocationSummary location={LocationData.Canada} /></div> : null}
+                    <LocationSummary location={LocationData.Canada} />
+                    <WeatherWidget /*className='Weather_widget'*/ apiKey={'43887186b07bb5deaad592918ae44878'} theme={Theme} geo={{ lat: '53.135509', lon: '-57.660435' }} />
+                    </div> : null}
             </div>
             <div>
-                {selectedLocation === Locations.Australia ?<div>
-                     <WeatherWidget className='Weather_widget' apiKey={'43887186b07bb5deaad592918ae44878'} geo={{lat: '-25.289715', lon: '152.854324'}}/> 
-                     <LocationSummary location={LocationData.Australia} /></div> : null}
+                {selectedLocation === Locations.Australia ? <div>
+                    <LocationSummary location={LocationData.Australia} />
+                    <WeatherWidget /*className='Weather_widget'*/ apiKey={'43887186b07bb5deaad592918ae44878'}  theme={Theme} geo={{ lat: '-25.289715', lon: '152.854324' }} />
+                    </div> : null}
             </div>
 
             <div className='bottom-page-break'></div>
         </div>
-
     )
 }
 
