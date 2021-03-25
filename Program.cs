@@ -13,6 +13,7 @@ namespace whale_spotting
     {
         public static void Main(string[] args)
         {
+            DotNetEnv.Env.Load();
             CreateHostBuilder(args).Build().Run();
         }
 
