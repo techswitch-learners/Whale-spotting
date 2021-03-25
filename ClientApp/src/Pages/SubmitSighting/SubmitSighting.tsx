@@ -19,10 +19,9 @@ export function SubmitSightingForm(): JSX.Element {
   function submitForm(event: FormEvent) {
     event.preventDefault();
     setStatus("SUBMITTING");
-    // CreatePost()
-    //     .then(() => setStatus("FINISHED"))
-    //     .catch(() => setStatus("ERROR"));
-  }
+  //   set a function to send the information to the api call
+  //   if it is valid set status to "FINISHED" if it's not, catch the error and set status to "ERROR"
+    }
 
   if (status === "FINISHED") {
     return (
