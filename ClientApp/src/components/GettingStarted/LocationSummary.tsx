@@ -8,8 +8,7 @@ interface LocationSummary {
       description: string,
       whalespecies: string,
       besttimeofyear: string,
-      touristinformation: string,
-      weather: string
+      touristinformation: string
       
     }
   }
@@ -20,7 +19,6 @@ function LocationSummary(props: LocationSummary): JSX.Element {
     return (
       <div>
             <h2> {props.location.name} Location:</h2>
-            <div  >{props.location.weather}</div>
             <img className='locationImage' src={props.location.imagesrc}  width='200px' height='200px' alt='Image of Location' />
             <h3> Useful Information:</h3>
             <table className='LocationTable'>
@@ -39,7 +37,7 @@ function LocationSummary(props: LocationSummary): JSX.Element {
                         <th> {props.location.besttimeofyear} </th>
                     </tr>
                     <tr>
-                        <th>How     Can I Book a Tour?</th>
+                        <th>How Can I Book a Tour?</th>
                         <th> {props.location.touristinformation} </th>
                     </tr>
                 </tbody>
