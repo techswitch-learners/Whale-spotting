@@ -3,6 +3,7 @@ import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
+import { AdminLogin } from './Pages/AdminLogin/AdminLogin';
 import { Counter } from './components/Counter';
 import './custom.css'
 import { SubmitSightingForm } from './Pages/SubmitSighting/SubmitSighting';
@@ -16,6 +17,7 @@ export default class App extends Component {
         <Route exact path='/' component={Home} />
         <Route path='/counter' component={Counter} />
         <Route path='/fetch-data' component={FetchData} />
+        <Route path='/admin' component={AdminLogin} />
         <Route path='/submit-sighting' component={SubmitSightingForm} />
       </Layout>
     );
