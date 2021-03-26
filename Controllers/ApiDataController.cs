@@ -6,6 +6,7 @@ using RestSharp;
 using System.Collections.Generic;
 using whale_spotting.Models.ApiModels;
 using whale_spotting.Models.Database;
+using System.Linq;
 
 namespace whale_spotting.Controllers
 {
@@ -28,13 +29,16 @@ namespace whale_spotting.Controllers
                 Sighting sighting = new Sighting(apiSighting);
                 sightingsToAdd.Add(sighting);
             }
-            Console.WriteLine(sightingsToAdd[0]);
+            Console.WriteLine(sightingsToAdd[0].ApiId);
 
-            // using (var context = new WhaleSpottingContext())
-            // {
-            //     context.Sightings.AddRange(sightingsToAdd);
-            //     context.SaveChanges();
-            // }          
+            using (var context = new WhaleSpottingContext())
+            {
+                if (!context.Sightings.Any())
+                {
+                    context.Sightings.AddRange(sightingsToAdd);
+                    context.SaveChanges();
+                }
+            }          
         }
     }
 }

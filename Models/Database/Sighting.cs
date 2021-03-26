@@ -21,6 +21,10 @@ namespace whale_spotting.Models.Database
         public string SubmittedByName { get; set; }
         public string SubmittedByEmail { get; set; }
 
+        public Sighting()
+        {
+            
+        }
         public Sighting(SightingApiModel apiModel) 
         {
             ApiId = apiModel.id;
