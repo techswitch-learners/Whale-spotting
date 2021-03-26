@@ -11,12 +11,14 @@
 
         body {
 
-            background-color: rgb(92, 111, 216);
+            // background-color: rgb(92, 111, 216);
             text-align: center;
+            
             }
         h3{
                 padding-left: 5%;
                 padding-right: 5%;
+                
             }
          
         .places{
@@ -27,6 +29,12 @@
                 padding: 5%;
                 justify-content:center;
             }
+        #widget{
+            height:10%
+        }    
+        .location-page-break{
+            padding-bottom: 50px;
+        }
     
     }
 
@@ -34,13 +42,15 @@
 @media only screen and (min-width: 1000px){   
 
    body {
-   background-color: rgb(92, 111, 216);
+//    background-color: rgb(92, 111, 216);
    text-align: center;
+   
    }
    
    h3{
        padding-left: 5%;
        padding-right: 5%;
+      
    }
 
    .places{
@@ -57,6 +67,13 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    }
+
+    #widget{
+        height:10%
+    }    
+    .location-line-break{
+        padding-bottom: 70px;
     }
 }
 
