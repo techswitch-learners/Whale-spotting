@@ -1,9 +1,9 @@
 ﻿export interface NewSighting {
     species: string;
-    quantity: string;
+    quantity: number;
     location: string;
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
     description: string;
     sightedAt: string;
     submittedBy: string;

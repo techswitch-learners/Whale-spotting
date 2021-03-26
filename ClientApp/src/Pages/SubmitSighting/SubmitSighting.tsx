@@ -20,11 +20,10 @@ export function SubmitSightingForm(): JSX.Element {
   function submitForm(event: FormEvent) {
     event.preventDefault();
     setStatus("SUBMITTING");
-    submitSighting({species, quantity, location, latitude, longitude, description, sightedAt, submittedBy, email})
+    submitSighting({species, quantity: parseInt(quantity), location, latitude: parseInt(latitude), longitude: parseInt(longitude), description, sightedAt, submittedBy, email})
             .then(() => setStatus("FINISHED"))
             .catch(() => setStatus("ERROR"));
-  
-  
+      
     }
 
   if (status === "FINISHED") {
@@ -56,6 +55,7 @@ export function SubmitSightingForm(): JSX.Element {
           className="form-input"
           value={quantity}
           onChange={(event) => setQuantity(event.target.value)}
+          type = "number"
         />
       </label>
 
@@ -74,6 +74,7 @@ export function SubmitSightingForm(): JSX.Element {
           className="form-input"
           value={latitude}
           onChange={(event) => setLatitude(event.target.value)}
+          type = "number"
           required
         />
       </label>
@@ -84,6 +85,7 @@ export function SubmitSightingForm(): JSX.Element {
           className="form-input"
           value={longitude}
           onChange={(event) => setLongitude(event.target.value)}
+          type="number"
           required
         />
       </label>
@@ -103,6 +105,7 @@ export function SubmitSightingForm(): JSX.Element {
           className="form-input"
           value={sightedAt}
           onChange={(event) => setSightedAt(event.target.value)}
+          type = "date"
           required
         />
       </label>
@@ -123,6 +126,7 @@ export function SubmitSightingForm(): JSX.Element {
           className="form-input"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          type="email"
           required
         />
       </label>

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using whale_spotting.Repositories;
 
 namespace whale_spotting
 {
@@ -20,7 +21,6 @@ namespace whale_spotting
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllersWithViews();
 
             // In production, the React files will be served from this directory
@@ -28,6 +28,9 @@ namespace whale_spotting
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            
+            services.AddTransient<ISightingRepo, SightingRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
