@@ -1,5 +1,6 @@
 ﻿import React, { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
+import {submitSighting} from "../../Api/apiClient";
 import "./SubmitSighting.scss";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
@@ -19,8 +20,11 @@ export function SubmitSightingForm(): JSX.Element {
   function submitForm(event: FormEvent) {
     event.preventDefault();
     setStatus("SUBMITTING");
-  //   set a function to send the information to the api call
-  //   if it is valid set status to "FINISHED" if it's not, catch the error and set status to "ERROR"
+    submitSighting({species, quantity, location, latitude, longitude, description, sightedAt, submittedBy, email})
+            .then(() => setStatus("FINISHED"))
+            .catch(() => setStatus("ERROR"));
+  
+  
     }
 
   if (status === "FINISHED") {
@@ -134,3 +138,5 @@ export function SubmitSightingForm(): JSX.Element {
     </form>
   );
 }
+
+
