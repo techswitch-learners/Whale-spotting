@@ -1,0 +1,18 @@
+﻿version: 2.1
+orbs:
+  node: circleci/node@4.2.0
+jobs:
+  build-and-test:
+    working_directory: ~/ClientApp
+    executor: 
+      name: node/default
+    steps:
+      - checkout
+        path: ~/
+      - node/with-cache:
+          - run: npm install
+          - run: npm test
+workflows: 
+  test:
+    jobs:
+      - build-and-test
