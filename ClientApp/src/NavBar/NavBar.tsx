@@ -8,7 +8,7 @@ function NavBar() {
 
     return (
         <div>
-            <nav className="navbar">
+            <nav>
                 <ul>
                     <li><Link to="/" className={selectedPage == 'home' ? 'active' : 'inactive'} onClick={() => setSelectedPage('home')}>Home</Link></li>
                     <li><Link to="/submit-sighting" className={selectedPage == 'submit-sighting' ? 'active' : 'inactive'} onClick={() => setSelectedPage('submit-sighting')}>Submit a Sighting</Link></li>
