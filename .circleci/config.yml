@@ -2,16 +2,15 @@
 orbs:
   node: circleci/node@4.2.0
 jobs:
-  build-and-test:
+  test-client-app:
     executor: 
       name: node/default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: cd ClientApp && npm install
-            - run: cd ClientApp && npm test
+      - node/install-packages:
+          app-dir: ~/ClientApp
+      - run: cd ClientApp && npm test
 workflows: 
   test:
     jobs:
-      - build-and-test
+      - test-client-app
