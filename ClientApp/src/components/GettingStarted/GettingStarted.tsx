@@ -6,7 +6,7 @@ import './GettingStarted.scss';
 import { LocationSummary } from './LocationSummary';
 import ReactWeather, { useOpenWeather } from 'react-open-weather';
 
-import WeatherWidget from '@eggtronic/react-weather-widget';
+//import WeatherWidget from '@eggtronic/react-weather-widget';
 
 
 enum Locations {
@@ -19,33 +19,49 @@ enum Locations {
 function GettingStarted() {
     const [selectedLocation, setSelectedLocation] = useState(Locations.Scotland);
 
+    let x;
+    let y;
+    let loc;
+    
+     const latScotland = '57.7207794189';
+     const LonScotland = '-5.6862931252';
+     const LatCanada = '53.135509';
+     const LonCanada = '-57.660435';
+     const LatAustralia = '-20.917574';
+     const LonAustralia = '142.702789';
+
+
+
+     if(selectedLocation ===Locations.Canada ){
+         x=LatCanada;
+         y=LonCanada;
+         loc=" NewFoundland, Canada";
+     }
+     else if (selectedLocation ===Locations.Scotland ){
+        x=latScotland;
+        y=LonScotland;
+        loc = "Gairloch, Scotland"
+     }
+     else if  (selectedLocation ===Locations.Australia ){
+        x=LatAustralia;
+        y=LonAustralia;
+        loc = "Queensland, Australia"
+     }
+
+
+
     const { data, isLoading, errorMessage } = useOpenWeather({
         key: '43887186b07bb5deaad592918ae44878',
-        lat: '48.137154',
-        lon: '11.576124',
+        lat:x ,
+        lon:y ,
         lang: 'en',
         unit: 'metric', // values are (metric, standard, imperial)
-      });
+    });
 
 
-    const Theme = {
-        color: '#b92b27', //  color of background
-        width: '500px', // widget width
-        height: '100px', // widget height
-        mainFontSize: '24px', // main text size
-        subFontSize: '14px', // sub text size
-        mainFontColor: '#fff', // main text color
-        subFontColor: '#fff', // sub text color
-        hrColor: '#fff', // hr line color
-        lineChartPadding: 45,
-        lineChartLabelPadding: -10,
-        lineChartColor: '#fff',
-        lineChartLabelColor: '#fff',
-        lineChartLabelSize: 1,
-        lineChartHeight: '120px'
-    }
 
     return (
+        <div>
         <div className="getting_started">
 
             <div className='top-page-break'></div>
@@ -57,35 +73,38 @@ function GettingStarted() {
                 <h3 /*data-testid={"AustraliaButton"}*/ className={selectedLocation === Locations.Australia ? 'selected-icon' : 'unselected-icon'} onClick={() => setSelectedLocation(Locations.Australia)}>Australia</h3>
             </div>
 
-            <ReactWeather
-      isLoading={isLoading}
-      errorMessage={errorMessage}
-      data={data}
-      lang="en"
-      locationLabel="Munich"
-      unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
-      showForecast
-    />
+
 
             <div>
                 {selectedLocation === Locations.Scotland ? <div>
                     <LocationSummary location={LocationData.Scotland} />
-                    <WeatherWidget /*className='Weather_widget'*/ apiKey={'43887186b07bb5deaad592918ae44878'} theme={Theme} geo={{ lat: '50.503632', lon: '-4.652498' }} />
                 </div> : null}
 
             </div>
             <div>
                 {selectedLocation === Locations.Canada ? <div>
                     <LocationSummary location={LocationData.Canada} />
-                    <WeatherWidget /*className='Weather_widget'*/ apiKey={'43887186b07bb5deaad592918ae44878'} theme={Theme} geo={{ lat: '53.135509', lon: '-57.660435' }} />
-                    </div> : null}
+                </div> : null}
             </div>
             <div>
                 {selectedLocation === Locations.Australia ? <div>
                     <LocationSummary location={LocationData.Australia} />
-                    <WeatherWidget /*className='Weather_widget'*/ apiKey={'43887186b07bb5deaad592918ae44878'}  theme={Theme} geo={{ lat: '-25.289715', lon: '152.854324' }} />
-                    </div> : null}
+                </div> : null}
             </div>
+
+
+            <div id ="widget"></div>
+            <ReactWeather
+                isLoading={isLoading}
+                errorMessage={errorMessage}
+                data={data}
+                lang="en"
+                locationLabel= {loc}
+                unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+                showForecast
+            />
+            </div>
+
 
             <div className='bottom-page-break'></div>
         </div>

@@ -1,17 +1,43 @@
 
-.Weather_widget{
-    background: rgb(224, 41, 41); 
-    width: 200px; // widget width
-    height: 300px; // widget height
-    font-size: 20px; // main text size
-    color: #fff; // main text color
-}
+@media only screen and (max-width: 1000px) {
+        .ImageAndText{
+            display: flex;
+            align-self: center;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items:center;
+        } 
+
+        body {
+
+            background-color: rgb(92, 111, 216);
+            text-align: center;
+            }
+        h3{
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+         
+        .places{
+                display: flex;
+                width: 100%;
+                align-items:center;
+                flex-direction: row;
+                padding: 5%;
+                justify-content:center;
+            }
+    
+    }
+
+
+@media only screen and (min-width: 1000px){   
 
    body {
-
    background-color: rgb(92, 111, 216);
    text-align: center;
    }
+   
    h3{
        padding-left: 5%;
        padding-right: 5%;
@@ -23,22 +49,14 @@
        align-items:center;
        flex-direction: row;
        padding: 5%;
+       justify-content:center;
    }
 
-   .LocationTable {
-    background-color: blue;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
-    color: white;
-    font-size: small;
-    text-align: center;
+
+   .ImageAndText{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    }
 }
 
-tr:nth-child(even){
-    background-color: rgb(108, 143, 196);
-}
-table, th, td {
-    border-collapse:collapse;
-    border: 2px solid rgb(66, 65, 65);
-}

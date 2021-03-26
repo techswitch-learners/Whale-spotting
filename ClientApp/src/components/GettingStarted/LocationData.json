@@ -4,30 +4,31 @@
     "Scotland": {
         "name": "Gairloch, Wester Ross",
         "imagesrc": "https://media-cdn.tripadvisor.com/media/photo-s/18/1d/f9/40/the-dubh-loch-and-fionn.jpg",
-        "description": " Wester Ross is one of the finest areas in Europe for watching marine wildlife.Nestled in amongst glorious hills and sheltered by the surrounding coastline,Gairloch looks out towards the wild seas of the Minch.The town is spread along the edge of the bay, with the bustling harbour and requisite boat trips and fisherman in the south and the sleepy hubbub of shops,cafes and museum to the north offering a wealth of spectacular scenery and activities for visitors.",
+        "description": " Wester Ross is one of the finest areas in Europe for watching marine wildlife.Nestled in amongst glorious hills and sheltered by the surrounding coastline, Gairloch looks out towards the wild seas of the Minch. The bustling harbour in the south and the sleepy hubbub of shops, cafes and museum to the north offer a wealth of spectacular scenery and activities for visitors.",
         "whalespecies": "Minke, Sei, Sperm, Orca, Humpback, Pilot and Bottlenose Whales",
         "besttimeofyear": "May - October.",
-        "touristinformation": "There are marine wildlife tours that can be taken from the harbour for whale watching or sea angling. These cover everything from a short trip around the bay, to fast ribs out into the open waters of the Minch to do some whale spotting. https://www.hebridean-whale-cruises.co.uk/. Gairloch and the surrounding coastline is also part of the Hebridean 'Whale Trail', and is one of the UK's hotspots for whale and cetacean spotting. The Whale Trail map can be seen here https://www.visitwester-ross.com/userfiles/file/general_info/Hebridean-Whale-Trail-map-HWDT.pdf"
-      
-    },
+        "touristinformation": "There are marine wildlife tours that can be taken from the harbour for whale watching or sea angling. Gairloch and the surrounding coastline is also part of the Hebridean 'Whale Trail', and is one of the UK's hotspots for whale and cetacean spotting. For more information, ",
+        "url": "https://www.hebridean-whale-cruises.co.uk/"
+      },
+
 
     "Canada": {
         "name": "Newfoundland and Labrador",
-        "imagesrc": "http://www.saga.co.uk/contentlibrary/saga/publishing/verticals/travel/destinations/north-america/newfoundland-history.jpg",
+        "imagesrc": "https://img4.goodfon.com/wallpaper/nbig/3/df/niufaundlend-i-labrador-kanada-spillars-kov-skaly-more.jpg",
         "description": "Newfoundland and Labrador is one of the most spectacular whale watching places on Earth. The world’s largest population of humpback whales return each year to feed on capelin, krill, and squid along the coast. Another 21 species of whales and dolphins visit along with them including the minke, sperm, pothead, blue, and orca. Catching a single glimpse of these majestic mammals is an exciting and awesome experience, whether it's from the deck of a tour boat, the side of your sea kayak, or a seaside trail.",
         "whalespecies": "Humpback, Orca, Minke, Blue, and Fin.",
         "besttimeofyear": "May - September",
-        "touristinformation": "What better way to see a whale than to meet one – or more – at sea? There is a variety of operators allowing you to do just that https://trinityecotours.com/"
-         
+        "touristinformation": "What better way to see a whale than to meet one – or more – at sea? There is a variety of operators allowing you to do just that. For more information, ",
+        "url": "https://trinityecotours.com/"
       },
 
       "Australia": {
         "name": "Hervey Bay, Queensland",
-        "imagesrc": "https://s0.yellowpages.com.au/16a02f87-cfaf-4b8c-b624-ac45fdd5e921/elders-real-estate-hervey-bay-torquay-4655-image.jpg",
-        "description": "Queensland’s whale hot spot is at Hervey Bay, around 300 kilometres (186 miles) north of Brisbane. This tranquil spot is protected by Fraser Island, affording humpback whales the opportune location to hang around a while, either to mate, breed or nurse. To increase your chances of seeing the precious baby whales, time your visit around the first week of September. Each year in July and August, the arrival of the humpback whales is celebrated at the Hervey Bay Whale Festival, with concerts, street parades and displays. A bit further south, on the Sunshine Coast, adventure lovers can experience what it feels like to be part of a pod when they head out with Sunreef Mooloolaba to swim with humpbacks. ",
+        "imagesrc": "http://goldenshores.com.au/files/9914/4779/1660/hervey-bay.jpg",
+        "description": "Queensland’s whale hot spot is at Hervey Bay, around 300 kilometres (186 miles) north of Brisbane. This tranquil spot is protected by Fraser Island, affording humpback whales the opportune location to hang around a while, either to mate, breed or nurse. A bit further south, on the Sunshine Coast, adventure lovers can experience what it feels like to be part of a pod when they head out with Sunreef Mooloolaba to swim with humpbacks. ",
         "whalespecies": "Humpback, Minke",
         "besttimeofyear": "May-November",
-        "touristinformation": "See the playful antics of the humpback whales aboard the Spirit of Hervey Bay, while legendary guide Vicky Neville from Tasman Ventures https://tasmanventure.com.au/ is often referred to as ‘the whale whisperer’. Mike Ball Dive Expeditions https://www.mikeball.com/?gclid=EAIaIQobChMIupfFiJjR4QIVFx4rCh2kNAvZEAAYASAAEgLhgvD_BwEis one of the few lucky operators on the Great Barrier Reef who takes tour groups out to dive with the dwarf minke whales. "
-        
+        "touristinformation": "See the playful antics of the humpback whales aboard the Spirit of Hervey Bay, with legendary guide Vicky Neville from Tasman Ventures who is often referred to as ‘the whale whisperer’. For more information, ",
+        "url":  "https://tasmanventure.com.au/"
       }
 }
