@@ -1,9 +1,26 @@
 import "./Conservation.scss";
 import "bootstrap";
 import React from "react";
-import * as ConservationData from "./ConservationData.json";
+import {ConservationCardData, ConservationData} from "./ConservationData";
+
+function ConservationCard (data: ConservationCardData): JSX.Element {
+  return (
+  <div className="col-sm">
+  <div className="card">
+    <img src={data.imgSrc} alt={data.title}/>
+    <div className="card-body">
+      <h5 className="card-title">{data.title}</h5>
+      <p className="card-text">{data.text}</p>
+      <a href={data.siteLink} className="btn btn-primary">
+        Read more
+      </a>
+    </div>
+  </div>
+</div>)
+}
 
 export function Conservation(): JSX.Element {
+  
   return (
     <div>
 
@@ -20,58 +37,7 @@ export function Conservation(): JSX.Element {
 
         <div className="row">
 
-          <div className="col-sm">
-            <div className="card">
-              <img src={ConservationData.Pollution.imgSrc} alt="pollution"/>
-              <div className="card-body">
-                <h5 className="card-title">Pollution</h5>
-                <p className="card-text">{ConservationData.Pollution.text}</p>
-                <a href={ConservationData.Pollution.siteLink} className="btn btn-primary">
-                  Read more
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-sm">
-            <div className="card">
-              <img src={ConservationData.Nets.imgSrc} className="card-img-top" alt="nets" />
-              <div className="card-body">
-                <h5 className="card-title">Nets</h5>
-                <p className="card-text">{ConservationData.Nets.text}</p>
-                <a href={ConservationData.Nets.siteLink} className="btn btn-primary">
-                  Read more
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-sm">
-            <div className="card">
-              <img src={ConservationData.Whaling.imgSrc} className="card-img-top" alt="whaling" />
-              <div className="card-body">
-                <h5 className="card-title">Whaling</h5>
-                <p className="card-text">{ConservationData.Whaling.text}</p>
-                <a href={ConservationData.Whaling.siteLink} className="btn btn-primary" >
-                  Read more
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-sm">
-            <div className="card">
-              <img
-                src={ConservationData.Captivity.imgSrc} className="card-img-top" alt="captivity"/>
-              <div className="card-body">
-                <h5 className="card-title">Captivity</h5>
-                <p className="card-text">{ConservationData.Captivity.text}</p>
-                <a href={ConservationData.Captivity.siteLink} className="btn btn-primary">
-                  Read more
-                </a>
-              </div>
-            </div>
-          </div>
+          {ConservationData.map(x => ConservationCard(x))}
 
         </div>
 
