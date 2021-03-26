@@ -8,7 +8,7 @@ export function Conservation(): JSX.Element {
     <div>
 
       <div className="container-fluid">
-          <h2 className="conservationTitle">Conservation</h2>
+          <h2 className="conservation-title">Conservation</h2>
           <p className="text-justify">
             Some good work has been done in recent decades to reverse the trend of
             almost inevitable extinction for some species of cetaceans.
@@ -22,7 +22,7 @@ export function Conservation(): JSX.Element {
 
           <div className="col-sm">
             <div className="card">
-              <img src={ConservationData.Pollution.imgSrc} />
+              <img src={ConservationData.Pollution.imgSrc} alt="pollution"/>
               <div className="card-body">
                 <h5 className="card-title">Pollution</h5>
                 <p className="card-text">{ConservationData.Pollution.text}</p>
@@ -35,7 +35,7 @@ export function Conservation(): JSX.Element {
 
           <div className="col-sm">
             <div className="card">
-              <img src={ConservationData.Nets.imgSrc} className="card-img-top" alt="..." />
+              <img src={ConservationData.Nets.imgSrc} className="card-img-top" alt="nets" />
               <div className="card-body">
                 <h5 className="card-title">Nets</h5>
                 <p className="card-text">{ConservationData.Nets.text}</p>
@@ -48,7 +48,7 @@ export function Conservation(): JSX.Element {
 
           <div className="col-sm">
             <div className="card">
-              <img src={ConservationData.Whaling.imgSrc} className="card-img-top" alt="..." />
+              <img src={ConservationData.Whaling.imgSrc} className="card-img-top" alt="whaling" />
               <div className="card-body">
                 <h5 className="card-title">Whaling</h5>
                 <p className="card-text">{ConservationData.Whaling.text}</p>
@@ -62,7 +62,7 @@ export function Conservation(): JSX.Element {
           <div className="col-sm">
             <div className="card">
               <img
-                src={ConservationData.Captivity.imgSrc} className="card-img-top" alt="..."/>
+                src={ConservationData.Captivity.imgSrc} className="card-img-top" alt="captivity"/>
               <div className="card-body">
                 <h5 className="card-title">Captivity</h5>
                 <p className="card-text">{ConservationData.Captivity.text}</p>
