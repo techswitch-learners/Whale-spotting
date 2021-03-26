@@ -8,8 +8,9 @@ jobs:
     steps:
       - checkout
       - node/with-cache:
-          - run: cd ClientApp && npm install
-          - run: cd ClientApp && npm test
+          steps:
+            - run: cd ClientApp && npm install
+            - run: cd ClientApp && npm test
 workflows: 
   test:
     jobs:
