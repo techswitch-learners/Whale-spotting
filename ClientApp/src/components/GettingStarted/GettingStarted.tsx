@@ -4,7 +4,7 @@ import LocationData from './LocationData.json';
 import './GettingStarted.scss';
 
 import { LocationSummary } from './LocationSummary';
-
+import ReactWeather, { useOpenWeather } from 'react-open-weather';
 
 import WeatherWidget from '@eggtronic/react-weather-widget';
 
@@ -18,6 +18,14 @@ enum Locations {
 
 function GettingStarted() {
     const [selectedLocation, setSelectedLocation] = useState(Locations.Scotland);
+
+    const { data, isLoading, errorMessage } = useOpenWeather({
+        key: '43887186b07bb5deaad592918ae44878',
+        lat: '48.137154',
+        lon: '11.576124',
+        lang: 'en',
+        unit: 'metric', // values are (metric, standard, imperial)
+      });
 
 
     const Theme = {
@@ -48,6 +56,16 @@ function GettingStarted() {
                 <h3 /*data-testid={"CanadaButton"}*/ className={selectedLocation === Locations.Canada ? 'selected-icon' : 'unselected-icon'} onClick={() => setSelectedLocation(Locations.Canada)}>Canada</h3>
                 <h3 /*data-testid={"AustraliaButton"}*/ className={selectedLocation === Locations.Australia ? 'selected-icon' : 'unselected-icon'} onClick={() => setSelectedLocation(Locations.Australia)}>Australia</h3>
             </div>
+
+            <ReactWeather
+      isLoading={isLoading}
+      errorMessage={errorMessage}
+      data={data}
+      lang="en"
+      locationLabel="Munich"
+      unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+      showForecast
+    />
 
             <div>
                 {selectedLocation === Locations.Scotland ? <div>
