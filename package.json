@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@eggtronic/react-weather-widget": "0.0.5",
     "react-open-weather": "^1.1.3"
   }
 }
