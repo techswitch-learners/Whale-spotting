@@ -1,0 +1,28 @@
+@import "../../Styles/constants";
+.video-container { 
+    position: relative; 
+    padding-bottom: 56.25%; 
+    padding-top: 30px; 
+    height: 0; 
+    overflow: hidden; 
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+@media only screen and (min-width: $two-column-min-pixels){
+    .watch-whales-container { 
+        width: 50%;
+        height: 26%;
+        padding-right: 20px;
+    }
+    .whales-sighting-container{
+        padding-left: 20px;
+    }
+    .video-and-sightings-container {
+        display: flex    
+    }
+}
