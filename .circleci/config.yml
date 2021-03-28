@@ -9,7 +9,6 @@ jobs:
       - checkout
       - node/install-packages:
           app-dir: ~/ClientApp
-          version: 14.15.5
       - run: cd ClientApp && npm test
 workflows: 
   test:
