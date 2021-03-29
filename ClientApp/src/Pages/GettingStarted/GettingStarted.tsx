@@ -17,11 +17,11 @@ function GettingStarted() {
     const [selectedLocation, setSelectedLocation] = useState(Locations.Scotland);
 
     const locationData = GetLocationData(selectedLocation);
-    const locationSummary = GetLocationSummary(selectedLocation)
+    const locationSummary = GetLocationSummary(selectedLocation);
 
 
     const { data, isLoading, errorMessage } = useOpenWeather({
-        key: '43887186b07bb5deaad592918ae44878',
+        key: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
         lat: locationData.latitude,
         lon: locationData.longitude,
         lang: 'en',
