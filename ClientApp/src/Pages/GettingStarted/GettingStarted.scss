@@ -1,14 +1,14 @@
-@media only screen and (max-width: 1000px) {
+
     .image-and-text {
         display: flex;
         align-self: center;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         justify-content: center;
         align-items: center;
     }
 
-    body {
+    .getting-started {
         text-align: center;
     }
 
@@ -32,50 +32,29 @@
         padding: 5%;
         justify-content: center;
     }
-    #widget {
-        height: 10%;
-    }
-    .location-page-break {
-        padding-bottom: 50px;
-    }
-}
-
-@media only screen and (min-width: 1000px) {
-    body {
-        text-align: center;
-    }
-
-    .selected-icon {
-        padding-left: 5%;
-        padding-right: 5%;
-        background-color: orange;
-        font-size: x-large;
-    }
-    .unselected-icon {
-        padding-left: 5%;
-        padding-right: 5%;
-        font-size: x-large;
-    }
-
-    .places {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        flex-direction: row;
-        padding: 5%;
-        justify-content: center;
-    }
-
-    .image-and-text {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-
     #widget {
         height: 10%;
     }
     .location-line-break {
         padding-bottom: 70px;
+    }
+
+    .location-image{
+        width:400px;
+         height:400px;
+    }
+
+
+@media only screen and (max-width: 1000px) {
+    
+    .image-and-text {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+   
+    .location-line-break {
+        padding-bottom: 50px;
     }
 }

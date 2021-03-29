@@ -1,6 +1,6 @@
 import React from 'react';
-
-interface LocationSummary {
+import './GettingStarted.scss';
+ interface LocationSummary {
     location: {
         name: string,
         imagesrc: string,
@@ -19,7 +19,7 @@ function LocationSummary(props: LocationSummary): JSX.Element {
             <h2> {props.location.name}</h2>
             <div className='location-line-break'></div>
             <div className='image-and-text'>
-                <img className='locationImage' src={props.location.imagesrc} width='400px' height='400px' alt='Image of Location' />
+                <img className='location-image' src={props.location.imagesrc}  alt='Image of Location' />
                 <div className='LocationTable'>
                     <h6>Why Should I Visit?</h6>
                     <p>{props.location.description}</p>

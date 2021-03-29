@@ -1,10 +1,22 @@
 import {Locations} from "./GettingStarted";
-
+import {scotland} from './LocationData';
+import {canada} from './LocationData';
+import {australia} from './LocationData';
 
 interface Coordinates {
     latitude: number;
     longitude: number;
     label: string;
+}
+
+interface LocationSummaryData {
+    name: string,
+    imagesrc: string,
+    description: string,
+    whalespecies: string,
+    besttimeofyear: string,
+    touristinformation: string,
+    url: string
 }
 
 const canadaLocationData = {
@@ -38,4 +50,19 @@ function GetLocationData(location: Locations): Coordinates {
     
 }
 
+function GetLocationSummary(location: Locations): LocationSummaryData {
+
+    switch (location) {
+        case Locations.Scotland:
+            return scotland ;
+        case Locations.Canada:
+            return canada ;
+        case Locations.Australia:
+            return australia;
+
+    }
+
+}
+
 export{GetLocationData}
+export {GetLocationSummary}
