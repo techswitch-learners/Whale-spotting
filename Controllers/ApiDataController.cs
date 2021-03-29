@@ -17,24 +17,36 @@ namespace whale_spotting.Controllers
         [HttpGet("")]
         public async void GetApiData() 
         {
+            int page = 1;
+            bool Flag = true;
             var client = new RestClient("http://hotline.whalemuseum.org");
-            var request = new RestRequest("api.json", DataFormat.Json);
-            var apiSightings = await client.GetAsync<List<SightingApiModel>>(request);
-
             List<Sighting> sightingsToAdd = new List<Sighting>();
-            foreach(var apiSighting in apiSightings)
+            
+            while (Flag == true)
             {
-                Sighting sighting = new Sighting(apiSighting);
-                sightingsToAdd.Add(sighting);
-            }
-
-            using (var context = new WhaleSpottingContext())
-            {
-                if (!context.Sightings.Any())
+                var request = new RestRequest($"api.json?limit=1000&page={page}", DataFormat.Json);
+                var apiSightings = await client.GetAsync<List<SightingApiModel>>(request);
+                if (apiSightings.Any())
                 {
-                    context.Sightings.AddRange(sightingsToAdd);
-                    context.SaveChanges();
+                    sightingsToAdd.AddRange(apiSightings.Select(apiSighting => new Sighting(apiSighting)).ToList());
+                    page++;                              
                 }
+                else 
+                {
+                    Flag = false;
+                }                
+            }
+            
+            if (sightingsToAdd.Any())            
+            {
+                using (var context = new WhaleSpottingContext())
+                {
+                    if (!context.Sightings.Any())
+                    {
+                        context.Sightings.AddRange(sightingsToAdd);
+                        context.SaveChanges();
+                    }
+                }   
             }          
         }
     }

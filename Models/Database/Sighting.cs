@@ -27,14 +27,14 @@ namespace whale_spotting.Models.Database
         }
         public Sighting(SightingApiModel apiModel) 
         {
-            ApiId = apiModel.id;
-            Species = apiModel.species;
-            Quantity = apiModel.quantity;
-            Location = apiModel.location;
-            Latitude = apiModel.latitude;
-            Longitude = apiModel.longitude;
-            Description = apiModel.description;
-            SightedAt = apiModel.sighted_at;
+            ApiId = apiModel.Id;
+            Species = apiModel.Species;
+            Quantity = apiModel.Quantity;
+            Location = apiModel.Location;
+            Latitude = apiModel.Latitude;
+            Longitude = apiModel.Longitude;
+            Description = apiModel.Description;
+            SightedAt = apiModel.SightedAt;
         }
     }
 }
