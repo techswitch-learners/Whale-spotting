@@ -26,6 +26,7 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.5",
     "ajv": "^6.9.1",
     "bootstrap": "^4.6.0",
     "cross-env": "^5.2.0",
