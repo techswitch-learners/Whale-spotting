@@ -9,6 +9,9 @@ namespace whale_spotting
     {
         public DbSet<Sighting> Sightings { get; set; }
 
+        public WhaleSpottingContext(DbContextOptions<WhaleSpottingContext> options): base(options)
+        {}
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         { 
             optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL"));
