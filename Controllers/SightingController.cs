@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using whale_spotting.Models.Request;
@@ -25,10 +26,13 @@ namespace whale_spotting.Controllers
                 }
 
                 var sighting = _sighting.Submit(newSighting);
+               
 
                 var url = Url.Action("GetById", new { id = sighting.Id });
                 var sightingResponse = new SightingResponse(sighting);
+               
                 return Created(url, sightingResponse);
+                
         }
 }
 }
