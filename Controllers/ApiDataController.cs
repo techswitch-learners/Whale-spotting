@@ -6,16 +6,24 @@ using RestSharp;
 using System.Collections.Generic;
 using whale_spotting.Models.ApiModels;
 using whale_spotting.Models.Database;
+using whale_spotting.Repositories;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace whale_spotting.Controllers
 {
     [ApiController]
     [Route("/getapidata")]
     public class ApiDataController : ControllerBase
-    {
+    {     
+        private readonly ISightingsRepo _sightings;
+        public ApiDataController(ISightingsRepo sightings)
+        {
+            _sightings = sightings;
+        }
+
         [HttpPost("")]
-        public async void GetApiData() 
+        public async Task<IActionResult> GetApiData() 
         {
             int page = 1;
             bool Flag = true;
@@ -35,20 +43,13 @@ namespace whale_spotting.Controllers
                 {
                     Flag = false;
                 }                
-            }
-            
-            if (sightingsToAdd.Any())            
-            {                
-                using (var context = new WhaleSpottingContext())
-                {
-                    var newSightingIds = sightingsToAdd.Select(s => s.ApiId).Distinct().ToArray();
-                    var SightingsInDb = context.Sightings.Where(s => newSightingIds.Contains(s.ApiId))
-                                                         .Select(s => s.ApiId).ToArray();
-                    var SightingsNotInDb = sightingsToAdd.Where(s => !SightingsInDb.Contains(s.ApiId));
-                    context.Sightings.AddRange(SightingsNotInDb);
-                    context.SaveChanges();        
-                }   
             }          
+
+            if (sightingsToAdd.Any())            
+            {    
+                _sightings.AddNewSightings(sightingsToAdd);
+            }    
+            return StatusCode(200);      
         }
     }
 }
