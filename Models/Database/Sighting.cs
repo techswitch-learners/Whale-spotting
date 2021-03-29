@@ -4,6 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace whale_spotting.Models.Database
 {
+    public enum ConfirmState {
+        Review,
+        Confirmed,
+        Deleted
+    }
     public class Sighting
     {
         [Key]
@@ -18,5 +23,6 @@ namespace whale_spotting.Models.Database
         public DateTime SightedAt { get; set; }
         public string SubmittedByName { get; set; }
         public string SubmittedByEmail { get; set; }
+        public ConfirmState ConfirmState { get; set; }
     }
 }
