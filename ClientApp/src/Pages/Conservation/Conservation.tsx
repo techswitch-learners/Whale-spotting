@@ -1,4 +1,4 @@
-import "./Conservation.scss";
+// import "./Conservation.scss";
 import "bootstrap";
 import React from "react";
 import {ConservationCardData, ConservationData} from "./ConservationData";
