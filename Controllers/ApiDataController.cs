@@ -38,16 +38,18 @@ namespace whale_spotting.Controllers
             }
             
             if (sightingsToAdd.Any())            
-            {
+            {                
                 using (var context = new WhaleSpottingContext())
                 {
-                    if (!context.Sightings.Any())
-                    {
-                        context.Sightings.AddRange(sightingsToAdd);
-                        context.SaveChanges();
-                    }
+                    var newSightingIds = sightingsToAdd.Select(s => s.ApiId).Distinct().ToArray();
+                    var SightingsInDb = context.Sightings.Where(s => newSightingIds.Contains(s.ApiId))
+                                                         .Select(s => s.ApiId).ToArray();
+                    var SightingsNotInDb = sightingsToAdd.Where(s => !SightingsInDb.Contains(s.ApiId));
+                    context.Sightings.AddRange(SightingsNotInDb);
+                    context.SaveChanges();        
                 }   
             }          
         }
     }
 }
+
