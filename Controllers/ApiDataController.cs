@@ -14,7 +14,7 @@ namespace whale_spotting.Controllers
     [Route("/getapidata")]
     public class ApiDataController : ControllerBase
     {
-        [HttpGet("")]
+        [HttpPost("")]
         public async void GetApiData() 
         {
             int page = 1;
