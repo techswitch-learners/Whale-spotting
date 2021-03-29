@@ -18,7 +18,7 @@ function LocationSummary(props: LocationSummary): JSX.Element {
         <div>
             <h2> {props.location.name}</h2>
             <div className='location-line-break'></div>
-            <div className='ImageAndText'>
+            <div className='image-and-text'>
                 <img className='locationImage' src={props.location.imagesrc} width='400px' height='400px' alt='Image of Location' />
                 <div className='LocationTable'>
                     <h6>Why Should I Visit?</h6>
