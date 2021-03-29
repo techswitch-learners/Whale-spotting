@@ -9,7 +9,7 @@ function AdminLogin() : JSX.Element {
         e.preventDefault();
         // Code to find user in database, see if password matches
         // If yes, log in and direct to Review Sightings page
-        // If not, display error message
+        // If not, display error messag
     }
 
     return (
