@@ -5,7 +5,8 @@ import { GetLocationData } from './GetLocationData';
 import { GetLocationSummary } from './GetLocationData';
 
 import { LocationSummary } from './LocationSummary';
-import ReactWeather, { useOpenWeather } from 'react-open-weather';//ignore red-line, it still works
+// @ts-ignore: could not find type declaration error. Types are used only byt the imported widget so not needed to the rest of the typscript.
+import ReactWeather, { useOpenWeather } from 'react-open-weather';
 
 export enum Locations {
     Scotland,
