@@ -1,15 +1,9 @@
 import React from 'react';
 import './GettingStarted.scss';
- interface LocationSummary {
-    location: {
-        name: string,
-        imagesrc: string,
-        description: string,
-        whalespecies: string,
-        besttimeofyear: string,
-        touristinformation: string,
-        url: string,
-    }
+import { LocationSummaryData } from './GetLocationData';
+
+interface LocationSummary {
+    location: LocationSummaryData
 }
 
 function LocationSummary(props: LocationSummary): JSX.Element {
@@ -19,10 +13,10 @@ function LocationSummary(props: LocationSummary): JSX.Element {
             <h2> {props.location.name}</h2>
             <div className='location-line-break'></div>
             <div className='image-and-text'>
-                <img className='location-image' src={props.location.imagesrc}  alt='Image of Location' />
+                <img className='location-image' src={props.location.imagesrc} alt='Image of Location' />
                 <div className='LocationTable'>
                     <h6>Why Should I Visit?</h6>
-                    <p>{props.location.description}</p>
+                    <p data-testid="description">{props.location.description}</p>
                     <h6>Which Whale Species are Common here?</h6>
                     <p> {props.location.whalespecies} </p>
                     <h6>When is the Best Time of Year to go?</h6>

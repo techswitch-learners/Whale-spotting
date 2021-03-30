@@ -2,11 +2,11 @@ interface LocationData {
   name: string;
   imagesrc: string;
   description: string;
-  whalespecies:string;
-  besttimeofyear:string;
-  touristinformation:string;
-  url:string
- 
+  whalespecies: string;
+  besttimeofyear: string;
+  touristinformation: string;
+  url: string
+
 }
 
 export const scotland: LocationData = {
@@ -17,7 +17,7 @@ export const scotland: LocationData = {
   besttimeofyear: "May - October.",
   touristinformation: "Gairloch and the surrounding coastline is part of the Hebridean 'Whale Trail', and is one of the UK's hotspots for whale and cetacean spotting. There are many tours that will bring you closer to the Whales and Dolphins that roam these waters. On clear days you’ll be mesmerized by the beauty of the landscape! To book a tour, ",
   url: "https://www.hebridean-whale-cruises.co.uk/"
- 
+
 }
 
 export const canada: LocationData = {
@@ -37,6 +37,6 @@ export const australia: LocationData = {
   whalespecies: "Humpback, Minke.",
   besttimeofyear: "May-November.",
   touristinformation: "See the playful antics of the humpback whales aboard the Spirit of Hervey Bay, with legendary guide Vicky Neville from Tasman Ventures who is often referred to as ‘the whale whisperer’. To book a tour, ",
-  url:  "https://tasmanventure.com.au/"
+  url: "https://tasmanventure.com.au/"
 }
 

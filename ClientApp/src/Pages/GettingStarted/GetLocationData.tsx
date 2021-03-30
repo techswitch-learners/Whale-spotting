@@ -1,7 +1,7 @@
-import {Locations} from "./GettingStarted";
-import {scotland} from './LocationData';
-import {canada} from './LocationData';
-import {australia} from './LocationData';
+import { Locations } from "./GettingStarted";
+import { scotland } from './LocationData';
+import { canada } from './LocationData';
+import { australia } from './LocationData';
 
 interface Coordinates {
     latitude: number;
@@ -9,7 +9,7 @@ interface Coordinates {
     label: string;
 }
 
-interface LocationSummaryData {
+export interface LocationSummaryData {
     name: string,
     imagesrc: string,
     description: string,
@@ -26,19 +26,19 @@ const canadaLocationData = {
 };
 
 const scotlandLocationData = {
-    latitude:57.7207794189,
-    longitude:-5.6862931252,
-    label:"Gairloch, Scotland",
- };
+    latitude: 57.7207794189,
+    longitude: -5.6862931252,
+    label: "Gairloch, Scotland",
+};
 
- const australiaLocationData = {
+const australiaLocationData = {
     latitude: -20.917574,
     longitude: -142.702789,
     label: "Queensland, Australia",
 };
 
 function GetLocationData(location: Locations): Coordinates {
-   
+
     switch (location) {
         case Locations.Canada:
             return canadaLocationData;
@@ -47,16 +47,16 @@ function GetLocationData(location: Locations): Coordinates {
         case Locations.Australia:
             return australiaLocationData;
     }
-    
+
 }
 
 function GetLocationSummary(location: Locations): LocationSummaryData {
 
     switch (location) {
         case Locations.Scotland:
-            return scotland ;
+            return scotland;
         case Locations.Canada:
-            return canada ;
+            return canada;
         case Locations.Australia:
             return australia;
 
@@ -64,5 +64,5 @@ function GetLocationSummary(location: Locations): LocationSummaryData {
 
 }
 
-export{GetLocationData}
-export {GetLocationSummary}
+export { GetLocationData }
+export { GetLocationSummary }
