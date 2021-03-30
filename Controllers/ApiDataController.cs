@@ -10,14 +10,15 @@ using whale_spotting.Repositories;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace whale_spotting.Controllers
 {
     [ApiController]
     [Route("/getapidata")]
     public class ApiDataController : ControllerBase
     {     
-        private readonly ISightingsRepo _sightings;
-        public ApiDataController(ISightingsRepo sightings)
+        private readonly ISightingRepo _sightings;
+        public ApiDataController(ISightingRepo sightings)
         {
             _sightings = sightings;
         }
