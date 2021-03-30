@@ -1,10 +1,6 @@
 import React from 'react';
 import { GettingStarted } from './GettingStarted';
 import { fireEvent, render, screen,act } from '@testing-library/react';
-import ReactDOM from 'react-dom';
-import { MemoryRouter } from 'react-router-dom';
-// import 'jest-dom/extend-expect';
-
 
 
 test('renders the LocationSummary component without errors', () => {
@@ -38,7 +34,6 @@ test('LocationSummary for Australia is shown when Australia is clicked', () => {
     const australiaButton = getByTestId('AustraliaButton')
     expect(australiaButton.className).toBe('unselected-icon')
     fireEvent.click(australiaButton)
-    // expect(screen.getByTestId('description')).toHaveTextContent("Queensland’s whale hot spot is at Hervey Bay, around 300 kilometres north of Brisbane. This tranquil spot is protected by Fraser Island, affording humpback whales the opportune location to hang around a while, either to mate, breed or nurse. Each year in July and August, the arrival of the humpback whales is celebrated at the Hervey Bay Whale Festival, with concerts, street parades and displays.");
     expect(getByTestId('description').textContent).toEqual("Queensland’s whale hot spot is at Hervey Bay, around 300 kilometres north of Brisbane. This tranquil spot is protected by Fraser Island, affording humpback whales the opportune location to hang around a while, either to mate, breed or nurse. Each year in July and August, the arrival of the humpback whales is celebrated at the Hervey Bay Whale Festival, with concerts, street parades and displays.")
 
 })
