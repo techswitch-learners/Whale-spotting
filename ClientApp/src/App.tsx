@@ -8,15 +8,16 @@ import { Counter } from './components/Counter';
 import 'bootstrap';
 import './custom.css'
 import { SubmitSightingForm } from './Pages/SubmitSighting/SubmitSighting';
+import { GettingStarted } from './Pages/GettingStarted/GettingStarted';
 import { Conservation } from './Pages/Conservation/Conservation';
 
 export default class App extends Component {
   static displayName = App.name;
-
-  render () {
+  render() {
     return (
       <Layout>
         <Route exact path='/' component={Home} />
+        <Route exact path='/gettingstarted' component={GettingStarted} />
         <Route path='/counter' component={Counter} />
         <Route path='/fetch-data' component={FetchData} />
         <Route path='/admin' component={AdminLogin} />
@@ -26,3 +27,4 @@ export default class App extends Component {
     );
   }
 }
+
