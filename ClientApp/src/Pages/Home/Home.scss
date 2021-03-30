@@ -1,4 +1,5 @@
 @import "../../Styles/constants";
+@import "../../Styles/styles";
 
 .video-container { 
     position: relative; 
@@ -16,19 +17,15 @@
     height: 100%;
 }
 
-div {
-    background-color: $light-bg;
-    color: $light-text;
-}
-
 @media only screen and (min-width: $two-column-min-pixels){
     .watch-whales-container { 
         width: 50%;
         height: 26%;
         padding-right: 20px;
     }
-    .whales-sighting-container{
-        padding-left: 20px;
+    .whale-sightings-container {
+        width: 50%;
+        padding-left: 20px;        
     }
     .video-and-sightings-container {
         display: flex    

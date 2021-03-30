@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$main-header-font: 'Luckiest Guy', cursive;
+$subheader-font: 'Raleway', sans-serif;
+$body-font: 'Segoe UI', Arial, sans-serif;
+
 $light-text:#e2e2e2;
 $dark-text:#494b68;
 $light-bg:#265077;
 $dark-bg:#022140;
-$accent-color: #2d5f5d;
+$accent-color: #489996;
 
 $spacing-medium: 20px;
 $gutter-width: $spacing-medium;
 $two-column-min-pixels: 1000px; 
 
-@mixin font($font-size, $line-height: 1.5, $color: $light-text) {
-  font-family: "Segoe UI";
+@mixin font($font-size, $family: $body-font, $line-height: 1.5, $color: $light-text) {
+  font-family: $family;
   font-size: $font-size;
   line-height: $line-height;
   color: $color;
@@ -23,11 +29,16 @@ $two-column-min-pixels: 1000px;
 }
 
 @mixin titleFont() {
-  @include font(32px);
+  @include font(40px, $main-header-font) ;
+}
+
+@mixin subtitleFont() {
+  @include font(28px, $subheader-font);
 }
 
 @mixin bodyFont() {
   @include font(20px);
+  font-weight: 300;
 }
 
 @mixin primaryButton() {
