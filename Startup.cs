@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using whale_spotting.Repositories;
 
 namespace whale_spotting
 {
@@ -21,10 +22,11 @@ namespace whale_spotting
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllersWithViews();
             services.AddDbContext<WhaleSpottingContext>(options =>
                 options.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL")));
+            
+            services.AddControllersWithViews();
+            services.AddTransient<ISightingsRepo, SightingsRepo>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
