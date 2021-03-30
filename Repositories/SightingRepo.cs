@@ -4,11 +4,14 @@ using System.Linq;
 using whale_spotting.Models.Database;
 using whale_spotting.Models.Request;
 
+using whale_spotting.Models.ApiModels;
+
 namespace whale_spotting.Repositories
 {
     public interface ISightingRepo
     {
         Sighting Submit(SubmitSightingRequest create);
+        void AddNewSightings(List<Sighting> sightingsToAdd);
     }
 
     public class SightingRepo : ISightingRepo
@@ -39,6 +42,16 @@ namespace whale_spotting.Repositories
             _context.SaveChanges();
 
             return insertResponse.Entity;
+        }
+
+        public void AddNewSightings(List<Sighting> sightingsToAdd)
+        {
+            var newSightingIds = sightingsToAdd.Select(s => s.ApiId).Distinct().ToArray();
+            var SightingsInDb = _context.Sightings.Where(s => newSightingIds.Contains(s.ApiId))
+                                                    .Select(s => s.ApiId).ToArray();
+            var SightingsNotInDb = sightingsToAdd.Where(s => !SightingsInDb.Contains(s.ApiId));
+            _context.Sightings.AddRange(SightingsNotInDb);
+            _context.SaveChanges();  
         }
     }
 }
