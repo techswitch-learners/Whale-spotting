@@ -22,7 +22,7 @@ export function SubmitSightingForm(): JSX.Element {
     setStatus("SUBMITTING");
     submitSighting({
       species,
-      quantity: parseInt(quantity),
+      quantity,
       location,
       latitude: parseFloat(latitude),
       longitude: parseFloat(longitude),
@@ -64,7 +64,6 @@ export function SubmitSightingForm(): JSX.Element {
           className="form-input"
           value={quantity}
           onChange={(event) => setQuantity(event.target.value)}
-          type="number"
         />
       </label>
 

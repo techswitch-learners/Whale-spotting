@@ -16,7 +16,7 @@ namespace whale_spotting.Models.Response
 
         public string Species => _sighting.Species;
 
-        public int Quantity => _sighting.Quantity;
+        public string Quantity => _sighting.Quantity;
 
         public string Location => _sighting.Location;
 

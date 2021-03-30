@@ -1,6 +1,6 @@
 ﻿export interface NewSighting {
   species: string;
-  quantity: number;
+  quantity: string;
   location: string;
   latitude: number;
   longitude: number;
