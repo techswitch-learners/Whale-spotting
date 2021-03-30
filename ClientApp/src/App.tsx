@@ -7,6 +7,7 @@ import 'bootstrap';
 import './custom.css'
 import { SubmitSightingForm } from './Pages/SubmitSighting/SubmitSighting';
 import { Conservation } from './Pages/Conservation/Conservation';
+// import authService from './api-authorization/AuthorizeService';
 
 export default class App extends Component {
   static displayName = App.name;
@@ -16,6 +17,7 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={Home} />
         <Route path='/admin' component={AdminLogin} />
+        {/* <AuthorizeRoute path='/admin/confirm-sightings' component={ConfirmSightings}/> */}
         <Route path='/submit-sighting' component={SubmitSightingForm} />
         <Route path='/conservation' component={Conservation} />
       </Layout>
