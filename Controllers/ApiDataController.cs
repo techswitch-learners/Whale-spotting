@@ -26,11 +26,11 @@ namespace whale_spotting.Controllers
         public async Task<IActionResult> GetApiData() 
         {
             int page = 1;
-            bool Flag = true;
+            bool pageHasResults = true;
             var client = new RestClient("http://hotline.whalemuseum.org");
             List<Sighting> sightingsToAdd = new List<Sighting>();
             
-            while (Flag == true)
+            while (pageHasResults == true)
             {
                 var request = new RestRequest($"api.json?limit=1000&page={page}", DataFormat.Json);
                 var apiSightings = await client.GetAsync<List<SightingApiModel>>(request);
@@ -41,15 +41,15 @@ namespace whale_spotting.Controllers
                 }
                 else 
                 {
-                    Flag = false;
+                    pageHasResults = false;
                 }                
             }          
 
             if (sightingsToAdd.Any())            
             {    
                 _sightings.AddNewSightings(sightingsToAdd);
-            }    
-            return StatusCode(200);      
+            }      
+            return NoContent();  
         }
     }
 }
