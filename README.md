@@ -18,3 +18,11 @@ To create your own database, run `dotnet ef database update`. This will initiali
 ## Deployments
 
 This app is hosted on heroku and can be found at: https://whale-spotting-stg.herokuapp.com/ for the staging environment and https://whale-spotting-prod.herokuapp.com/ for the production environment. The staging environment will automatically update with pushes to main, to promote staging to production please contact one of the admins of the repo.
+
+## Weather widget
+
+From https://home.openweathermap.org/users/sign_up you can get your personnal open-weather API key. Go for the 5 Day / 3 Hour Forecast.
+
+add following file in the ClientApp directory: `.env.local`
+with following contents:
+REACT_APP_OPEN_WEATHER_API_KEY= your actual open weather key without any brackets or quotes

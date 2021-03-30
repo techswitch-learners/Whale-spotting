@@ -1,5 +1,6 @@
 ﻿import React, { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
+import { submitSighting } from "../../Api/apiClient";
 import "./SubmitSighting.scss";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
@@ -12,16 +13,27 @@ export function SubmitSightingForm(): JSX.Element {
   const [longitude, setLongitude] = useState("");
   const [description, setDescription] = useState("");
   const [sightedAt, setSightedAt] = useState("");
-  const [submittedBy, setSubmittedBy] = useState("");
-  const [email, setEmail] = useState("");
+  const [submittedByName, setSubmittedByName] = useState("");
+  const [submittedByEmail, setSubmittedByEmail] = useState("");
   const [status, setStatus] = useState<FormStatus>("READY");
 
   function submitForm(event: FormEvent) {
     event.preventDefault();
     setStatus("SUBMITTING");
-  //   set a function to send the information to the api call
-  //   if it is valid set status to "FINISHED" if it's not, catch the error and set status to "ERROR"
-    }
+    submitSighting({
+      species,
+      quantity,
+      location,
+      latitude: parseFloat(latitude),
+      longitude: parseFloat(longitude),
+      description,
+      sightedAt,
+      submittedByName,
+      submittedByEmail,
+    })
+      .then(() => setStatus("FINISHED"))
+      .catch(() => setStatus("ERROR"));
+  }
 
   if (status === "FINISHED") {
     return (
@@ -66,25 +78,27 @@ export function SubmitSightingForm(): JSX.Element {
           />
         </label>
 
-        <label className="form-label">
-          Latitude
-          <input
-            className="form-input"
-            value={latitude}
-            onChange={(event) => setLatitude(event.target.value)}
-            required
-          />
-        </label>
+      <label className="form-label">
+        Latitude
+        <input
+          className="form-input"
+          value={latitude}
+          onChange={(event) => setLatitude(event.target.value)}
+          type="number"
+          required
+        />
+      </label>
 
-        <label className="form-label">
-          Longitude
-          <input
-            className="form-input"
-            value={longitude}
-            onChange={(event) => setLongitude(event.target.value)}
-            required
-          />
-        </label>
+      <label className="form-label">
+        Longitude
+        <input
+          className="form-input"
+          value={longitude}
+          onChange={(event) => setLongitude(event.target.value)}
+          type="number"
+          required
+        />
+      </label>
 
         <label className="form-label">
           Description
@@ -95,35 +109,37 @@ export function SubmitSightingForm(): JSX.Element {
           />
         </label>
 
-        <label className="form-label">
-          Sighted at
-          <input
-            className="form-input"
-            value={sightedAt}
-            onChange={(event) => setSightedAt(event.target.value)}
-            required
-          />
-        </label>
+      <label className="form-label">
+        Sighted at
+        <input
+          className="form-input"
+          value={sightedAt}
+          onChange={(event) => setSightedAt(event.target.value)}
+          type="date"
+          required
+        />
+      </label>
 
-        <label className="form-label">
-          Submitted by
-          <input
-            className="form-input"
-            value={submittedBy}
-            onChange={(event) => setSubmittedBy(event.target.value)}
-            required
-          />
-        </label>
+      <label className="form-label">
+        Submitted by
+        <input
+          className="form-input"
+          value={submittedByName}
+          onChange={(event) => setSubmittedByName(event.target.value)}
+          required
+        />
+      </label>
 
-        <label className="form-label">
-          Email
-          <input
-            className="form-input"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
-        </label>
+      <label className="form-label">
+        Email
+        <input
+          className="form-input"
+          value={submittedByEmail}
+          onChange={(event) => setSubmittedByEmail(event.target.value)}
+          type="email"
+          required
+        />
+      </label>
 
         <button
           className="submit-button"
