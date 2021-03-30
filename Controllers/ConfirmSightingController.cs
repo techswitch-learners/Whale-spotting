@@ -7,7 +7,7 @@ using whale_spotting.Repositories;
 
 namespace whale_spotting.Controllers
 {
-    [Route("confirm-sighting")]
+    [Route("api/confirm-sighting")]
     public class ConfirmSightingController : ControllerBase
     {   
         private readonly ISightingRepo _confirmSighting;

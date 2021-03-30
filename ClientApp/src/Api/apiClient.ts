@@ -9,6 +9,19 @@
     submittedByName: string;
     submittedByEmail: string;
   }
+  export interface Sighting {
+    id: number;
+    species: string;
+    quantity: string;
+    location: string;
+    latitude: number;
+    longitude: number;
+    description: string;
+    sightedAt: string;
+    submittedByName: string;
+    submittedByEmail: string;
+    confirmState: number;
+  }
   export interface ConfirmListResponse<T> {
     items: T[];
     totalNumberOfItems: number;
@@ -16,20 +29,16 @@
     nextPage: string;
     previousPage: string;
 }
-export interface Sighting {
-  id: number;
-  species: string;
-    quantity: string;
-    sightedAt: string;
-    submittedByName: string;
-    submittedByEmail: string;
+export interface ListSightings {
+   sightings: Sighting[];
+  
 
 }
 
   
   export async function submitSighting(newSighting: NewSighting) {
     const response = await fetch(
-      `/submit-sighting/submit`,
+      `/api/submit-sighting/submit`,
       {
         method: "POST",
         headers: {
@@ -43,8 +52,8 @@ export interface Sighting {
       throw new Error(await response.json());
     }
   }
-  
+
   export async function fetchUnconfirmedSightings(): Promise<ConfirmListResponse<Sighting>> {
-    const response = await fetch(`/confirm-sighting`);
+    const response = await fetch(`/api/confirm-sighting`);
     return await response.json();
 }
