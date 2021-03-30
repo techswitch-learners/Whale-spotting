@@ -1,11 +1,14 @@
-$color-primary: orange;
-$color-foreground: black;
-$color-background: #FFFFFF;
+$light-text:#e2e2e2;
+$dark-text:#494b68;
+$light-bg:#265077;
+$dark-bg:#022140;
+$accent-color: #2d5f5d;
+
 $spacing-medium: 20px;
 $gutter-width: $spacing-medium;
 $two-column-min-pixels: 1000px; 
 
-@mixin font($font-size, $line-height: 1.5, $color: $color-foreground) {
+@mixin font($font-size, $line-height: 1.5, $color: $light-text) {
   font-family: "Segoe UI";
   font-size: $font-size;
   line-height: $line-height;
@@ -13,8 +16,8 @@ $two-column-min-pixels: 1000px;
   text-decoration: none;
 }
 
-@mixin buttonFont($color) {
-  @include font(17px, 2, $color);
+@mixin buttonFont() {
+  @include font(17px, 2, $light-text);
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -28,9 +31,9 @@ $two-column-min-pixels: 1000px;
 }
 
 @mixin primaryButton() {
-  @include buttonFont($color-background);
+  @include buttonFont();
   border: none;
-  background-color: $color-primary;
+  background-color: $accent-color;
   width: 100%;
 }
 

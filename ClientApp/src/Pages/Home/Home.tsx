@@ -15,7 +15,7 @@ function Home() {
       can go whale watching. This site will help answer some questions you might have and give you some information on how you can
       get started and get involved.</p>
 
-      <p>An estimated 13 million people went whale watching globally in 2008 and the numbers are growing. Responisble whale watching
+      <p>An estimated 13 million people went whale watching globally in 2008 and the numbers are growing. Responsible whale watching
       has benefitted conservation efforts through education and raising awareness of the challenges that whales and orcas currently face.
       Many species of whales and orcas are currently listed as endangered. The responsibilty lies with us, together we can help change
       and stop harmful practices that negatively impact the whale and orca populations.</p>
