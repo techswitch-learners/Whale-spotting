@@ -12,6 +12,7 @@ namespace whale_spotting.Repositories
     {
         Sighting Submit(SubmitSightingRequest create);
         void AddNewSightings(List<Sighting> sightingsToAdd);
+        Sighting SelectSightingById(int Id);
     }
 
     public class SightingRepo : ISightingRepo
@@ -53,5 +54,13 @@ namespace whale_spotting.Repositories
             _context.Sightings.AddRange(SightingsNotInDb);
             _context.SaveChanges();  
         }
+        
+        public Sighting SelectSightingById(int Id)
+        {
+            var sighting = _context.Sightings.Where(s => s.Id == Id)
+                            .SingleOrDefault();
+            return sighting;
+        }
+
     }
 }
