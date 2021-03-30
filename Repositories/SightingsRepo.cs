@@ -8,7 +8,7 @@ namespace whale_spotting.Repositories
 {
     public interface ISightingRepo
     {
-        Sighting Submit(SubmitSightingRequest create);
+      //  Sighting Submit(SubmitSightingRequest create);
          IEnumerable<Sighting> GetByConfirmState();
          
     }
@@ -27,25 +27,25 @@ namespace whale_spotting.Repositories
             .Where(s => s.ConfirmState == ConfirmState.Review);
         }
 
-        public Sighting Submit(SubmitSightingRequest create)
-        {
-            var insertResponse =
-                _context
-                    .Sightings
-                    .Add(new Sighting {
-                        Species = create.Species,
-                        Quantity = create.Quantity,
-                        Location = create.Location,
-                        Latitude = create.Latitude,
-                        Longitude = create.Longitude,
-                        Description = create.Description,
-                        SightedAt = create.SightedAt,
-                        SubmittedByName = create.SubmittedByName,
-                        SubmittedByEmail = create.SubmittedByEmail
-                    });
-            _context.SaveChanges();
+        // public Sighting Submit(SubmitSightingRequest create)
+        // {
+        //     var insertResponse =
+        //         _context
+        //             .Sightings
+        //             .Add(new Sighting {
+        //                 Species = create.Species,
+        //                 Quantity = create.Quantity,
+        //                 Location = create.Location,
+        //                 Latitude = create.Latitude,
+        //                 Longitude = create.Longitude,
+        //                 Description = create.Description,
+        //                 SightedAt = create.SightedAt,
+        //                 SubmittedByName = create.SubmittedByName,
+        //                 SubmittedByEmail = create.SubmittedByEmail
+        //             });
+        //     _context.SaveChanges();
 
-            return insertResponse.Entity;
-        }
+        //     return insertResponse.Entity;
+        // }
     }
 }

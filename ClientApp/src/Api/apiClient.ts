@@ -25,9 +25,7 @@ export interface Sighting {
     submittedByEmail: string;
 
 }
-export interface IEnumerable<Sighting>{
-  
-}
+
   
   export async function submitSighting(newSighting: NewSighting) {
     const response = await fetch(
@@ -45,15 +43,7 @@ export interface IEnumerable<Sighting>{
       throw new Error(await response.json());
     }
   }
-  export async function fetchUnconfirmedSightings(sightings: IEnumerable<Sighting>): Promise<ConfirmListResponse<Sighting>> {
-    const response = await fetch(`/confirm-sighting`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(sightings),
-    }
-    );
+  export async function fetchUnconfirmedSightings(): Promise<ConfirmListResponse<Sighting>> {
+    const response = await fetch(`/confirm-sighting`);
     return await response.json();
 }
