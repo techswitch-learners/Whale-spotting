@@ -12,7 +12,7 @@
 
 export async function submitSighting(newSighting: NewSighting) {
   const response = await fetch(
-    `https://localhost:5001/submit-sighting/submit`,
+    `/submit-sighting/submit`,
     {
       method: "POST",
       headers: {

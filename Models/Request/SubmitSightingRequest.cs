@@ -6,11 +6,11 @@ namespace whale_spotting.Models.Request
     public class SubmitSightingRequest
     {
         [Required]
-        [StringLength(20)]
+        [StringLength(70)]
         public string Species { get; set; }
-        [StringLength(10)]
+        [StringLength(70)]
         public string Quantity { get; set; }
-        [StringLength(20)]
+        [StringLength(70)]
         public string Location { get; set; }
         [Required]
         public double Latitude { get; set; }
@@ -21,7 +21,7 @@ namespace whale_spotting.Models.Request
         [Required]
         public DateTime SightedAt { get; set; }
         [Required]
-        [StringLength(20)]
+        [StringLength(70)]
         public string SubmittedByName { get; set; }
         [Required]
         public string SubmittedByEmail { get; set; }
