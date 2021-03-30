@@ -1,4 +1,4 @@
-export interface NewSighting {
+﻿export interface NewSighting {
     species: string;
     quantity: string;
     location: string;
@@ -43,6 +43,7 @@ export interface Sighting {
       throw new Error(await response.json());
     }
   }
+  
   export async function fetchUnconfirmedSightings(): Promise<ConfirmListResponse<Sighting>> {
     const response = await fetch(`/confirm-sighting`);
     return await response.json();
