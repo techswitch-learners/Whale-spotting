@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using whale_spotting.Repositories;
-// using whale_spotting.Data;
+using whale_spotting.Controllers;
 using whale_spotting.Models.Database;
 using whale_spotting.Models;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
@@ -32,8 +32,7 @@ namespace whale_spotting
         {
             services.AddDbContext<WhaleSpottingContext>(options =>
                     options
-                        .UseNpgsql(Environment
-                            .GetEnvironmentVariable("DATABASE_URL")));
+                        .UseNpgsql("Server=localhost;port=5432;Database=WhaleSpottingDb;user id=postgres;password=TechSwitch;"));
                             //here our code differs from theirs slightly
 
             //Code added from login app begins here//
@@ -42,11 +41,8 @@ namespace whale_spotting
             services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<WhaleSpottingContext>();
 
-
-            //Do we need this? 
-            // services.AddIdentityServer()
-            //     .AddApiAuthorization<AdminUser, WhaleSpottingContext>();
-            
+            services.AddIdentityServer()
+                .AddApiAuthorization<AdminUser, WhaleSpottingContext>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
@@ -64,8 +60,6 @@ namespace whale_spotting
 
             services.AddTransient<ISightingRepo, SightingRepo>();
 
-            services.AddDefaultIdentity<AdminUser>()
-                .AddEntityFrameworkStores<WhaleSpottingContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
