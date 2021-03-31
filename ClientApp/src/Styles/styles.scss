@@ -1,0 +1,30 @@
+@import './constants';
+
+div {
+    background-color: $light-bg;
+    color: $light-text;
+}
+
+/* Wrap page content in a content-container div for it to have a lighter background than the rest of the body */
+.content-container, .content-container div {
+    background-color: $dark-bg;
+    color: $light-text;
+}
+
+.content-container {
+    padding: 25px;
+    border-radius: 40px;
+}
+
+/* different fonts for different types of text */
+.title {
+    @include titleFont();
+}
+
+.sub-heading {
+    @include subtitleFont();
+}
+
+.body-text {
+    @include bodyFont();
+}
