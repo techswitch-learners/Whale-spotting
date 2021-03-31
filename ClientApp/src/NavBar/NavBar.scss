@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: $accent-color;
   position: fixed;
   top: 0;
   width: 100%;
@@ -21,34 +21,40 @@
   
 li a {
   display: block;
-  color: white;
+  color: $light-text;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
   
 li a:hover:not(.active) {
-  background-color: #111;
+  text-decoration: underline;
+  color: $light-text;
 }
   
 .active {
-  background-color: $color-primary;
+  background-color: $accent-color-dark;
 }
 
-.mobile-nav-bar-container{
+.mobile-nav-bar-container {
   margin-bottom: 70px;
+  background-color: $accent-color;
+}
+
+.mobile-nav-bar-container div {
+  background-color: $accent-color;
 }
 
 .mobile-nav-bar {
   overflow: hidden;
-  background-color: #333;
+  background-color: $accent-color;
   position: fixed;
   top: 0;
   width: 100%;
 }
 
 .mobile-nav-bar-title {
-  color: white;
+  color: $light-text;
 
 }
 
@@ -57,7 +63,7 @@ li a:hover:not(.active) {
 }
 
 .mobile-nav-bar a {
-  color: white;
+  color: $light-text;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
@@ -69,20 +75,22 @@ li a:hover:not(.active) {
   position: fixed;
   top: 0;
   right: 0;
-  color: white;
+  color: $light-text;
+  background-color: $accent-color;
 }
+
 .closed-nav-bar{
   display: none;
 }
 
 .mobile-nav-bar a:hover {
-  background-color: $color-primary;
-  color: black;
+  text-decoration: underline;
+  color: $light-text;
 }
 
 .active {
-  background-color: $color-primary;
-  color: white;
+  background-color: $accent-color-dark;
+  color: $light-text;
 }
 
 @media only screen and (min-width: $two-column-max-pixels){
