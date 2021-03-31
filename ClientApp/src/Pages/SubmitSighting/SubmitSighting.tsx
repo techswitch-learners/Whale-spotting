@@ -49,7 +49,7 @@ export function SubmitSightingForm(): JSX.Element {
   }
 
   return (
-    <div className="content-container"> 
+    <div> 
       <h1 className="title">Submit a Sighting:</h1>
       
       <form className="submit-form" onSubmit={submitForm}>
