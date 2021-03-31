@@ -11,10 +11,10 @@ function NavBar() {
     const menuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-     let handler = (event: any) => {
+        let handler = (event: any) => {
             if (menuRef.current !== null && !menuRef.current.contains(event.target)) {
-            setMobileNavState("closed");
-            setOpen(false);
+                setMobileNavState("closed");
+                setOpen(false);
             }
         };
 
@@ -24,16 +24,16 @@ function NavBar() {
             document.removeEventListener("mousedown", handler)
         }
     });
-   
+
     return (
         <div>
             <nav className="web-nav-bar">
-                <ul>
+                <ul className="web-nav-bar-list">
                     <div className="page-headers">
-                    <li><Link to="/" className={selectedPage == 'home' ? 'active' : 'inactive'} onClick={() => setSelectedPage('home')}>Home</Link></li>
-                    <li><Link to="/submit-sighting" className={selectedPage == 'submit-sighting' ? 'active' : 'inactive'} onClick={() => setSelectedPage('submit-sighting')}>Submit a Sighting</Link></li>
-                    <li><Link to="/Conservation" className={selectedPage == 'conservation' ? 'active' : 'inactive'} onClick={() => setSelectedPage('conservation')} >Conservation</Link></li>
-                    <li><Link to="/Started" className={selectedPage == 'started' ? 'active' : 'inactive'} onClick={() => setSelectedPage('started')}>Find a Whale!</Link></li>
+                        <li className="web-nav-bar-list-item"><Link to="/" className={selectedPage == 'home' ? 'active' : 'inactive'} onClick={() => setSelectedPage('home')}>Home</Link></li>
+                        <li className="web-nav-bar-list-item"><Link to="/getting-started" className={selectedPage == 'started' ? 'active' : 'inactive'} onClick={() => setSelectedPage('started')}>Getting Started</Link></li>
+                        <li className="web-nav-bar-list-item"><Link to="/submit-sighting" className={selectedPage == 'submit-sighting' ? 'active' : 'inactive'} onClick={() => setSelectedPage('submit-sighting')}>Submit a Sighting</Link></li>
+                        <li className="web-nav-bar-list-item"><Link to="/conservation" className={selectedPage == 'conservation' ? 'active' : 'inactive'} onClick={() => setSelectedPage('conservation')} >Conservation</Link></li>
                     </div>
                 </ul>
             </nav>
@@ -43,20 +43,21 @@ function NavBar() {
                     <a href="/" className="mobile-nav-bar-title"> Whale Spotting </a>
                     <div className={mobileNavState == 'open' ? 'open-nav-bar' : 'closed-nav-bar'}>
                         <a href="/" className={selectedPage == 'home' ? 'active' : 'inactive'} onClick={() => setSelectedPage('home')}>Home</a>
+                        <a href="/getting-started" className={selectedPage == 'started' ? 'active' : 'inactive'} onClick={() => setSelectedPage('started')}>Getting Started</a>
                         <a href="/submit-sighting" className={selectedPage == 'submit-sighting' ? 'active' : 'inactive'} onClick={() => setSelectedPage('submit-sighting')}>Submit a Sighting</a>
-                        <a href="/Conservation" className={selectedPage == 'conservation' ? 'active' : 'inactive'} onClick={() => setSelectedPage('conservation')} >Conservation</a>
-                        <a href="/Started" className={selectedPage == 'started' ? 'active' : 'inactive'} onClick={() => setSelectedPage('started')}>Find a Whale!</a>
+                        <a href="/conservation" className={selectedPage == 'conservation' ? 'active' : 'inactive'} onClick={() => setSelectedPage('conservation')} >Conservation</a>
                     </div>
                 </div>
-              
+
                 <div className="icon">
                     <Hamburger toggled={isOpen} toggle={setOpen} label="Show menu" rounded onToggle={
-                        () => { if (mobileNavState=='closed'){
-                            setMobileNavState('open')
-                        } else {
-                            setMobileNavState('closed')
-                        }
-                    }}  />
+                        () => {
+                            if (mobileNavState == 'closed') {
+                                setMobileNavState('open')
+                            } else {
+                                setMobileNavState('closed')
+                            }
+                        }} />
                 </div>
             </div>
         </div>

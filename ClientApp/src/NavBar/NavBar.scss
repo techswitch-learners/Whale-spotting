@@ -1,6 +1,6 @@
 @import '../Styles/constants';
 
-ul {
+.web-nav-bar-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@ ul {
   width: 100%;
 }
 
-li {
+.web-nav-bar-list-item {
   float: left;
 }
 
