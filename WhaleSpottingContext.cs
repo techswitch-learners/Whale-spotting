@@ -14,7 +14,7 @@ namespace whale_spotting
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         { 
-            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL"));
+            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL"));            
         }
     }
 }

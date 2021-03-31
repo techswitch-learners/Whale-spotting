@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using whale_spotting.Models.Database;
 using whale_spotting.Models.Request;
+using whale_spotting.Models.Response;
 
 using whale_spotting.Models.ApiModels;
 
@@ -11,6 +12,8 @@ namespace whale_spotting.Repositories
     public interface ISightingRepo
     {
         Sighting Submit(SubmitSightingRequest create);
+
+        List<Sighting> GetRecentSightings();
         void AddNewSightings(List<Sighting> sightingsToAdd);
     }
 
@@ -28,7 +31,8 @@ namespace whale_spotting.Repositories
             var insertResponse =
                 _context
                     .Sightings
-                    .Add(new Sighting {
+                    .Add(new Sighting
+                    {
                         Species = create.Species,
                         Quantity = create.Quantity,
                         Location = create.Location,
@@ -51,7 +55,18 @@ namespace whale_spotting.Repositories
                                                     .Select(s => s.ApiId).ToArray();
             var SightingsNotInDb = sightingsToAdd.Where(s => !SightingsInDb.Contains(s.ApiId));
             _context.Sightings.AddRange(SightingsNotInDb);
-            _context.SaveChanges();  
+            _context.SaveChanges();
         }
-    }
+
+        public List<Sighting> GetRecentSightings()
+        {
+
+            var sightingList = _context.Sightings.OrderByDescending(x => x.SightedAt)
+                                                                 .Take(5)
+                                                               .ToList();
+            return sightingList;
+
+        }
+        
+    };
 }
