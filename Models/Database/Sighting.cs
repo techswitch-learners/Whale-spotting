@@ -20,7 +20,6 @@ namespace whale_spotting.Models.Database
         public DateTime SightedAt { get; set; }
         public string SubmittedByName { get; set; }
         public string SubmittedByEmail { get; set; }
-
         public Sighting()
         {
             
