@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using whale_spotting.Models.Database;
 using whale_spotting.Models.Request;
-
 using whale_spotting.Models.ApiModels;
 
 namespace whale_spotting.Repositories
@@ -57,7 +56,8 @@ namespace whale_spotting.Repositories
             var SightingsInDb = _context.Sightings.Where(s => newSightingIds.Contains(s.ApiId))
                                                     .Select(s => s.ApiId).ToArray();
             var SightingsNotInDb = sightingsToAdd.Where(s => !SightingsInDb.Contains(s.ApiId));
-            _context.Sightings.AddRange(SightingsNotInDb);
+            SightingsNotInDb.ToList().ForEach(x => x.ConfirmState = ConfirmState.Confirmed);
+            _context.Sightings.AddRange(SightingsNotInDb.ToArray());
             _context.SaveChanges();  
         }
     }
