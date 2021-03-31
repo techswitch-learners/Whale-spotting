@@ -1,13 +1,10 @@
 ﻿@import "../../Styles/constants";
 @import "~bootstrap/scss/bootstrap";
+@import '../../Styles/styles';
 
   
 .submit-sighting-page {
   margin: $gutter-width;
-
-  .title {
-    @include titleFont;
-  }
 }
 
 .submit-form {
