@@ -13,7 +13,9 @@ DATABASE_URL=Server=localhost;port=5432;Database=WhaleSpottingDb;user id=usernam
 ```
 where the user id and password are your own PSQL credentials (note: the default username is postgres, if you're not sure!). 
 
-To create/update your database, in `WhaleSpottingContext.cs`, comment out the following line:
+Running a `dotnet run` will create the database (if it does not already exist) and apply all existing migrations.
+
+If you need to create a new migration to create a new column, for example, (i.e. run a `dotnet ef migrations add [migration name]`), you will need to comment out the following line in the `WhaleSpottingContext.cs` file:
 ```
 optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL"));
 ```
@@ -22,9 +24,8 @@ and instead, write
 ```
 optionsBuilder.UseNpgsql("Server=localhost;port=5432;Database=WhaleSpottingDb;user id=username;password=secret;")
 ```
-instead, where the argument is your correct connection string. 
 
-Do a dotnet run to create/update the database. After this, you can delete the new line and uncomment the initial one! You will need to repeat these steps for all updates of the database.
+where the argument is your correct connection string. Now, do your `dotnet ef migrations add [migration name]`. After this, you can delete the new line and uncomment the initial one, and proceed to run the app with `dotnet run`. You will need to repeat these steps for whenever you want to create new migrations.
 
 To pull in all the data from the Whale Hotline API, send a blank POST request to https://localhost:5001/getapidata. You will need to do this in Postman until there is a frontend for this endpoint.
 
