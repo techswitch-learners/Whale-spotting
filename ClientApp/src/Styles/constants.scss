@@ -3,7 +3,8 @@ $color-foreground: black;
 $color-background: #FFFFFF;
 $spacing-medium: 20px;
 $gutter-width: $spacing-medium;
-$two-column-min-pixels: 1000px; 
+$two-column-max-pixels: 1000px; 
+$two-column-min-pixels: 999px; 
 
 @mixin font($font-size, $line-height: 1.5, $color: $color-foreground) {
   font-family: "Segoe UI";
