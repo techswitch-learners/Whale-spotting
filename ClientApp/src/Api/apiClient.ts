@@ -26,3 +26,33 @@ export async function submitSighting(newSighting: NewSighting) {
     throw new Error(await response.json());
   }
 }
+
+
+export interface SightingResponse {
+  id: number;
+  apiId: string;
+  species: string;
+  quantity: string;
+  location: string;
+  latitude: number;
+  longitude: number;
+  description: string;
+  sightedAt: string;
+  submittedByName: string;
+  submittedByEmail: string;  
+}
+
+
+export async function getRecentSightings(): Promise<SightingResponse> {
+  const response = await fetch(`/recentsightings`,
+  {
+    method: "GET",
+  }
+  );
+ 
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+
+  return await response.json();
+}

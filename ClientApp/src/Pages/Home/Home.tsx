@@ -1,21 +1,22 @@
 import React, { Component, useEffect, useState } from 'react';
 import './Home.scss';
-import { GetSightings } from './GetSightings'
+import { GetSightings } from './GetSightings';
+import {getRecentSightings} from '../../Api/apiClient';
+import {SightingResponse} from '../../Api/apiClient';
 
 function Home() {
 
-  const [myData, setMyData] = useState(null);
+  const [myData, setMyData] = useState(<SightingResponse>[])([]);
 
-  useEffect(() => {
+   getRecentSightings()
+
+  {/* useEffect(() => {
     fetch("https://localhost:5001/recentsightings")
       .then(response => response.json())
       .then(data => setMyData(data));
-  }, []);
+  }, []); */}
 
-  if (!myData) {
-    return <div> Waiting for data!</div>
-  }
-
+  
 
   return (
     <div>
@@ -45,15 +46,27 @@ function Home() {
         <div className="whale-sightings-container">
           <h2>Recent Whale Sightings</h2>
           
-          
-          ad></div>
-  
-        </div>
+          <table>
+            <thead>
+              <td>Location</td>
+              <td>Species</td>
+              <td>Seen on</td>
+              <td>Seen by</td>
+            </thead> 
+            <tbody>   
+            <tr>   
+          {myData.RecentSightingsList.map(<SightingResponse>sighting=> <GetSightings sighting={sighting} />)}
+          </tr> 
+          </tbody> 
+      </table>
+
+      </div>
           </div>
-    </d  iv>
+    </div>
 
   );
-      {myData.RecentSightingsList.map(sighting=> <GetSightings sighting={sighting} />)}
+
+
+}
 export { Home}
-      
     
