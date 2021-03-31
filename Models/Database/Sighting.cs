@@ -6,7 +6,8 @@ using whale_spotting.Models.ApiModels;
 
 namespace whale_spotting.Models.Database
 {
-    public enum ConfirmState {
+    public enum ConfirmState 
+    {
         Review,
         Confirmed,
         Deleted
