@@ -1,4 +1,5 @@
 ﻿@import "../../Styles/constants";
+@import "~bootstrap/scss/bootstrap";
 
 .submit-sighting-page {
   margin: $gutter-width;
@@ -8,7 +9,7 @@
   }
 }
 
-.submit-sighting-form {
+.submit-form {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
