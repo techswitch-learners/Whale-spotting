@@ -33,7 +33,7 @@ li a:hover:not(.active) {
 }
   
 .active {
-  background-color: $color-primary;
+  background-color: $accent-color;
 }
 
 .mobile-nav-bar-container{
@@ -80,12 +80,12 @@ li a:hover:not(.active) {
 }
 
 .mobile-nav-bar a:hover {
-  background-color: $color-primary;
+  background-color: $accent-color;
   color: black;
 }
 
 .active {
-  background-color: $color-primary;
+  background-color: $accent-color;
   color: white;
 }
 
