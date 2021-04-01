@@ -2,22 +2,18 @@ import React, { Component, useEffect, useState } from 'react';
 import './Home.scss';
 import { GetSightings } from './GetSightings';
 import {getRecentSightings} from '../../Api/apiClient';
-import {SightingResponse} from '../../Api/apiClient';
+import {SightingResponse, SightingResponseList} from '../../Api/apiClient';
 
 function Home() {
 
-  const [myData, setMyData] = useState(<SightingResponse>[])([]);
+  const [myData, setMyData] = useState<SightingResponseList | null>(null);
 
+  useEffect(() => {
    getRecentSightings()
-
-  {/* useEffect(() => {
-    fetch("https://localhost:5001/recentsightings")
-      .then(response => response.json())
-      .then(data => setMyData(data));
-  }, []); */}
+   .then(data => setMyData(data));
+  }, []);
 
   
-
   return (
     <div className="content-container">
       <h1 className="title">Welcome to the World of Whale Watching!</h1>
@@ -55,7 +51,7 @@ function Home() {
             </thead> 
             <tbody>   
             <tr>   
-          {myData.RecentSightingsList.map(<SightingResponse>sighting=> <GetSightings sighting={sighting} />)}
+          {myData?.RecentSightingsList.map(sighting=> <GetSightings sighting={sighting} />)}
           </tr> 
           </tbody> 
       </table>

@@ -4,10 +4,10 @@ import './Home.scss';
 
 interface Sighting {
 sighting: {
-    Location: string,
-    Species: string,
-    SightedAt: string, //Datetime problem
-    SubmittedByName: string
+    location: string,
+    species: string,
+    sightedAt: string, //Datetime problem
+    submittedByName: string
 }
 }
 
@@ -15,10 +15,10 @@ function GetSightings(props: Sighting){
 
 return(
       <tr>
-        <td> {props.sighting.Location} </td> 
-        <td> {props.sighting.Species}  </td>
-        <td> {props.sighting.SightedAt} </td>
-        <td> {props.sighting.SubmittedByName} </td>
+        <td> {props.sighting.location} </td> 
+        <td> {props.sighting.species}  </td>
+        <td> {props.sighting.sightedAt} </td>
+        <td> {props.sighting.submittedByName} </td>
         <td> <a href='/'> More Info </a>  </td>
       </tr>
   
