@@ -3,7 +3,7 @@ import { ApplicationPaths, ApplicationName } from './ApiAuthorizationConstants';
 
 export class AuthorizeService {
     _callbacks = [];
-    _nextSubscriptionId = 0;
+    _nextSubscriptionId = 0;m
     _user = null;
     _isAuthenticated = false;
 

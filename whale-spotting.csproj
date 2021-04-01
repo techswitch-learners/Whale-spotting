@@ -19,6 +19,7 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.4"/>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0"/>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.4"/>
   </ItemGroup>
   <ItemGroup>
     <Content Remove="$(SpaRoot)**"/>

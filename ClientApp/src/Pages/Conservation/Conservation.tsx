@@ -2,7 +2,11 @@ import "./Conservation.scss";
 import "bootstrap";
 import React from "react";
 import {ConservationCardData, ConservationData} from "./ConservationData";
+// import authService from "../src/components/api-authorization/AuthorizeService";
+// import { authService } from "./api-authorization/AuthorizeService";
 
+// compare to fetch data .js
+// \ClientApp\src\components\api-authorization\AuthorizeService.js
 function ConservationCard (data: ConservationCardData): JSX.Element {
   return (
   <div className="col-sm">
