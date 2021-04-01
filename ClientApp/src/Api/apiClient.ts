@@ -22,13 +22,7 @@ export interface Sighting {
   submittedByEmail: string;
   confirmState: number;
 }
-export interface ConfirmListResponse<T> {
-  items: T[];
-  totalNumberOfItems: number;
-  page: number;
-  nextPage: string;
-  previousPage: string;
-}
+
 export interface ListSightings {
   sightings: Sighting[];
 }
@@ -47,9 +41,7 @@ export async function submitSighting(newSighting: NewSighting) {
   }
 }
 
-export async function fetchUnconfirmedSightings(): Promise<
-  ConfirmListResponse<Sighting>
-> {
+export async function fetchUnconfirmedSightings(): Promise<null | ListSightings> {
   const response = await fetch(`/api/confirm-sighting`);
   return await response.json();
 }

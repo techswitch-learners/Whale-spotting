@@ -43,9 +43,8 @@ export function ListOfUnconfirmed(): JSX.Element {
   ] = useState<null | ListSightings>(null);
 
   useEffect(() => {
-    fetch(`api/confirm-sighting`)
-      .then((response) => response.json())
-      .then((data) => setUnconfirmedSightingsData(data));
+    fetchUnconfirmedSightings()
+    .then((data) => setUnconfirmedSightingsData(data));
   }, []);
 
   if (!unconfirmedSightingsData) {
@@ -74,5 +73,3 @@ export function ListOfUnconfirmed(): JSX.Element {
     </div>
   );
 }
-
-
