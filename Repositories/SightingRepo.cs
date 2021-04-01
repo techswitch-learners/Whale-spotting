@@ -82,8 +82,8 @@ namespace whale_spotting.Repositories
             {
                 query =
                     query
-                        .Where(e =>
-                            e
+                        .Where(s =>
+                            s
                                 .Species
                                 .ToLower()
                                 .Contains(searchRequest.Species.ToLower()));
@@ -92,22 +92,23 @@ namespace whale_spotting.Repositories
             {
                 query =
                     query
-                        .Where(e =>
-                            e.SightedAt >= searchRequest.SightedAt.Value &&
-                            e.SightedAt <
+                        .Where(s =>
+                            s.SightedAt >= searchRequest.SightedAt.Value &&
+                            s.SightedAt <
                             searchRequest.SightedAt.Value.AddDays(1));
             }
             if (!string.IsNullOrEmpty(searchRequest.Location))
             {
                 query =
                     query
-                        .Where(e =>
-                            e
+                        .Where(s =>
+                            s
                                 .Location
                                 .ToLower()
                                 .Contains(searchRequest.Location.ToLower()));
             }
             return query
+            .Where(s=>s.ConfirmState==ConfirmState.Confirmed)
                 .OrderByDescending(s => s.SightedAt)
                 .Skip((searchRequest.Page - 1) * searchRequest.PageSize)
                 .Take(searchRequest.PageSize);

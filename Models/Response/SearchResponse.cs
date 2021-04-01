@@ -32,8 +32,7 @@ namespace whale_spotting.Models.Response
         {
         }
 
-        public static SightingsListResponse
-        Create(SearchRequest search, IEnumerable<Sighting> sightings)
+        public static SightingsListResponse Create(SearchRequest search, IEnumerable<Sighting> sightings)
         {
             var sightingModels =
                 sightings.Select(sighting => new SightingResponse(sighting));

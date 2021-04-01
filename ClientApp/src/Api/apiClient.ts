@@ -45,7 +45,7 @@ export async function fetchUnconfirmedSightings(): Promise<null | ListSightings>
   const response = await fetch(`/api/confirm-sighting`);
   return await response.json();
 }
-export async function submitSearch():Promise<ListSightings>{
-  const response = await fetch('api/search');
-  return await response.json();
-}
+// export async function submitSearch(searchterm: string):Promise<null | ListSightings>{
+//   const response = await fetch('api/search');
+//   return await response.json();
+// }
