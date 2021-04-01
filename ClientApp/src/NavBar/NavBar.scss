@@ -9,6 +9,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .web-nav-bar-list-item {
@@ -32,11 +33,12 @@ li a:hover:not(.active) {
 }
   
 .active {
-  background-color: $color-primary;
+  background-color: $accent-color;
 }
 
 .mobile-nav-bar-container{
   margin-bottom: 70px;
+  
 }
 
 .mobile-nav-bar {
@@ -45,6 +47,7 @@ li a:hover:not(.active) {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .mobile-nav-bar-title {
@@ -70,18 +73,19 @@ li a:hover:not(.active) {
   top: 0;
   right: 0;
   color: white;
+  z-index: 1001;
 }
 .closed-nav-bar{
   display: none;
 }
 
 .mobile-nav-bar a:hover {
-  background-color: $color-primary;
+  background-color: $accent-color;
   color: black;
 }
 
 .active {
-  background-color: $color-primary;
+  background-color: $accent-color;
   color: white;
 }
 
