@@ -5,7 +5,7 @@ import {
   ListSightings,
   Sighting,
 } from "../../Api/apiClient";
-import "./ConfirmSighting.scss";
+import "./AdminSightingsList.scss";
 
 export function TableRow(data: Sighting): JSX.Element {
   return (

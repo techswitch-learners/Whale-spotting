@@ -8,7 +8,7 @@ import "bootstrap";
 import "./custom.css";
 import { SubmitSightingForm } from "./Pages/SubmitSighting/SubmitSighting";
 import { Conservation } from "./Pages/Conservation/Conservation";
-import { ListOfUnconfirmed } from "./Pages/ConfrimSighting/ConfirmSighting";
+import { ListOfUnconfirmed } from "./Pages/AdminSightingsList/AdminSightingsList";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -17,11 +17,11 @@ export default class App extends Component {
     return (
       <Layout>
         <Route exact path="/" component={Home} />
-        <Route exact path="/getting-started" component={GettingStarted} />
-        <Route path="/admin" component={AdminLogin} />
+        <Route exact path="/getting-started" component={GettingStarted} />        
         <Route path="/submit-sighting" component={SubmitSightingForm} />
-        <Route path="/confirm-sighting" component={ListOfUnconfirmed} />
         <Route path="/conservation" component={Conservation} />
+        <Route exact path="/admin" component={AdminLogin} />
+        <Route exact path="/admin/confirm-sighting" component={ListOfUnconfirmed} />        
       </Layout>
     );
   }
