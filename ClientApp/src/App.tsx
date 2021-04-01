@@ -8,6 +8,7 @@ import './custom.css'
 import { SubmitSightingForm } from './Pages/SubmitSighting/SubmitSighting';
 import { GettingStarted } from './Pages/GettingStarted/GettingStarted';
 import { Conservation } from './Pages/Conservation/Conservation';
+import { SearchSightingForm } from './Pages/SearchSightings/SearchSightings';
 
 export default class App extends Component {
   static displayName = App.name;
@@ -18,6 +19,7 @@ export default class App extends Component {
         <Route exact path='/getting-started' component={GettingStarted} />
         <Route path='/admin' component={AdminLogin} />
         <Route path='/submit-sighting' component={SubmitSightingForm} />
+        <Route path='/search-sighting' component={SearchSightingForm} />
         <Route path='/conservation' component={Conservation} />
       </Layout>
     );
