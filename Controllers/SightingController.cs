@@ -34,12 +34,6 @@ namespace whale_spotting.Controllers
                 return Created(url, sightingResponse);
                 
         }
-        [HttpGet("search")]
-       public ActionResult<SightingsListResponse> Search([FromQuery] SightingSearchRequest searchRequest)
-
-        {
-            var sightings = _sighting.Search(searchRequest);
-           return SightingsListResponse.Create(searchRequest, sightings);
-        }
+        
 }
 }

@@ -22,7 +22,7 @@ export default class App extends Component {
         <Route path="/submit-sighting" component={SubmitSightingForm} />
         <Route path="/confirm-sighting" component={ListOfUnconfirmed} />
         <Route path="/conservation" component={Conservation} />
-      </Layout>
+        </Layout>
     );
   }
 }
