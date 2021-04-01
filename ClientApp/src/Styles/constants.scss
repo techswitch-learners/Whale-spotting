@@ -9,6 +9,7 @@ $dark-text:#494b68;
 $light-bg:#265077;
 $dark-bg:#022140;
 $accent-color: #489996;
+$color-primary: orange;
 
 $spacing-medium: 20px;
 $gutter-width: $spacing-medium;
@@ -46,7 +47,7 @@ $two-column-min-pixels: 999px;
   @include buttonFont();
   border: none;
   background-color: $accent-color;
-  width: 100%;
+  border-radius: 5px;
 }
 
 @mixin formLabel() {
@@ -62,6 +63,6 @@ $two-column-min-pixels: 999px;
   border: 1px solid gray;
   border-radius: 5px;
   padding-left: 10px;
-  background-color: transparent;
+  background-color: #FFFFFF;
   outline: none;
 }
