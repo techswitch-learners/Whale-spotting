@@ -5,7 +5,7 @@ import {
   ListSightings,
   Sighting,
 } from "../../Api/apiClient";
-import "./ConfirmSighting.scss";
+import "./AdminSightingsList.scss";
 
 export function TableRow(data: Sighting): JSX.Element {
   return (
@@ -48,13 +48,13 @@ export function ListOfUnconfirmed(): JSX.Element {
   }, []);
 
   if (!unconfirmedSightingsData) {
-    return <div> Waiting for data!</div>;
+    return <div className="content-container"> <p className="body-text"> Waiting for data!</p></div>;
   }
 
   return (
-    <div>
-      <h2 className="featureTitle">Sightings review</h2>
-      <table className="table table-striped table-hover">
+    <div className="content-container">
+      <h1 className="title">Review Sightings</h1>
+      <table className="table table-striped table-hover body-text">
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Species</th>

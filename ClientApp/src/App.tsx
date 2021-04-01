@@ -9,7 +9,7 @@ import { Conservation } from './Pages/Conservation/Conservation';
 import { SubmitSightingForm } from './Pages/SubmitSighting/SubmitSighting';
 import { GettingStarted } from './Pages/GettingStarted/GettingStarted';
 import { ConfirmSightingForm } from './Pages/ConfirmSighting/ConfirmSighting';
-import { ListOfUnconfirmed } from "./Pages/ConfrimSighting/ConfirmSighting";
+import { ListOfUnconfirmed } from "./Pages/AdminSightingsList/AdminSightingsList";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -19,11 +19,11 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={Home} />
         <Route exact path='/getting-started' component={GettingStarted} />
-        <Route exact path='/admin' component={AdminLogin} />
         <Route path='/submit-sighting' component={SubmitSightingForm} />
         <Route path='/conservation' component={Conservation} />
-        <Route path='/admin/confirm-sighting/:id' component={ConfirmSightingForm} />
-        <Route path="/confirm-sighting" component={ListOfUnconfirmed} />
+        <Route exact path='/admin' component={AdminLogin} />
+        <Route exact path='/admin/confirm-sighting' component={ListOfUnconfirmed} />
+        <Route exact path='/admin/confirm-sighting/:id' component={ConfirmSightingForm} />
       </Layout>
     );
   }
