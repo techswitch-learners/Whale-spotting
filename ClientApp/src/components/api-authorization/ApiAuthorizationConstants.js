@@ -1,4 +1,4 @@
-export const ApplicationName = 'whale_spotting';
+export const ApplicationName = 'Whale-spotting';
 
 export const QueryParameterNames = {
   ReturnUrl: 'returnUrl',
