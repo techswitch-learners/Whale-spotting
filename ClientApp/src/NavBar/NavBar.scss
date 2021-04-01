@@ -27,11 +27,6 @@ li a {
   text-decoration: none;
 }
   
-// li a:hover:not(.active) {
-//   text-decoration: underline;
-//   color: $light-text;
-// }
-
 li a:hover {
   text-decoration: underline;
   color: $light-text;
@@ -109,6 +104,7 @@ li a:hover {
     display: none;
   }
 }
+
 @media only screen and (max-width: $two-column-min-pixels){
   .web-nav-bar{
     display: none;

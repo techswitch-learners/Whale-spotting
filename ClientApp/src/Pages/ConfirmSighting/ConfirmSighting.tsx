@@ -4,7 +4,7 @@ import { getSighting } from "../../Api/apiClient";
 import "./ConfirmSighting.scss";
 
 export function ConfirmSightingForm(): JSX.Element {
-  const [status, setStatus] = useState("LOADING");
+  const [isLoading, setIsLoading] = useState(true);
   const [button, setButton] = useState("");
   const [apiId, setApiId] = useState("");
   const [species, setSpecies] = useState("");
@@ -21,7 +21,7 @@ export function ConfirmSightingForm(): JSX.Element {
   useEffect(() => {
     getSighting(parseInt(id))
     .then(response => {
-      setStatus("FINISHED");
+      setIsLoading(false);
       setApiId(response.apiId);
       setSpecies(response.species);
       setQuantity(response.quantity);
@@ -47,8 +47,8 @@ export function ConfirmSightingForm(): JSX.Element {
   return (
     <div className="content-container">
       <h1 className="title">Review Sighting</h1>
-      {status === "LOADING" && <p className="body-text">Waiting for data!</p>}
-      {status === "FINISHED" && 
+      {isLoading && <p className="body-text">Waiting for data!</p>}
+      {!isLoading && 
         <form className="submit-sighting-form body-text" onSubmit={confirmOrDeleteSighting}>
           <label className="form-label">
             Species

@@ -1,11 +1,8 @@
 @import "../../Styles/constants";
 @import "../../Styles/styles";
+
 .submit-sighting-page {
   margin: $gutter-width;
-
-  .title {
-    @include titleFont;
-  }
 }
 
 .submit-sighting-form {
