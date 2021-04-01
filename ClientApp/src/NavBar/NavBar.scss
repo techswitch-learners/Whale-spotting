@@ -9,6 +9,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .web-nav-bar-list-item {
@@ -28,8 +29,9 @@ li a {
 }
   
 li a:hover {
-  text-decoration: underline;
+  background-color: $accent-color-dark;
   color: $light-text;
+  text-decoration: none;
 }
   
 .active {
@@ -51,6 +53,7 @@ li a:hover {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .mobile-nav-bar-title {
@@ -76,6 +79,7 @@ li a:hover {
   top: 0;
   right: 0;
   color: $light-text;
+  z-index: 1001;
 }
 
 .hamburger-react {
@@ -87,8 +91,9 @@ li a:hover {
 }
 
 .mobile-nav-bar a:hover {
-  text-decoration: underline;
+  background-color: $accent-color-dark;
   color: $light-text;
+  text-decoration: none;
 }
 
 .active {
