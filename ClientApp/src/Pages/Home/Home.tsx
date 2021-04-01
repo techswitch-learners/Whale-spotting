@@ -42,17 +42,17 @@ function Home() {
         <div className="whale-sightings-container">
           <h2 className="sub-heading">Recent Whale Sightings</h2>
           {/* this table is a placeholder, feel free to delete when inserting the actual table */}
-          <table className="body-text">
+          <table className="sightings-table">
             <thead>
-              <td>Location</td>
-              <td>Species</td>
-              <td>Seen on</td>
-              <td>Seen by</td>
+              <th>Location</th>
+              <th>Species</th>
+              <th>Number of Whales Spotted</th>
+              <th>Seen on</th>
             </thead> 
             <tbody>   
-            <tr>   
-          {myData?.RecentSightingsList.map(sighting=> <GetSightings sighting={sighting} />)}
-          </tr> 
+              
+          {myData?.recentSightingsList.map(sighting=> <GetSightings sighting={sighting} />)}
+          
           </tbody> 
       </table>
 

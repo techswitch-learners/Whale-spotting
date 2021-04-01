@@ -6,8 +6,9 @@ interface Sighting {
 sighting: {
     location: string,
     species: string,
-    sightedAt: string, //Datetime problem
-    submittedByName: string
+    quantity: string,
+    sightedAt: string, 
+    
 }
 }
 
@@ -17,9 +18,9 @@ return(
       <tr>
         <td> {props.sighting.location} </td> 
         <td> {props.sighting.species}  </td>
-        <td> {props.sighting.sightedAt} </td>
-        <td> {props.sighting.submittedByName} </td>
-        <td> <a href='/'> More Info </a>  </td>
+        <td> {props.sighting.quantity} </td>
+        <td> {props.sighting.sightedAt.substring(0,10)} </td>
+        {/* <td> <a href='/'> More Info </a> </td> */}
       </tr>
   
 )

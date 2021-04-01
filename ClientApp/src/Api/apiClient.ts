@@ -42,7 +42,7 @@ export interface SightingResponse {
 }
 
 export interface SightingResponseList{
-  RecentSightingsList: SightingResponse[]
+  recentSightingsList: SightingResponse[]
 }
 
 export async function getRecentSightings(): Promise<SightingResponseList> {
