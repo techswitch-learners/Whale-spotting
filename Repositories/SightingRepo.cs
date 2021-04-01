@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using whale_spotting.Models.Database;
 using whale_spotting.Models.Request;
-
 using whale_spotting.Models.ApiModels;
 
 namespace whale_spotting.Repositories
@@ -11,6 +10,7 @@ namespace whale_spotting.Repositories
     public interface ISightingRepo
     {
         Sighting Submit(SubmitSightingRequest create);
+        IEnumerable<Sighting> GetByConfirmState();
         void AddNewSightings(List<Sighting> sightingsToAdd);
         Sighting SelectSightingById(int Id);
     }
@@ -45,13 +45,20 @@ namespace whale_spotting.Repositories
             return insertResponse.Entity;
         }
 
+        public IEnumerable<Sighting> GetByConfirmState()
+        {
+            return _context.Sightings
+            .Where(s => s.ConfirmState == ConfirmState.Review);
+        }
+
         public void AddNewSightings(List<Sighting> sightingsToAdd)
         {
             var newSightingIds = sightingsToAdd.Select(s => s.ApiId).Distinct().ToArray();
             var SightingsInDb = _context.Sightings.Where(s => newSightingIds.Contains(s.ApiId))
                                                     .Select(s => s.ApiId).ToArray();
             var SightingsNotInDb = sightingsToAdd.Where(s => !SightingsInDb.Contains(s.ApiId));
-            _context.Sightings.AddRange(SightingsNotInDb);
+            SightingsNotInDb.ToList().ForEach(x => x.ConfirmState = ConfirmState.Confirmed);
+            _context.Sightings.AddRange(SightingsNotInDb.ToArray());
             _context.SaveChanges();  
         }
         

@@ -9,9 +9,11 @@ import { Conservation } from './Pages/Conservation/Conservation';
 import { SubmitSightingForm } from './Pages/SubmitSighting/SubmitSighting';
 import { GettingStarted } from './Pages/GettingStarted/GettingStarted';
 import { ConfirmSightingForm } from './Pages/ConfirmSighting/ConfirmSighting';
+import { ListOfUnconfirmed } from "./Pages/ConfrimSighting/ConfirmSighting";
 
 export default class App extends Component {
   static displayName = App.name;
+
   render() {
     return (
       <Layout>
@@ -21,8 +23,8 @@ export default class App extends Component {
         <Route path='/submit-sighting' component={SubmitSightingForm} />
         <Route path='/conservation' component={Conservation} />
         <Route path='/admin/confirm-sighting/:id' component={ConfirmSightingForm} />
+        <Route path="/confirm-sighting" component={ListOfUnconfirmed} />
       </Layout>
     );
   }
 }
-

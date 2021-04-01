@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { submitSighting } from "../../Api/apiClient";
 import "./SubmitSighting.scss";
+import "bootstrap";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
