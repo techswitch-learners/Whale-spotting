@@ -9,6 +9,7 @@
   submittedByName: string;
   submittedByEmail: string;
 }
+
 export interface Sighting {
   id: number;
   species: string;
@@ -64,7 +65,13 @@ export async function getSighting(Id: number): Promise<SightingResponse> {
 
   return await response.json();
 }
+
 export async function fetchUnconfirmedSightings(): Promise<null | ListSightings> {
   const response = await fetch(`/api/confirm-sighting`);
   return await response.json();
 }
+
+export async function confirmSighting() {
+ 
+}
+
