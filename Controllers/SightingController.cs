@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using whale_spotting.Models.Request;
 using whale_spotting.Models.Response;
 using whale_spotting.Repositories;
-
+using whale_spotting.Request;
 
 namespace whale_spotting.Controllers
 {
@@ -33,6 +33,13 @@ namespace whale_spotting.Controllers
                
                 return Created(url, sightingResponse);
                 
+        }
+        [HttpGet("search")]
+       public ActionResult<SightingsListResponse> Search([FromQuery] SightingSearchRequest searchRequest)
+
+        {
+            var sightings = _sighting.Search(searchRequest);
+           return SightingsListResponse.Create(searchRequest, sightings);
         }
 }
 }

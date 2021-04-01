@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using whale_spotting.Models.Database;
 using whale_spotting.Models.Request;
-
-using whale_spotting.Models.ApiModels;
+using whale_spotting.Request;
 
 namespace whale_spotting.Repositories
 {
@@ -12,6 +11,7 @@ namespace whale_spotting.Repositories
     {
         Sighting Submit(SubmitSightingRequest create);
         void AddNewSightings(List<Sighting> sightingsToAdd);
+        IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
     }
 
     public class SightingRepo : ISightingRepo
@@ -53,5 +53,26 @@ namespace whale_spotting.Repositories
             _context.Sightings.AddRange(SightingsNotInDb);
             _context.SaveChanges();  
         }
+        public IEnumerable<Sighting> Search(SightingSearchRequest searchRequest)
+        {
+            IQueryable<Sighting> query = _context.Sightings;
+                               
+            if (!string.IsNullOrEmpty(searchRequest.Species))
+            {
+                query = query.Where(e => e.Species.ToLower().Contains(searchRequest.Species.ToLower()));
+                            
+            }
+            if(searchRequest.SightedAt.HasValue)
+            {
+                query=query.Where(e=>e.SightedAt >= searchRequest.SightedAt.Value && e.SightedAt <searchRequest.SightedAt.Value.AddDays(1));
+            }
+            if(!string.IsNullOrEmpty(searchRequest.Location))
+            {
+               query = query.Where(e => e.Location.ToLower().Contains(searchRequest.Location.ToLower()));
+            }
+            return query.OrderBy(s=>s.SightedAt)
+            .Skip((searchRequest.Page - 1) * searchRequest.PageSize)
+                    .Take(searchRequest.PageSize);
     }
+}
 }
