@@ -2,11 +2,11 @@ import React, { Component, useEffect, useState } from 'react';
 import './Home.scss';
 import { GetSightings } from './GetSightings';
 import {getRecentSightings} from '../../Api/apiClient';
-import {SightingResponse, SightingResponseList} from '../../Api/apiClient';
+import {RecentSightingResponse, RecentSightingResponseList} from '../../Api/apiClient';
 
 function Home() {
 
-  const [myData, setMyData] = useState<SightingResponseList | null>(null);
+  const [myData, setMyData] = useState<RecentSightingResponseList | null>(null);
 
   useEffect(() => {
    getRecentSightings()

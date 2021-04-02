@@ -28,7 +28,7 @@ export async function submitSighting(newSighting: NewSighting) {
 }
 
 
-export interface SightingResponse {
+export interface RecentSightingResponse {
   apiId: string;
   species: string;
   quantity: string;
@@ -41,11 +41,11 @@ export interface SightingResponse {
   submittedByEmail: string;  
 }
 
-export interface SightingResponseList{
-  recentSightingsList: SightingResponse[]
+export interface RecentSightingResponseList{
+  recentSightingsList: RecentSightingResponse[]
 }
 
-export async function getRecentSightings(): Promise<SightingResponseList> {
+export async function getRecentSightings(): Promise<RecentSightingResponseList> {
   const response = await fetch(`/recentsightings`);
  
   if (!response.ok) {
