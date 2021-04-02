@@ -75,9 +75,10 @@ namespace whale_spotting.Repositories
 
         public List<Sighting> GetRecentSightings()
         {
-            var sightingList = _context.Sightings.OrderByDescending(x => x.SightedAt)
-                                                                 .Take(5)
-                                                               .ToList();
+            var sightingList = _context.Sightings.Where(s => s.ConfirmState == ConfirmState.Confirmed)
+                                                 .OrderByDescending(x => x.SightedAt)
+                                                 .Take(5)
+                                                 .ToList();
             return sightingList;
         }
     }
