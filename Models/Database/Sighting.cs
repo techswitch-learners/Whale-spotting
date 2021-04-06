@@ -1,10 +1,17 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using whale_spotting.Models.ApiModels;
 
 namespace whale_spotting.Models.Database
 {
+    public enum ConfirmState 
+    {
+        Review,
+        Confirmed,
+        Deleted
+    }
     public class Sighting
     {
         [Key]
@@ -20,6 +27,7 @@ namespace whale_spotting.Models.Database
         public DateTime SightedAt { get; set; }
         public string SubmittedByName { get; set; }
         public string SubmittedByEmail { get; set; }
+        public ConfirmState ConfirmState { get; set; }
 
         public Sighting()
         {

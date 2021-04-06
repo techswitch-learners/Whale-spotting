@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './GettingStarted.scss';
 import { GetLocationData } from './GetLocationData';
@@ -30,13 +29,13 @@ function GettingStarted() {
     });
 
     return (
-        <div>
+        <div className="content-container">
             <div className="getting_started">
 
                 <div className='top-page-break'></div>
 
-                <h1>Getting Started: Find the Perfect Whalespotting Location</h1>
-                <div className="places">
+                <h1 className="title">Getting Started: Find the Perfect Whalespotting Location</h1>
+                <div className="places body-text">
                     <button data-testid={"ScotlandButton"} className={selectedLocation === Locations.Scotland ? 'selected-icon' : 'unselected-icon'} onClick={() => setSelectedLocation(Locations.Scotland)}>Scotland</button>
                     <button data-testid={"CanadaButton"} className={selectedLocation === Locations.Canada ? 'selected-icon' : 'unselected-icon'} onClick={() => setSelectedLocation(Locations.Canada)}>Canada</button>
                     <button data-testid={"AustraliaButton"} className={selectedLocation === Locations.Australia ? 'selected-icon' : 'unselected-icon'} onClick={() => setSelectedLocation(Locations.Australia)}>Australia</button>

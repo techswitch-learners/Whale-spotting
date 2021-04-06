@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { submitSighting } from "../../Api/apiClient";
 import "./SubmitSighting.scss";
+import "bootstrap";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
@@ -37,44 +38,46 @@ export function SubmitSightingForm(): JSX.Element {
 
   if (status === "FINISHED") {
     return (
-      <div>
-        <p>Form Submitted Successfully!</p>
-        <Link to="/submit-sighting">Submit another sighting?</Link>
+      <div className="content-container">
+        <p className="body-text">Form Submitted Successfully!</p>
+        <Link to="/submit-sighting" className="body-text">Submit another sighting?</Link>
         <br></br>
-        <Link to="/">Return to Homepage?</Link>
+        <Link to="/" className="body-text">Return to Homepage?</Link>
       </div>
     );
   }
 
   return (
-    <form className="submit-sighting-form" onSubmit={submitForm}>
-      <label className="form-label">
-        Species
-        <input
-          className="form-input"
-          value={species}
-          onChange={(event) => setSpecies(event.target.value)}
-          required
-        />
-      </label>
+    <div className="content-container"> 
+      <h1 className="title">Submit a Sighting:</h1>
+      <form className="submit-sighting-form body-text" onSubmit={submitForm}>
+        <label className="form-label">
+          Species
+          <input
+            className="form-input"
+            value={species}
+            onChange={(event) => setSpecies(event.target.value)}
+            required
+          />
+        </label>
 
-      <label className="form-label">
-        Quantity
-        <input
-          className="form-input"
-          value={quantity}
-          onChange={(event) => setQuantity(event.target.value)}
-        />
-      </label>
+        <label className="form-label">
+          Quantity
+          <input
+            className="form-input"
+            value={quantity}
+            onChange={(event) => setQuantity(event.target.value)}
+          />
+        </label>
 
-      <label className="form-label">
-        Location
-        <input
-          className="form-input"
-          value={location}
-          onChange={(event) => setLocation(event.target.value)}
-        />
-      </label>
+        <label className="form-label">
+          Location
+          <input
+            className="form-input"
+            value={location}
+            onChange={(event) => setLocation(event.target.value)}
+          />
+        </label>
 
       <label className="form-label">
         Latitude
@@ -98,14 +101,14 @@ export function SubmitSightingForm(): JSX.Element {
         />
       </label>
 
-      <label className="form-label">
-        Description
-        <input
-          className="form-input"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-      </label>
+        <label className="form-label">
+          Description
+          <input
+            className="form-input"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </label>
 
       <label className="form-label">
         Sighted at
@@ -139,14 +142,15 @@ export function SubmitSightingForm(): JSX.Element {
         />
       </label>
 
-      <button
-        className="submit-button"
-        disabled={status === "SUBMITTING"}
-        type="submit"
-      >
-        Submit Sighting
-      </button>
-      {status === "ERROR" && <p>Something went wrong! Please try again.</p>}
-    </form>
+        <button
+          className="submit-button"
+          disabled={status === "SUBMITTING"}
+          type="submit"
+        >
+          Submit Sighting
+        </button>
+        {status === "ERROR" && <p>Something went wrong! Please try again.</p>}
+      </form>
+    </div>
   );
 }

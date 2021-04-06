@@ -1,0 +1,117 @@
+@import '../Styles/constants';
+
+.web-nav-bar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: $accent-color;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.web-nav-bar-list-item {
+  float: left;
+}
+
+.page-headers{
+  margin-left: 12.5%;
+}
+  
+li a {
+  display: block;
+  color: $light-text;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+  
+li a:hover {
+  background-color: $accent-color-dark;
+  color: $light-text;
+  text-decoration: none;
+}
+  
+.active {
+  background-color: $accent-color-dark;
+}
+
+.mobile-nav-bar-container {
+  margin-bottom: 52px;
+  background-color: $accent-color;
+}
+
+.mobile-nav-bar-container div {
+  background-color: $accent-color;
+}
+
+.mobile-nav-bar {
+  overflow: hidden;
+  background-color: $accent-color;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.mobile-nav-bar-title {
+  color: $light-text;
+
+}
+
+.mobile-nav-bar #myLinks {
+  display: none;
+}
+
+.mobile-nav-bar a {
+  color: $light-text;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.icon {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: $light-text;
+  z-index: 1001;
+}
+
+.hamburger-react {
+  background-color: rgba(255, 0, 0, 0) !important;
+}
+
+.closed-nav-bar {
+  display: none;
+}
+
+.mobile-nav-bar a:hover {
+  background-color: $accent-color-dark;
+  color: $light-text;
+  text-decoration: none;
+}
+
+.active {
+  background-color: $accent-color-dark;
+  color: $light-text;
+}
+
+@media only screen and (min-width: $two-column-max-pixels){
+  .mobile-nav-bar{
+    display: none;
+  }
+  .icon{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: $two-column-min-pixels){
+  .web-nav-bar{
+    display: none;
+  }
+}

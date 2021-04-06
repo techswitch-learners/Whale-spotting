@@ -5,12 +5,12 @@ import {ConservationCardData, ConservationData} from "./ConservationData";
 
 function ConservationCard (data: ConservationCardData): JSX.Element {
   return (
-  <div className="col-sm">
+  <div key={data.title} className="col-sm">
   <div className="card">
     <img src={data.imgSrc} alt={data.title}/>
     <div className="card-body">
-      <h5 className="card-title">{data.title}</h5>
-      <p className="card-text">{data.text}</p>
+      <h5 className="card-title sub-heading">{data.title}</h5>
+      <p className="card-text body-text">{data.text}</p>
       <a href={data.siteLink} className="btn btn-primary">
         Read more
       </a>
@@ -22,10 +22,10 @@ function ConservationCard (data: ConservationCardData): JSX.Element {
 export function Conservation(): JSX.Element {
   
   return (
-    <div>
+    <div className="content-container">
 
       <div className="container-fluid">
-          <h2 className="conservation-title">Conservation</h2>
+          <h1 className="title">Conservation</h1>
           <p className="text-justify">
             Some good work has been done in recent decades to reverse the trend of
             almost inevitable extinction for some species of cetaceans.
