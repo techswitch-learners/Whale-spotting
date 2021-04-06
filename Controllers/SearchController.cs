@@ -5,6 +5,7 @@ using whale_spotting.Request;
 using PagedList;
 using PagedList.Mvc;
 
+
 namespace whale_spotting.Controllers
 {
     [Route("api/search")]
@@ -18,10 +19,10 @@ namespace whale_spotting.Controllers
         }
 
         [HttpGet("")]
-        public ActionResult<SearchResponse> Search([FromQuery] SightingSearchRequest searchRequest)
+        public ActionResult<SearchResponse> Search([FromQuery] SightingSearchRequest searchRequest, int totalNumberOfItems)
         {
             var sightings = _sightings.Search(searchRequest);
-            return SearchResponse.Create(searchRequest, sightings);
+            return SearchResponse.Create(searchRequest, sightings, totalNumberOfItems);
         }
     }
 }
