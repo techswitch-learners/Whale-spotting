@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { submitSighting } from "../../Api/apiClient";
 import "./SubmitSighting.scss";
+import "bootstrap";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
@@ -37,19 +38,19 @@ export function SubmitSightingForm(): JSX.Element {
 
   if (status === "FINISHED") {
     return (
-      <div>
-        <p>Form Submitted Successfully!</p>
-        <Link to="/submit-sighting">Submit another sighting?</Link>
+      <div className="content-container">
+        <p className="body-text">Form Submitted Successfully!</p>
+        <Link to="/submit-sighting" className="body-text">Submit another sighting?</Link>
         <br></br>
-        <Link to="/">Return to Homepage?</Link>
+        <Link to="/" className="body-text">Return to Homepage?</Link>
       </div>
     );
   }
 
   return (
-    <div> 
-      <h1>Submit a Sighting:</h1>
-      <form className="submit-sighting-form" onSubmit={submitForm}>
+    <div className="content-container"> 
+      <h1 className="title">Submit a Sighting:</h1>
+      <form className="submit-sighting-form body-text" onSubmit={submitForm}>
         <label className="form-label">
           Species
           <input

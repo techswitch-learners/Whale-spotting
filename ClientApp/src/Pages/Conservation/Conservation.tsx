@@ -9,7 +9,7 @@ import {ConservationCardData, ConservationData} from "./ConservationData";
 // \ClientApp\src\components\api-authorization\AuthorizeService.js
 function ConservationCard (data: ConservationCardData): JSX.Element {
   return (
-  <div className="col-sm">
+  <div key={data.title} className="col-sm">
   <div className="card">
     <img src={data.imgSrc} alt={data.title}/>
     <div className="card-body">
