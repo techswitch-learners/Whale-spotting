@@ -5,10 +5,9 @@ using whale_spotting.Models.Request;
 using whale_spotting.Models.Response;
 using whale_spotting.Repositories;
 
-
 namespace whale_spotting.Controllers
 {
-    [Route("submit-sighting")]
+    [Route("api/submit-sighting")]
     public class SightingController : ControllerBase
     {   
         private readonly ISightingRepo _sighting;
@@ -34,5 +33,5 @@ namespace whale_spotting.Controllers
                 return Created(url, sightingResponse);
                 
         }
-}
+    }
 }

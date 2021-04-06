@@ -5,7 +5,7 @@ import {ConservationCardData, ConservationData} from "./ConservationData";
 
 function ConservationCard (data: ConservationCardData): JSX.Element {
   return (
-  <div className="col-sm">
+  <div key={data.title} className="col-sm">
   <div className="card">
     <img src={data.imgSrc} alt={data.title}/>
     <div className="card-body">
