@@ -10,15 +10,3 @@ namespace whale_spotting.Models.Response
 
     }
 }
-
-
-
-        // public SightingResponse(Sighting sighting)
-        // {
-        //     _sighting = sighting;
-        // }
-
-        // public int Id => _sighting.Id;
-
-        // public string Species => _sighting.Species;
-

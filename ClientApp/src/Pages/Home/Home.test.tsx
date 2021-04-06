@@ -4,10 +4,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { Home } from './Home';
 import { fireEvent, render, screen,act } from '@testing-library/react';
 
-
-
-
-
 jest.mock("../../Api/apiClient", () => {
   return {
     getRecentSightings: jest.fn().mockImplementation(() => {

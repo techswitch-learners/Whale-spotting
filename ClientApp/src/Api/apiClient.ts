@@ -38,7 +38,7 @@ export interface SightingResponse {
   description: string;
   sightedAt: string;
   submittedByName: string;
-  submittedByEmail: string;  
+  submittedByEmail: string;
 }
 
 export async function submitSighting(newSighting: NewSighting) {
@@ -55,7 +55,6 @@ export async function submitSighting(newSighting: NewSighting) {
   }
 }
 
-
 export interface RecentSightingResponse {
   apiId: string;
   species: string;
@@ -66,11 +65,11 @@ export interface RecentSightingResponse {
   description: string;
   sightedAt: string;
   submittedByName: string;
-  submittedByEmail: string;  
+  submittedByEmail: string;
 }
 
-export interface RecentSightingResponseList{
-  recentSightingsList: RecentSightingResponse[]
+export interface RecentSightingResponseList {
+  recentSightingsList: RecentSightingResponse[];
 }
 
 export async function getRecentSightings(): Promise<RecentSightingResponseList> {
@@ -78,17 +77,14 @@ export async function getRecentSightings(): Promise<RecentSightingResponseList> 
   if (!response.ok) {
     throw new Error(await response.json());
   }
-
   return await response.json();
 }
 
 export async function getSighting(Id: number): Promise<SightingResponse> {
   const response = await fetch(`/admin/getSighting/${Id}`);
- 
   if (!response.ok) {
     throw new Error(await response.json());
   }
-
   return await response.json();
 }
 
