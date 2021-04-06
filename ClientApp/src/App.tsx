@@ -24,7 +24,7 @@ export default class App extends Component {
         <Route path='/search-sighting' component={SearchSightingForm} />
         <Route path="/conservation" component={Conservation} />
         <Route exact path="/admin" component={AdminLogin} />               
-        <Route path="/admin/confirm-sighting" component={ListOfUnconfirmed} />
+        <Route exact path="/admin/confirm-sighting" component={ListOfUnconfirmed} />
         <Route path='/admin/confirm-sighting/:id' component={ConfirmSightingForm} />
       </Layout>
     );

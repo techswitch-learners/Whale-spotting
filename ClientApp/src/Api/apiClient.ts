@@ -83,3 +83,4 @@ export async function fetchUnconfirmedSightings(): Promise<null | ListSightings>
   const response = await fetch(`/api/confirm-sighting`);
   return await response.json();
 }
+
