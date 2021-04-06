@@ -76,7 +76,7 @@ export function ListOfUnconfirmed(): JSX.Element {
           <th scope="col"></th>
         </tr>
 
-        {unconfirmedSightingsData.sightings?.map((x) => TableRow(x))}
+        {unconfirmedSightingsData.sightings?.map((x) => <TableRow {...x}/>)}
       </table>
     </div>
   );
