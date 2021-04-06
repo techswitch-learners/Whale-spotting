@@ -15,7 +15,8 @@ namespace whale_spotting.Repositories
 
         void AddNewSightings(List<Sighting> sightingsToAdd);
 
-        IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
+        Sighting SelectSightingById(int Id);
+        public IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
     }
 
     public class SightingRepo : ISightingRepo
@@ -112,6 +113,13 @@ namespace whale_spotting.Repositories
                 .OrderByDescending(s => s.SightedAt)
                 .Skip((searchRequest.Page - 1) * searchRequest.PageSize)
                 .Take(searchRequest.PageSize);
+        }
+
+        public Sighting SelectSightingById(int Id)
+        {
+            var sighting =
+                _context.Sightings.Where(s => s.Id == Id).SingleOrDefault();
+            return sighting;
         }
     }
 }
