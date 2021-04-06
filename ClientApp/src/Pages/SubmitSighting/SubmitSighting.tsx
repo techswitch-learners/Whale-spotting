@@ -38,7 +38,7 @@ export function SubmitSightingForm(): JSX.Element {
 
   if (status === "FINISHED") {
     return (
-      <div>
+      <div className="content-container">
         <p className="body-text">Form submitted successfully!</p>
         <p className="body-text">Your sighting is now under review!</p>
         <Link to="/submit-sighting">Submit another sighting?</Link>

@@ -86,3 +86,17 @@ export async function confirmSighting(Id: number): Promise<SightingResponse> {
   return await response.json();
 }
 
+export async function updateAndConfirmSighting(sightingToUpdate: Sighting) 
+{
+  const response = await fetch(`admin/updateAndConfirmSighting/${sightingToUpdate.id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sightingToUpdate),
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+}

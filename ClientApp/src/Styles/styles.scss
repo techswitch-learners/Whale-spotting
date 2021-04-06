@@ -32,6 +32,11 @@ div {
     min-width: 100%;
 }
 
+.content-container a:hover {
+    color: $accent-color;
+    text-decoration: none;
+}
+
 .center-column {
     display: flex;
     flex-direction: column;
@@ -47,6 +52,10 @@ div {
 
 .form-input {
     color: $dark-bg !important;
+}
+
+.form-input:disabled {
+    color: $dark-text !important;
 }
 
 /* different fonts for different types of text */

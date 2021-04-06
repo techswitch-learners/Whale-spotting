@@ -38,5 +38,18 @@ namespace whale_spotting.Controllers
             var ConfirmedSighting = _sightings.ConfirmSighting(SightingToConfirm);
             return ConfirmedSighting;
         }
+
+        [HttpPost("updateAndConfirmSighting/{id}")]
+        public IActionResult updateAndConfirmSighting([FromBody] Sighting SightingToUpdate)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _sightings.UpdateAndConfirmSighting(SightingToUpdate);
+
+            return StatusCode(200);
+        }
     }
 }
