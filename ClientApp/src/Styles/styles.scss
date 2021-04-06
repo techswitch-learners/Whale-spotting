@@ -45,6 +45,10 @@ div {
     min-height: calc(100vh - 53.5px); 
 }
 
+.form-input {
+    color: $dark-bg !important;
+}
+
 /* different fonts for different types of text */
 .title {
     @include titleFont();
