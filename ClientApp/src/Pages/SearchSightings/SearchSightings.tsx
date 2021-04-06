@@ -1,5 +1,5 @@
-import React, { FormEvent, useState } from "react";
-import { submitSearch } from "../../Api/apiClient";
+import React, { FormEvent, useState, useEffect } from "react";
+import { submitSearch, Sighting, ListSightings } from "../../Api/apiClient";
 import { Link } from "react-router-dom";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
@@ -11,6 +11,23 @@ export function SearchSightingForm(): JSX.Element {
     const [sightedAt, setSightedAt] = useState("");
     const [formStatus, setFormStatus] = useState<FormStatus>("READY");
     const [pageStatus, setPageStatus] = useState<PageStatus>("INITIAL");
+    const [searchResults, setSearchResults] = useState<null | ListSightings>(null);
+
+
+    function searchRow(data: Sighting): JSX.Element {
+        return (
+          <tr>
+            <td>{data.id}</td>
+            <td>{data.species}</td>
+            <td>{data.quantity}</td>
+            <td>{data.location}</td>
+            <td>{data.description}</td>
+            <td>{data.sightedAt}</td>
+            <td>{data.submittedByName}</td>
+          </tr>
+        );
+    }
+    
 
     function submitForm(event: FormEvent) {
         event.preventDefault();
@@ -18,12 +35,13 @@ export function SearchSightingForm(): JSX.Element {
         submitSearch(
           species,
           location,
-          sightedAt
-          
-        )
-          .then(() => setPageStatus("RESULTS"))
+          sightedAt 
+        ).then((data) => setSearchResults(data))
           .catch(() => setFormStatus("ERROR"))
+          .then(() => setPageStatus("RESULTS"))
           .then(() => setFormStatus("READY"));
+          
+          
       }
 
       if (pageStatus === "RESULTS") {
@@ -69,11 +87,25 @@ export function SearchSightingForm(): JSX.Element {
               disabled={formStatus === "SUBMITTING"}
               type="submit"
             >
-              Update Search
+            Update Search
             </button>
             {formStatus === "ERROR" && <p>Something went wrong! Please try again.</p>}
           </form>
+        
+        <table className="table table-striped table-hover">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Species</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Location</th>
+          <th scope="col">Description</th>
+          <th scope="col">Date</th>
+          <th scope="col">Submitted by</th>
+        </tr>
 
+        {searchResults?.sightings?.map(x => searchRow(x))}
+      </table>
+        
 
         </div>
         );

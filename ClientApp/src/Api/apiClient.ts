@@ -49,18 +49,7 @@ export interface ListResponse<T> {
   // previousPage: string;
 }
 
-export interface Sighting {
-  id: number;
-  species: string;
-  quantity: string;
-  location: string;
-  latitude: number;
-  longitude: number;
-  description: string;
-  sightedAt: string;
-  submittedByName: string;
-  submittedByEmail: string;
-}
+
 
 
 
@@ -78,11 +67,12 @@ export async function submitSighting(newSighting: NewSighting) {
   }
 }
 
-export async function submitSearch(species: string, location: string, sightedAt: string): Promise<ListResponse<Sighting>> {
+export async function submitSearch(species: string, location: string, sightedAt: string): Promise<null | ListSightings> {
   const response =await fetch(
-    `/submit-search/search?species=${species}&location=${location}&sightedAt=${sightedAt}`);
+    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}`);
     return await response.json();
 }
+
 export async function getSighting(Id: number): Promise<SightingResponse> {
   const response = await fetch(`/admin/getSighting/${Id}`);
  
