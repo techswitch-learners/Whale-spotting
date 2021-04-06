@@ -9,6 +9,7 @@ import "./custom.css";
 import { SubmitSightingForm } from "./Pages/SubmitSighting/SubmitSighting";
 import { Conservation } from "./Pages/Conservation/Conservation";
 import { ListOfUnconfirmed } from "./Pages/AdminSightingsList/AdminSightingsList";
+import { ConfirmSightingForm } from './Pages/ConfirmSighting/ConfirmSighting';
 
 export default class App extends Component {
   static displayName = App.name;
@@ -20,8 +21,9 @@ export default class App extends Component {
         <Route exact path="/getting-started" component={GettingStarted} />        
         <Route path="/submit-sighting" component={SubmitSightingForm} />
         <Route path="/conservation" component={Conservation} />
-        <Route exact path="/admin" component={AdminLogin} />
-        <Route exact path="/admin/confirm-sighting" component={ListOfUnconfirmed} />        
+        <Route exact path="/admin" component={AdminLogin} />               
+        <Route path="/admin/confirm-sighting" component={ListOfUnconfirmed} />
+        <Route path='/admin/confirm-sighting/:id' component={ConfirmSightingForm} />
       </Layout>
     );
   }
