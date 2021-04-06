@@ -10,7 +10,7 @@ namespace whale_spotting.Controllers{
     
     [ApiController]
     [Route("/admin")]
-    // [Authorize]
+    [Authorize]
     public class AdminLoginController : ControllerBase {
         private readonly IAdminRepo _admins;
         public AdminLoginController(IAdminRepo admins)
