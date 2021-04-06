@@ -7,16 +7,35 @@ namespace whale_spotting.Models.Response
 {
     public class SearchResponse
     {
+        private readonly string _path;
+        private readonly string _filters;
         public IEnumerable<SightingResponse> Sightings { get; }
+        public int TotalNumberOfItems { get; }
+        public int Page { get; }
+        public int PageSize { get; }
 
-        public SearchResponse(SearchRequest search, IEnumerable<SightingResponse> sightings)
+        public string NextPage => !HasNextPage() ? null : $"/{_path}?page={Page + 1}&pageNumber={PageSize}{_filters}";
+
+        public string PreviousPage => Page <= 1 ? null : $"/{_path}?page={Page - 1}&pageNumber={PageSize}{_filters}";
+
+
+
+        public SearchResponse(SearchRequest search, IEnumerable<SightingResponse> sightings, int totalNumberOfItems, string path)
         {
             Sightings = sightings;
+            TotalNumberOfItems = totalNumberOfItems;
+            Page = search.Page;
+            PageSize = search.PageSize;
+            _path = path;
         }
-        public static SearchResponse Create(SearchRequest search, IEnumerable<Sighting> sightings)
+        private bool HasNextPage()
+        {
+            return Page * PageSize < TotalNumberOfItems;
+        }
+            public static SearchResponse Create(SearchRequest search, IEnumerable<Sighting> sightings, int totalNumberOfItems)
         {
             var sightingModels = sightings.Select(sighting => new SightingResponse(sighting));
-            return new SearchResponse(search, sightingModels);
+            return new SearchResponse(search, sightingModels, totalNumberOfItems);
         }
     }
 }
