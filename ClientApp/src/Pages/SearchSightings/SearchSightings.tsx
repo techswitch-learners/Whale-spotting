@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from "react";
+import { submitSearch } from "../../Api/apiClient";
 import { Link } from "react-router-dom";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
@@ -14,12 +15,12 @@ export function SearchSightingForm(): JSX.Element {
     function submitForm(event: FormEvent) {
         event.preventDefault();
         setFormStatus("SUBMITTING");
-        submitSearch({
+        submitSearch(
           species,
           location,
-          sightedAt,
+          sightedAt
           
-        })
+        )
           .then(() => setPageStatus("RESULTS"))
           .catch(() => setFormStatus("ERROR"))
           .then(() => setFormStatus("READY"));
