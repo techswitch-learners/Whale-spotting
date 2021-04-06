@@ -38,7 +38,7 @@ export function SubmitSightingForm(): JSX.Element {
 
   if (status === "FINISHED") {
     return (
-      <div >
+      <div>
         <p className="body-text">Form Submitted Successfully!</p>
         <p className="body-text">Your sighitng is now under review!</p>
         <Link to="/submit-sighting">Submit another sighting?</Link>
@@ -49,33 +49,33 @@ export function SubmitSightingForm(): JSX.Element {
   }
 
   return (
-    <div className="form-page"> 
+    <div className="form-page">
       <h1 className="title">Submit a Sighting:</h1>
-      
+
       <form className="submit-form" onSubmit={submitForm}>
-      <div className="row g-3">
-        <div className="col">
-        <label className="form-label">
-          Species
-          <input
-            className="form-input"
-            value={species}
-            onChange={(event) => setSpecies(event.target.value)}
-            placeholder="Orca"
-            required
-          />
-        </label>
-</div>
-<div className="col">
-        <label className="form-label">
-          Quantity
-          <input
-            className="form-input"
-            value={quantity}
-            onChange={(event) => setQuantity(event.target.value)}
-          />
-        </label>
-        </div>
+        <div className="row g-3">
+          <div className="col">
+            <label className="form-label">
+              Species
+              <input
+                className="form-input"
+                value={species}
+                onChange={(event) => setSpecies(event.target.value)}
+                placeholder="Orca"
+                required
+              />
+            </label>
+          </div>
+          <div className="col">
+            <label className="form-label">
+              Quantity
+              <input
+                className="form-input"
+                value={quantity}
+                onChange={(event) => setQuantity(event.target.value)}
+              />
+            </label>
+          </div>
         </div>
         <label className="form-label">
           Location
@@ -87,33 +87,31 @@ export function SubmitSightingForm(): JSX.Element {
           />
         </label>
         <div className="row g-3">
-        <div className="col">
-        <label className="form-label">
-        Latitude
-        <input
-          className="form-input"
-          value={latitude}
-          onChange={(event) => setLatitude(event.target.value)}
-          placeholder="49.146862"
-          type="number"
-          required
-        />
-      </label>
-      </div>
-      <div className="col">
-      <label className="form-label">
-        Longitude
-        <input
-          className="form-input"
-          value={longitude}
-          onChange={(event) => setLongitude(event.target.value)}
-          placeholder="-125.9045"
-          type="number"
-          required
-        />
-      </label>
-      </div>
-      </div>
+          <div className="col">
+            <label className="form-label">
+              Latitude
+              <input
+                className="form-input"
+                value={latitude}
+                onChange={(event) => setLatitude(event.target.value)}
+                type="number"
+                required
+              />
+            </label>
+          </div>
+          <div className="col">
+            <label className="form-label">
+              Longitude
+              <input
+                className="form-input"
+                value={longitude}
+                onChange={(event) => setLongitude(event.target.value)}
+                type="number"
+                required
+              />
+            </label>
+          </div>
+        </div>
         <label className="form-label">
           Description
           <input
@@ -123,45 +121,44 @@ export function SubmitSightingForm(): JSX.Element {
             onChange={(event) => setDescription(event.target.value)}
           />
         </label>
-        
 
-      <label className="form-label">
-        Sighted at
-        <input
-          className="form-input"
-          value={sightedAt}
-          onChange={(event) => setSightedAt(event.target.value)}
-          type="date"
-          required
-        />
-      </label>
-      <div className="row g-3">
-      <div className="col">
-      <label className="form-label">
-        Submitted by
-        <input
-          className="form-input"
-          value={submittedByName}
-          placeholder="Your Name"
-          onChange={(event) => setSubmittedByName(event.target.value)}
-          required
-        />
-      </label>
-     </div>
-        <div className="col">
-      <label className="form-label">
-        Email
-        <input
-          className="form-input"
-          value={submittedByEmail}
-          placeholder="email@example.com"
-          onChange={(event) => setSubmittedByEmail(event.target.value)}
-          type="email"
-          required
-        />
-      </label>
-</div>
-</div>
+        <label className="form-label">
+          Sighted at
+          <input
+            className="form-input"
+            value={sightedAt}
+            onChange={(event) => setSightedAt(event.target.value)}
+            type="date"
+            required
+          />
+        </label>
+        <div className="row g-3">
+          <div className="col">
+            <label className="form-label">
+              Submitted by
+              <input
+                className="form-input"
+                value={submittedByName}
+                placeholder="Your Name"
+                onChange={(event) => setSubmittedByName(event.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="col">
+            <label className="form-label">
+              Email
+              <input
+                className="form-input"
+                value={submittedByEmail}
+                placeholder="email@example.com"
+                onChange={(event) => setSubmittedByEmail(event.target.value)}
+                type="email"
+                required
+              />
+            </label>
+          </div>
+        </div>
 
         <button
           className="submit-button"
@@ -171,7 +168,7 @@ export function SubmitSightingForm(): JSX.Element {
           Submit Sighting
         </button>
         {status === "ERROR" && <p>Something went wrong! Please try again.</p>}
-        </form>
+      </form>
     </div>
   );
 }
