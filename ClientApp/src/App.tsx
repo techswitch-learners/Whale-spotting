@@ -11,7 +11,6 @@ import { Conservation } from './Pages/Conservation/Conservation';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
-import { FetchData } from './components/FetchData';
 
 export default class App extends Component {
   static displayName = App.name;
@@ -20,11 +19,10 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={Home} />
         <Route exact path='/getting-started' component={GettingStarted} />
-        <Route path='/admin' component={AdminLogin} />
+        <AuthorizeRoute path='/admin' component={AdminLogin} />
         {/* <AuthorizeRoute path='/admin/confirm-sightings' component={ConfirmSightings}/> */}
         <Route path='/submit-sighting' component={SubmitSightingForm} />
-        <Route path='/conservation' component={Conservation} />
-        <AuthorizeRoute path='/fetch-data' component={FetchData} />
+        <AuthorizeRoute path='/conservation' component={Conservation} />
         <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
       </Layout>
     );
