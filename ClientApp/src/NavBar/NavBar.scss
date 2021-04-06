@@ -5,10 +5,11 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: $accent-color;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .web-nav-bar-list-item {
@@ -21,34 +22,42 @@
   
 li a {
   display: block;
-  color: white;
+  color: $light-text;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
   
-li a:hover:not(.active) {
-  background-color: #111;
+li a:hover {
+  background-color: $accent-color-dark;
+  color: $light-text;
+  text-decoration: none;
 }
   
 .active {
-  background-color: $color-primary;
+  background-color: $accent-color-dark;
 }
 
-.mobile-nav-bar-container{
-  margin-bottom: 70px;
+.mobile-nav-bar-container {
+  margin-bottom: 52px;
+  background-color: $accent-color;
+}
+
+.mobile-nav-bar-container div {
+  background-color: $accent-color;
 }
 
 .mobile-nav-bar {
   overflow: hidden;
-  background-color: #333;
+  background-color: $accent-color;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .mobile-nav-bar-title {
-  color: white;
+  color: $light-text;
 
 }
 
@@ -57,7 +66,7 @@ li a:hover:not(.active) {
 }
 
 .mobile-nav-bar a {
-  color: white;
+  color: $light-text;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
@@ -69,20 +78,27 @@ li a:hover:not(.active) {
   position: fixed;
   top: 0;
   right: 0;
-  color: white;
+  color: $light-text;
+  z-index: 1001;
 }
-.closed-nav-bar{
+
+.hamburger-react {
+  background-color: rgba(255, 0, 0, 0) !important;
+}
+
+.closed-nav-bar {
   display: none;
 }
 
 .mobile-nav-bar a:hover {
-  background-color: $color-primary;
-  color: black;
+  background-color: $accent-color-dark;
+  color: $light-text;
+  text-decoration: none;
 }
 
 .active {
-  background-color: $color-primary;
-  color: white;
+  background-color: $accent-color-dark;
+  color: $light-text;
 }
 
 @media only screen and (min-width: $two-column-max-pixels){
@@ -93,6 +109,7 @@ li a:hover:not(.active) {
     display: none;
   }
 }
+
 @media only screen and (max-width: $two-column-min-pixels){
   .web-nav-bar{
     display: none;

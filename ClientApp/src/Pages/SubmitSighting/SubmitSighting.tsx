@@ -38,19 +38,38 @@ export function SubmitSightingForm(): JSX.Element {
 
   if (status === "FINISHED") {
     return (
-      <div>
+      <div className="content-container">
         <p className="body-text">Form Submitted Successfully!</p>
         <p className="body-text">Your sighitng is now under review!</p>
-        <Link to="/submit-sighting">Submit another sighting?</Link>
+        <Link to="/submit-sighting" className="body-text">Submit another sighting?</Link>
         <br></br>
-        <Link to="/">Return to Homepage?</Link>
+        <Link to="/" className="body-text">Return to Homepage?</Link>
       </div>
     );
   }
 
   return (
-    <div className="form-page">
+    <div className="content-container"> 
       <h1 className="title">Submit a Sighting:</h1>
+      <form className="submit-sighting-form body-text" onSubmit={submitForm}>
+        <label className="form-label">
+          Species
+          <input
+            className="form-input"
+            value={species}
+            onChange={(event) => setSpecies(event.target.value)}
+            required
+          />
+        </label>
+
+        <label className="form-label">
+          Quantity
+          <input
+            className="form-input"
+            value={quantity}
+            onChange={(event) => setQuantity(event.target.value)}
+          />
+        </label>
 
       <form className="submit-form" onSubmit={submitForm}>
         <div className="row g-3">
