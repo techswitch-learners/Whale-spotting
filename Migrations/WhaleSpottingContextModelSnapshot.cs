@@ -327,6 +327,8 @@ namespace whale_spotting.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<int>("ConfirmState")
+                        .HasColumnType("integer");
                     b.Property<string>("ApiId")
                         .HasColumnType("text");
 
