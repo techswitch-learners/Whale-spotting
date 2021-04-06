@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, MouseEvent } from 'react';
 import './NavBar.scss';
 import { Link } from 'react-router-dom';
 import { Spin as Hamburger } from 'hamburger-react';
-import { AnyAaaaRecord } from 'node:dns';
 
 function NavBar() {
     const [selectedPage, setSelectedPage] = useState('null');

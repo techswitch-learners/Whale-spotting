@@ -32,10 +32,8 @@ namespace whale_spotting
         {
             services.AddDbContext<WhaleSpottingContext>(options =>
                     options
-                        .UseNpgsql("Server=localhost;port=5432;Database=WhaleSpottingDb;user id=postgres;password=TechSwitch;"));
-                            //here our code differs from theirs slightly
+                        .UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL")));
 
-            //Code added from login app begins here//
             services.AddDatabaseDeveloperPageExceptionFilter();
            
             services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -49,7 +47,6 @@ namespace whale_spotting
 
             services.AddControllersWithViews();
             services.AddRazorPages();
-            //Code added from login app ends here//
 
             // In production, the React files will be served from this directory
             services
@@ -85,7 +82,7 @@ namespace whale_spotting
 
             app.UseAuthentication();
             app.UseIdentityServer();
-            app.UseAuthorization(); //
+            app.UseAuthorization(); 
 
             app.UseEndpoints(endpoints =>
                 {
