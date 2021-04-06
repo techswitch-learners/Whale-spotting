@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
+
 it('renders without crashing', async () => {
   const div = document.createElement('div');
   ReactDOM.render(
@@ -11,4 +12,5 @@ it('renders without crashing', async () => {
     </MemoryRouter>, div);
   await new Promise(resolve => setTimeout(resolve, 1000));
 });
+
 

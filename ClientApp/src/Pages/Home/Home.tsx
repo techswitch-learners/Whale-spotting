@@ -44,11 +44,13 @@ function Home() {
           {/* this table is a placeholder, feel free to delete when inserting the actual table */}
           <table className="sightings-table">
             <thead>
-              <th>Location</th>
-              <th>Species</th>
-              <th>Number of Whales Spotted</th>
-              <th>Seen on</th>
-            </thead> 
+            <tr>
+              <td>Location</td>
+              <td>Species</td>
+              <td>Number of Whales Spotted</td>
+              <td>Seen on</td>
+            </tr> 
+            </thead>
             <tbody>   
               
           {myData?.recentSightingsList.map(sighting=> <GetSightings sighting={sighting} />)}
