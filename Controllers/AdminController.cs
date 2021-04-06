@@ -28,7 +28,13 @@ namespace whale_spotting.Controllers
         public Sighting ConfirmSighting([FromRoute] int id)
         {
             var SightingToConfirm = _sightings.SelectSightingById(id);
-            SightingToConfirm.ConfirmState = ConfirmState.Confirmed;
+            if (SightingToConfirm.ConfirmState == ConfirmState.Confirmed)
+            {
+                SightingToConfirm.ConfirmState = ConfirmState.Review;
+            } else
+            {
+                SightingToConfirm.ConfirmState = ConfirmState.Confirmed;
+            }            
             var ConfirmedSighting = _sightings.ConfirmSighting(SightingToConfirm);
             return ConfirmedSighting;
         }

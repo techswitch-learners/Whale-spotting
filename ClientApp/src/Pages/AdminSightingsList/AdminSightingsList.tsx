@@ -8,12 +8,16 @@ import {
 } from "../../Api/apiClient";
 import "./AdminSightingsList.scss";
 
-function ConfirmSightingRequest(id: number) {
-  confirmSighting(id);
-  // .then (remove this sighting from data)
-}
-
 export function TableRow(data: Sighting): JSX.Element {
+
+  const [confirmClicked, setConfirmClicked] = useState(false);
+  
+  function ConfirmSightingRequest(id: number) {
+    confirmSighting(id)
+    // .then(() => setConfirmClicked(true));
+    .then(() => setConfirmClicked(!confirmClicked));
+  }
+
   return (
     <tr>
       <td>{data.id}</td>
@@ -24,17 +28,19 @@ export function TableRow(data: Sighting): JSX.Element {
       <td>{data.submittedByName}</td>
       <td>{data.submittedByEmail}</td>
       <td>
-        <button type="button" className="btn btn-warning">
-          Review
+        <Link to={`/admin/confirm-sighting/${data.id}`}>
+          <button type="button" className="btn btn-warning" disabled={confirmClicked}>
+            Review
+          </button>
+        </Link>
+      </td>
+      <td>
+        <button type="button" className="btn btn-success" onClick={() => ConfirmSightingRequest(data.id)} >
+          {confirmClicked ? "Undo" : "Confirm"}
         </button>
       </td>
       <td>
-        <button type="button" className="btn btn-success">
-          Confirm
-        </button>
-      </td>
-      <td>
-        <button type="button" className="btn btn-danger">
+        <button type="button" className="btn btn-danger" disabled={confirmClicked}>
           Delete
         </button>
       </td>
@@ -54,7 +60,7 @@ export function ListOfUnconfirmed(): JSX.Element {
   }, []);
 
   if (!unconfirmedSightingsData) {
-    return <div className="content-container"> <p className="body-text"> Waiting for data!</p></div>;
+    return <div className="content-container"> <p className="body-text">Waiting for data!</p></div>;
   }
 
   return (
@@ -74,7 +80,7 @@ export function ListOfUnconfirmed(): JSX.Element {
           <th scope="col"></th>
         </tr>
 
-        {unconfirmedSightingsData.sightings?.map((x) => TableRow(x))}
+        {unconfirmedSightingsData.sightings?.map((x) => <TableRow {...x} />)}
       </table>
     </div>
   );

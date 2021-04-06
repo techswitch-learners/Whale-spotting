@@ -115,7 +115,6 @@ export function ConfirmSightingForm(): JSX.Element {
               className="form-input"
               value={sightedAt}
               onChange={(event) => setSightedAt(event.target.value)}
-              type="date"
               required
             />
           </label>
