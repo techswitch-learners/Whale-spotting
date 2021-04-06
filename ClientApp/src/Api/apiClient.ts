@@ -50,9 +50,6 @@ export interface ListResponse<T> {
 }
 
 
-
-
-
 export async function submitSighting(newSighting: NewSighting) {
   const response = await fetch(`/api/submit-sighting/submit`, {
     method: "POST",

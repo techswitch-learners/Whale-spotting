@@ -40,7 +40,7 @@ export function SubmitSightingForm(): JSX.Element {
     return (
       <div className="content-container">
         <p className="body-text">Form Submitted Successfully!</p>
-        <Link to="/submit-sighting" className="body-text">Submit another sighting?</Link>
+        <Link to="/submit-sighting" className="body-text" >Submit another sighting?</Link>
         <br></br>
         <Link to="/" className="body-text">Return to Homepage?</Link>
       </div>

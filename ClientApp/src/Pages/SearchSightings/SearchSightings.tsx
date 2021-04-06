@@ -1,6 +1,8 @@
 import React, { FormEvent, useState, useEffect } from "react";
 import { submitSearch, Sighting, ListSightings } from "../../Api/apiClient";
 import { Link } from "react-router-dom";
+import "./SearchSightings.scss";
+
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 type PageStatus = "INITIAL" | "RESULTS";
@@ -106,16 +108,16 @@ export function SearchSightingForm(): JSX.Element {
         {searchResults?.sightings?.map(x => searchRow(x))}
       </table>
         
-
         </div>
         );
       }
 
 
       return (
-        <div> 
-          <h1>Search Sighting:</h1>
-          <form className="seacrh-sighting-form" onSubmit={submitForm}>
+        
+        <div className="content-container"> 
+          <h1 className="title">Search Sighting:</h1>
+          <form className="search-sighting-form body-text" onSubmit={submitForm}>
 
             <label className="form-label">
               Species
@@ -146,7 +148,7 @@ export function SearchSightingForm(): JSX.Element {
           </label>
     
             <button
-              className="search-button"
+              className="submit-button"
               disabled={formStatus === "SUBMITTING"}
               type="submit"
             >
@@ -155,14 +157,8 @@ export function SearchSightingForm(): JSX.Element {
             {formStatus === "ERROR" && <p>Something went wrong! Please try again.</p>}
           </form>
         </div>
+        
       );
-
-
-
-
-
-
-
 
 
 }
