@@ -32,10 +32,10 @@ namespace whale_spotting.Models.Response
         {
             return Page * PageSize < TotalNumberOfItems;
         }
-            public static SearchResponse Create(SearchRequest search, IEnumerable<Sighting> sightings, int totalNumberOfItems)
+            public static SearchResponse Create(SearchRequest search, IEnumerable<Sighting> sightings, int totalNumberOfItems, string path)
         {
             var sightingModels = sightings.Select(sighting => new SightingResponse(sighting));
-            return new SearchResponse(search, sightingModels, totalNumberOfItems);
+            return new SearchResponse(search, sightingModels, totalNumberOfItems, path);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PagedList;
 using whale_spotting.Models.Database;
 using whale_spotting.Models.Request;
 using whale_spotting.Request;
