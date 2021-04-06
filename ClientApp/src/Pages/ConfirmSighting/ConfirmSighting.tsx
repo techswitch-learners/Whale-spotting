@@ -45,23 +45,23 @@ export function ConfirmSightingForm(): JSX.Element {
     if (button == "confirm") {
       // call the function to update the database
     } else if (button == "delete") {
-      // setStatus("SUBMITTING");
-      // delSighting(parseInt(id))
-      // .then(() => setStatus("FINISHED"))
-      // .catch(() => setStatus("ERROR"));
+      setStatus("SUBMITTING");
+      delSighting(parseInt(id))
+      .then(() => setStatus("FINISHED"))
+      .catch(() => setStatus("ERROR"));
     }
   }
 
-  // if (status === "FINISHED") {
-  //   return (
-  //     <div className="content-container">
-  //       <p className="body-text">Sighting deleted Successfully!</p>
-  //       <Link to="/admin/confirm-sighting" className="body-text">Confirm another sighting?</Link>
-  //       <br></br>
-  //       <Link to="/" className="body-text">Return to Homepage?</Link>
-  //     </div>
-  //   );
-  // }
+  if (status === "FINISHED") {
+    return (
+      <div className="content-container">
+        <p className="body-text">Sighting deleted Successfully!</p>
+        <Link to="/admin/confirm-sighting" className="body-text">Confirm another sighting?</Link>
+        <br></br>
+        <Link to="/" className="body-text">Return to Homepage?</Link>
+      </div>
+    );
+  }
 
   return (
     <div className="content-container">
