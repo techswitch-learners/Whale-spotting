@@ -71,7 +71,18 @@ export async function fetchUnconfirmedSightings(): Promise<null | ListSightings>
   return await response.json();
 }
 
-export async function confirmSighting() {
- 
+export async function confirmSighting(Id: number): Promise<SightingResponse> {
+  const response = await fetch(`/admin/confirmSighting/${Id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+
+  return await response.json();
 }
 

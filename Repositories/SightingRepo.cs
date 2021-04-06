@@ -13,6 +13,7 @@ namespace whale_spotting.Repositories
         IEnumerable<Sighting> GetByConfirmState();
         void AddNewSightings(List<Sighting> sightingsToAdd);
         Sighting SelectSightingById(int Id);
+        Sighting ConfirmSighting(Sighting SightingToConfirm);
     }
 
     public class SightingRepo : ISightingRepo
@@ -69,5 +70,11 @@ namespace whale_spotting.Repositories
             return sighting;
         }
 
+        public Sighting ConfirmSighting(Sighting SightingToConfirm)
+        {
+            var ConfirmedSighting = _context.Update<Sighting>(SightingToConfirm);
+            _context.SaveChanges();
+            return ConfirmedSighting.Entity;
+        }
     }
 }

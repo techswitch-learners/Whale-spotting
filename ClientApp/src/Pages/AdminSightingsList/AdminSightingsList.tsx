@@ -1,11 +1,17 @@
 import React, { FormEvent, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
+  confirmSighting,
   fetchUnconfirmedSightings,
   ListSightings,
   Sighting,
 } from "../../Api/apiClient";
 import "./AdminSightingsList.scss";
+
+function ConfirmSightingRequest(id: number) {
+  confirmSighting(id);
+  // .then (remove this sighting from data)
+}
 
 export function TableRow(data: Sighting): JSX.Element {
   return (
