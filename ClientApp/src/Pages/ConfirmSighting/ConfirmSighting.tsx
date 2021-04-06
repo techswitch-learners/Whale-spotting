@@ -5,8 +5,6 @@ import { getSighting } from "../../Api/apiClient";
 import { delSighting } from "../../Api/apiClient";
 import "./ConfirmSighting.scss";
 
-type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
-
 export function ConfirmSightingForm(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
   const [button, setButton] = useState("");
@@ -22,6 +20,8 @@ export function ConfirmSightingForm(): JSX.Element {
   const [submittedByEmail, setSubmittedByEmail] = useState("");
   const { id } = useParams<{ id: string }>();
   const [status, setStatus] = useState<FormStatus>("READY");
+
+  type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
   
   useEffect(() => {
     getSighting(parseInt(id))
