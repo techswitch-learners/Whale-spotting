@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using whale_spotting.Models.Request;
 using whale_spotting.Models.Response;
 using whale_spotting.Repositories;
 using whale_spotting.Request;
@@ -11,18 +8,18 @@ namespace whale_spotting.Controllers
     [Route("api/search")]
     public class SearchController : ControllerBase
     {
-        private readonly ISightingRepo _sighting;
+        private readonly ISightingRepo _sightings;
 
-        public SearchController(ISightingRepo sighting)
+        public SearchController(ISightingRepo sightings)
         {
-            _sighting = sighting;
+            _sightings = sightings;
         }
 
         [HttpGet("")]
-        public ActionResult<SightingsListResponse> Search([FromQuery] SightingSearchRequest searchRequest)
+        public ActionResult<SearchResponse> Search([FromQuery] SightingSearchRequest searchRequest)
         {
-            var sightings = _sighting.Search(searchRequest);
-            return SightingsListResponse.Create(searchRequest, sightings);
+            var sightings = _sightings.Search(searchRequest);
+            return SearchResponse.Create(searchRequest, sightings);
         }
     }
 }

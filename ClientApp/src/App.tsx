@@ -15,14 +15,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <Layout>
-        <Route exact path="/" component={Home} />
+      <div>
+         <Route exact path="/" component={Home} />
         <Route exact path="/getting-started" component={GettingStarted} />
         <Route path="/admin" component={AdminLogin} />
         <Route path="/submit-sighting" component={SubmitSightingForm} />
         <Route path="/confirm-sighting" component={ListOfUnconfirmed} />
         <Route path="/conservation" component={Conservation} />
-        </Layout>
-    );
+        </div>
+        );
   }
 }

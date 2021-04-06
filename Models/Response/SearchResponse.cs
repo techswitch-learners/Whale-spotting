@@ -7,36 +7,16 @@ namespace whale_spotting.Models.Response
 {
     public class SearchResponse
     {
-        private readonly string _path;
-
         public IEnumerable<SightingResponse> Sightings { get; }
 
-        public SearchResponse(
-            SearchRequest search,
-            IEnumerable<SightingResponse> sightings,
-            string path
-        )
+        public SearchResponse(SearchRequest search, IEnumerable<SightingResponse> sightings)
         {
             Sightings = sightings;
-            _path = path;
         }
-    }
-
-    public class SightingsListResponse : SearchResponse
-    {
-        private SightingsListResponse(
-            SearchRequest search,
-            IEnumerable<SightingResponse> sightings
-        ) :
-            base(search, sightings, "sightings")
+        public static SearchResponse Create(SearchRequest search, IEnumerable<Sighting> sightings)
         {
-        }
-
-        public static SightingsListResponse Create(SearchRequest search, IEnumerable<Sighting> sightings)
-        {
-            var sightingModels =
-                sightings.Select(sighting => new SightingResponse(sighting));
-            return new SightingsListResponse(search, sightingModels);
+            var sightingModels = sightings.Select(sighting => new SightingResponse(sighting));
+            return new SearchResponse(search, sightingModels);
         }
     }
 }

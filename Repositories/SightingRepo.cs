@@ -108,7 +108,7 @@ namespace whale_spotting.Repositories
                                 .Contains(searchRequest.Location.ToLower()));
             }
             return query
-            .Where(s=>s.ConfirmState==ConfirmState.Confirmed)
+                .Where(s => s.ConfirmState == ConfirmState.Confirmed)
                 .OrderByDescending(s => s.SightedAt)
                 .Skip((searchRequest.Page - 1) * searchRequest.PageSize)
                 .Take(searchRequest.PageSize);
