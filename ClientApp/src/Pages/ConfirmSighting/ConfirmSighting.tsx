@@ -52,7 +52,7 @@ export function ConfirmSightingForm(): JSX.Element {
     }
   }
 
-  if (status === "FINISHED") {
+  if (status === "FINISHED" && button == "delete") {
     return (
       <div className="content-container">
         <p className="body-text">Sighting deleted Successfully!</p>
@@ -134,7 +134,6 @@ export function ConfirmSightingForm(): JSX.Element {
               className="form-input"
               value={sightedAt}
               onChange={(event) => setSightedAt(event.target.value)}
-              type="date"
               required
             />
           </label>

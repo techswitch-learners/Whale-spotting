@@ -5,9 +5,16 @@ import {
   ListSightings,
   Sighting,
 } from "../../Api/apiClient";
+import { delSighting } from "../../Api/apiClient";
 import "./AdminSightingsList.scss";
 
 export function TableRow(data: Sighting): JSX.Element {
+  const [deleteClicked, setDeleteClicked] = useState(false);
+  
+  function DeleteSightingRequest(id: number) {
+    delSighting(id)
+    .then(() => setDeleteClicked(true));
+  }
   return (
     <tr>
       <td>{data.id}</td>
@@ -28,8 +35,9 @@ export function TableRow(data: Sighting): JSX.Element {
         </button>
       </td>
       <td>
-        <button type="button" className="btn btn-danger">
-          Delete
+        <button type="button" className="btn btn-danger"
+        onClick={() => DeleteSightingRequest(data.id)} disabled={deleteClicked} aria-disabled={deleteClicked}>
+          {deleteClicked ? "Deleted" : "Delete"}
         </button>
       </td>
     </tr>
