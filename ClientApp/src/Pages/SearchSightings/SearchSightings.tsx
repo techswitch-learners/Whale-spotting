@@ -2,6 +2,7 @@ import React, { FormEvent, useState, useEffect } from "react";
 import { submitSearch, Sighting, ListSightings } from "../../Api/apiClient";
 import { Link } from "react-router-dom";
 import "./SearchSightings.scss";
+import { resourceLimits } from "node:worker_threads";
 
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
