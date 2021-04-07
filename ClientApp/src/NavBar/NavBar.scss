@@ -80,6 +80,7 @@ li a:hover {
   right: 0;
   color: $light-text;
   z-index: 1001;
+  background-color: transparent !important;
 }
 
 .hamburger-react {
