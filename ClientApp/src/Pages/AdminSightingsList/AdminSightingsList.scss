@@ -1,8 +1,30 @@
 @import "~bootstrap/scss/bootstrap";
 @import "../../Styles/styles.scss";
 
-@media only screen and (max-width: 768px) 
-{
+.admin-table tr {
+    background-color: $dark-bg !important;
+}
+
+.btn-mobile {
+    display: none;
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 650px) {
+    .btn-mobile {
+        display: unset;
+    }
+
+    .btn-desktop {
+        display: none;
+    }
+
+    .hide-mobile {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
     .admin-table {
         font-size: 16px !important;
     }
@@ -11,3 +33,10 @@
         @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
     }
 } 
+
+@media only screen and (max-width: 1260px)
+{
+    .hide-tablet {
+        display: none;
+    }
+}
