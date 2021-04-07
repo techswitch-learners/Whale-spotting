@@ -36,8 +36,6 @@ namespace whale_spotting.Controllers
         public Sighting updateAndConfirmSighting([FromBody] Sighting SightingToUpdate)
         {
             var sightingUpdated =_sightings.UpdateAndConfirmSighting(SightingToUpdate);
-
-            // return StatusCode(200);
             return sightingUpdated;
         }
 

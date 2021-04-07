@@ -37,11 +37,11 @@ export function TableRow(data: Sighting): JSX.Element {
     <tr>
       <td>{data.id}</td>
       <td>{data.species}</td>
-      {/* <td>{data.quantity}</td> */}
+      <td>{data.quantity}</td>
       <td>{data.location}</td>
       <td>{data.sightedAt.substring(0, 10)}</td>
-      {/* <td>{data.submittedByName}</td> */}
-      {/* <td>{data.submittedByEmail}</td> */}
+      <td>{data.submittedByName}</td>
+      <td>{data.submittedByEmail}</td>
       <td>
         <Link to={`/admin/confirm-sighting/${data.id}`}>
           <button type="button" className="btn btn-warning btn-responsive" disabled={confirmClicked || deleteClicked} aria-disabled={confirmClicked || deleteClicked}>
@@ -85,11 +85,11 @@ export function ListOfUnconfirmed(): JSX.Element {
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Species</th>
-          {/* <th scope="col">Quantity</th> */}
+          <th scope="col">Quantity</th>
           <th scope="col">Location</th>
           <th scope="col">Date</th>
-          {/* <th scope="col">Submitted by</th> */}
-          {/* <th scope="col">Email</th> */}
+          <th scope="col">Submitted by</th>
+          <th scope="col">Email</th>
           <th scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th>
