@@ -23,5 +23,13 @@ namespace whale_spotting.Controllers
             var sighting = _sightings.SelectSightingById(id);
             return sighting;
         }
+
+        [HttpPost("deleteSighting/{id}")]
+        public Sighting DeleteSighting([FromRoute] int id)
+        {
+            var sighting = _sightings.SelectSightingById(id);
+            var sightingDeleted = _sightings.DeleteSighting(sighting);
+            return sightingDeleted;
+        }
     }
 }

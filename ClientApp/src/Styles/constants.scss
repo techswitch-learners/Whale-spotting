@@ -47,7 +47,7 @@ $two-column-min-pixels: 999px;
   @include buttonFont();
   border: none;
   background-color: $accent-color;
-  width: 100%;
+  border-radius: 5px;
 }
 
 @mixin formLabel() {
@@ -60,8 +60,9 @@ $two-column-min-pixels: 999px;
   @include bodyFont;
   display: block;
   width: 100%;
-  border: none;
-  border-bottom: 1px solid;
-  background-color: transparent;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: #FFFFFF;
   outline: none;
 }
