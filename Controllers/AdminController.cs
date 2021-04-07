@@ -27,14 +27,7 @@ namespace whale_spotting.Controllers
         [HttpPost("confirmSighting/{id}")]
         public Sighting ConfirmSighting([FromRoute] int id)
         {
-            var SightingToConfirm = _sightings.SelectSightingById(id);
-            if (SightingToConfirm.ConfirmState == ConfirmState.Confirmed)
-            {
-                SightingToConfirm.ConfirmState = ConfirmState.Review;
-            } else
-            {
-                SightingToConfirm.ConfirmState = ConfirmState.Confirmed;
-            }            
+            var SightingToConfirm = _sightings.SelectSightingById(id);         
             var ConfirmedSighting = _sightings.ConfirmSighting(SightingToConfirm);
             return ConfirmedSighting;
         }
@@ -50,6 +43,14 @@ namespace whale_spotting.Controllers
             _sightings.UpdateAndConfirmSighting(SightingToUpdate);
 
             return StatusCode(200);
+        }
+
+        [HttpPost("deleteSighting/{id}")]
+        public Sighting DeleteSighting([FromRoute] int id)
+        {
+            var sighting = _sightings.SelectSightingById(id);
+            var sightingDeleted = _sightings.DeleteSighting(sighting);
+            return sightingDeleted;
         }
     }
 }

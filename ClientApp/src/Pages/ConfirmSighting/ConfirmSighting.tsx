@@ -1,7 +1,7 @@
 import React, { FormEvent, useState, useEffect } from "react";
-import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { getSighting, updateAndConfirmSighting } from "../../Api/apiClient";
+import { useParams } from "react-router";
+import { getSighting, updateAndConfirmSighting, deleteSighting } from "../../Api/apiClient";
 import "./ConfirmSighting.scss";
 
 export function ConfirmSightingForm(): JSX.Element {
@@ -59,17 +59,31 @@ export function ConfirmSightingForm(): JSX.Element {
         .then(() => setStatus("FINISHED"))
         .catch(() => setStatus("ERROR"));
     } else if (button == "delete") {
-      // delete the record
+      setStatus("SUBMITTING");
+      deleteSighting(parseInt(id))
+      .then(() => setStatus("FINISHED"))
+      .catch(() => setStatus("ERROR"));
     }
   }
 
-  if (status === "FINISHED") {
+  if (status === "FINISHED" && button == "confirm") {
     return (
       <div className="content-container">
         <h2 className="sub-heading">Sighting updated successfully!</h2>
         <Link to="/admin/confirm-sighting" className="body-text">Return to sightings</Link>
         <br></br>
         <Link to="/" className="body-text">Return to homepage</Link>
+      </div>
+    );
+  }
+
+  if (status === "FINISHED" && button == "delete") {
+    return (
+      <div className="content-container">
+        <p className="body-text">Sighting deleted Successfully!</p>
+        <Link to="/admin/confirm-sighting" className="body-text">Confirm another sighting?</Link>
+        <br></br>
+        <Link to="/" className="body-text">Return to Homepage?</Link>
       </div>
     );
   }

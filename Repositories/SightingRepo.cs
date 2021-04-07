@@ -16,6 +16,7 @@ namespace whale_spotting.Repositories
         Sighting ConfirmSighting(Sighting SightingToConfirm);
         IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
         Sighting UpdateAndConfirmSighting(Sighting SightingToUpdate);
+        Sighting DeleteSighting(Sighting sighting);
     }
 
     public class SightingRepo : ISightingRepo
@@ -123,6 +124,13 @@ namespace whale_spotting.Repositories
 
         public Sighting ConfirmSighting(Sighting SightingToConfirm)
         {
+            if (SightingToConfirm.ConfirmState == ConfirmState.Confirmed)
+            {
+                SightingToConfirm.ConfirmState = ConfirmState.Review;
+            } else
+            {
+                SightingToConfirm.ConfirmState = ConfirmState.Confirmed;
+            }   
             var ConfirmedSighting = _context.Update<Sighting>(SightingToConfirm);
             _context.SaveChanges();
             return ConfirmedSighting.Entity;
@@ -132,6 +140,19 @@ namespace whale_spotting.Repositories
             var UpdatedSighting = _context.Update<Sighting>(SightingToUpdate);
             _context.SaveChanges();
             return UpdatedSighting.Entity;
+        }
+        public Sighting DeleteSighting(Sighting sighting)
+        {
+            if (sighting.ConfirmState == ConfirmState.Deleted)
+            {
+                sighting.ConfirmState = ConfirmState.Review;
+            } else
+            {
+                sighting.ConfirmState = ConfirmState.Deleted;
+            }   
+            var sightingDeleted = _context.Update<Sighting>(sighting);
+            _context.SaveChanges();
+            return sightingDeleted.Entity;
         }
     }
 }
