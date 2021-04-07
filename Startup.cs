@@ -32,7 +32,8 @@ namespace whale_spotting
         {
             services.AddDbContext<WhaleSpottingContext>(options =>
                     options
-                        .UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL")));
+                         .UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL")));
+
 
             services.AddDatabaseDeveloperPageExceptionFilter();
            
