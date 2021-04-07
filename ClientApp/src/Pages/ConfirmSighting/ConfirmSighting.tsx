@@ -2,7 +2,7 @@ import React, { FormEvent, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { getSighting } from "../../Api/apiClient";
-import { delSighting } from "../../Api/apiClient";
+import { deleteSighting } from "../../Api/apiClient";
 import "./ConfirmSighting.scss";
 
 export function ConfirmSightingForm(): JSX.Element {
@@ -46,7 +46,7 @@ export function ConfirmSightingForm(): JSX.Element {
       // call the function to update the database
     } else if (button == "delete") {
       setStatus("SUBMITTING");
-      delSighting(parseInt(id))
+      deleteSighting(parseInt(id))
       .then(() => setStatus("FINISHED"))
       .catch(() => setStatus("ERROR"));
     }

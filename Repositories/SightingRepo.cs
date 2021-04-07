@@ -125,6 +125,7 @@ namespace whale_spotting.Repositories
 
         public Sighting DeleteSighting(Sighting sighting)
         {
+            sighting.ConfirmState = ConfirmState.Deleted;
             var sightingDeleted = _context.Update<Sighting>(sighting);
             _context.SaveChanges();
             return sightingDeleted.Entity;

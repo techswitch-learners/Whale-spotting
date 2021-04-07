@@ -84,7 +84,7 @@ export async function fetchUnconfirmedSightings(): Promise<null | ListSightings>
   return await response.json();
 }
 
-export async function delSighting(Id:number) {
+export async function deleteSighting(Id:number) {
   const response = await fetch(`/admin/deleteSighting/${Id}`, {
     method: "POST",
   });
