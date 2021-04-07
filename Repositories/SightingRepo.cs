@@ -19,6 +19,8 @@ namespace whale_spotting.Repositories
         Sighting SelectSightingById(int Id);
         IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
         int Count(SightingSearchRequest search);
+        Sighting DeleteSighting(Sighting sighting);
+      
     }
 
     public class SightingRepo : ISightingRepo
@@ -135,5 +137,14 @@ namespace whale_spotting.Repositories
                 _context.Sightings.Where(s => s.Id == Id).SingleOrDefault();
             return sighting;
         }
+
+        public Sighting DeleteSighting(Sighting sighting)
+        {
+            sighting.ConfirmState = ConfirmState.Deleted;
+            var sightingDeleted = _context.Update<Sighting>(sighting);
+            _context.SaveChanges();
+            return sightingDeleted.Entity;
+        }
+
     }
 }

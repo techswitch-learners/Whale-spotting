@@ -41,6 +41,15 @@ export interface SightingResponse {
   submittedByEmail: string;  
 }
 
+export interface ListResponse<T> {
+  items: T[];
+  // totalNumberOfItems: number;
+  // page: number;
+  // nextPage: string;
+  // previousPage: string;
+}
+
+
 export async function submitSighting(newSighting: NewSighting) {
   const response = await fetch(`/api/submit-sighting/submit`, {
     method: "POST",
@@ -53,6 +62,12 @@ export async function submitSighting(newSighting: NewSighting) {
   if (!response.ok) {
     throw new Error(await response.json());
   }
+}
+
+export async function submitSearch(species: string, location: string, sightedAt: string): Promise<null | ListSightings> {
+  const response =await fetch(
+    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}`);
+    return await response.json();
 }
 
 export async function getSighting(Id: number): Promise<SightingResponse> {
@@ -68,7 +83,13 @@ export async function fetchUnconfirmedSightings(): Promise<null | ListSightings>
   const response = await fetch(`/api/confirm-sighting`);
   return await response.json();
 }
-// export async function submitSearch(searchterm: string):Promise<null | ListSightings>{
-//   const response = await fetch('api/search');
-//   return await response.json();
-// }
+
+export async function deleteSighting(Id:number) {
+  const response = await fetch(`/admin/deleteSighting/${Id}`, {
+    method: "POST",
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+}
