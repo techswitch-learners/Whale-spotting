@@ -17,8 +17,7 @@ namespace whale_spotting.Controllers
         }
 
         [HttpPost("submit")]
-        public IActionResult
-        Submit([FromBody] SubmitSightingRequest newSighting)
+        public IActionResult Submit([FromBody] SubmitSightingRequest newSighting)
         {
             if (!ModelState.IsValid)
             {

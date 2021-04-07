@@ -13,9 +13,9 @@ function AdminLogin() : JSX.Element {
     }
 
     return (
-        <div className="center-column">
-            <h1>Admin Login</h1>
-            <form className="center-column">
+        <div className="center-column content-container">
+            <h1 className="title">Admin Login</h1>
+            <form className="center-column body-text">
                 <label>
                     Username: <input type="text" name="username" onChange={e => setUsername(e.target.value)} required />
                 </label>
