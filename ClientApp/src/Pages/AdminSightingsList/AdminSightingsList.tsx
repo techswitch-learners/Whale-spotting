@@ -1,20 +1,38 @@
 import React, { FormEvent, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
+  confirmSighting,
   fetchUnconfirmedSightings,
   ListSightings,
   Sighting,
+  deleteSighting,
+  restoreSighting
 } from "../../Api/apiClient";
-import { deleteSighting } from "../../Api/apiClient";
 import "./AdminSightingsList.scss";
 
 export function TableRow(data: Sighting): JSX.Element {
+
+  const [confirmClicked, setConfirmClicked] = useState(false);
   const [deleteClicked, setDeleteClicked] = useState(false);
   
+  function ConfirmSightingRequest(id: number) {
+    confirmSighting(id)
+    .then(() => setConfirmClicked(!confirmClicked));
+  }  
+  
   function DeleteSightingRequest(id: number) {
-    deleteSighting(id)
-    .then(() => setDeleteClicked(true));
+    if (!deleteClicked) 
+    {
+      deleteSighting(id)
+      .then(() => setDeleteClicked(!deleteClicked));
+    } else 
+    {
+      restoreSighting(id)
+      .then(() => setDeleteClicked(!deleteClicked));
+    }
+    
   }
+  
   return (
     <tr>
       <td>{data.id}</td>
@@ -25,19 +43,20 @@ export function TableRow(data: Sighting): JSX.Element {
       <td>{data.submittedByName}</td>
       <td>{data.submittedByEmail}</td>
       <td>
-        <button type="button" className="btn btn-warning">
-          Review
+        <Link to={`/admin/confirm-sighting/${data.id}`}>
+          <button type="button" className="btn btn-warning" disabled={confirmClicked || deleteClicked} aria-disabled={confirmClicked || deleteClicked}>
+            Review
+          </button>
+        </Link>
+      </td>
+      <td>
+        <button type="button" className="btn btn-success" onClick={() => ConfirmSightingRequest(data.id)} disabled={deleteClicked} aria-disabled={deleteClicked}>
+          {confirmClicked ? "Undo" : "Confirm"}
         </button>
       </td>
       <td>
-        <button type="button" className="btn btn-success">
-          Confirm
-        </button>
-      </td>
-      <td>
-        <button type="button" className="btn btn-danger"
-        onClick={() => DeleteSightingRequest(data.id)} disabled={deleteClicked} aria-disabled={deleteClicked}>
-          {deleteClicked ? "Deleted" : "Delete"}
+        <button type="button" className="btn btn-danger" onClick={() => DeleteSightingRequest(data.id)} disabled={confirmClicked} aria-disabled={confirmClicked}>
+          {deleteClicked ? "Undo" : "Delete"}
         </button>
       </td>
     </tr>
@@ -56,13 +75,13 @@ export function ListOfUnconfirmed(): JSX.Element {
   }, []);
 
   if (!unconfirmedSightingsData) {
-    return <div> Waiting for data!</div>;
+    return <div className="content-container"> <p className="body-text">Waiting for data!</p></div>;
   }
 
   return (
-    <div>
-      <h2 className="featureTitle">Sightings review</h2>
-      <table className="table table-striped table-hover">
+    <div className="content-container">
+      <h1 className="title">Review Sightings</h1>
+      <table className="table table-striped table-hover body-text">
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Species</th>
@@ -76,7 +95,7 @@ export function ListOfUnconfirmed(): JSX.Element {
           <th scope="col"></th>
         </tr>
 
-        {unconfirmedSightingsData.sightings?.map((x) => <TableRow {...x}/>)}
+        {unconfirmedSightingsData.sightings?.map((x) => <TableRow {...x} />)}
       </table>
     </div>
   );

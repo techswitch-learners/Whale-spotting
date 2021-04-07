@@ -22,7 +22,8 @@ namespace whale_spotting.Controllers
         public ActionResult<SearchResponse> Search([FromQuery] SightingSearchRequest searchRequest, int totalNumberOfItems)
         {
             var sightings = _sightings.Search(searchRequest);
-            return SearchResponse.Create(searchRequest, sightings, totalNumberOfItems);
+            var sightingsCount = _sightings.Count(searchRequest);
+            return SearchResponse.Create(searchRequest, sightings, sightingsCount);
         }
     }
 }

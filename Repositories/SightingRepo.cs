@@ -10,15 +10,15 @@ namespace whale_spotting.Repositories
     public interface ISightingRepo
     {
         Sighting Submit(SubmitSightingRequest create);
-
         IEnumerable<Sighting> GetByConfirmState();
-
         void AddNewSightings(List<Sighting> sightingsToAdd);
-
         Sighting SelectSightingById(int Id);
         IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
         int Count(SightingSearchRequest search);
+         Sighting ConfirmSighting(Sighting SightingToConfirm);
+         Sighting UpdateAndConfirmSighting(Sighting SightingToUpdate);
         Sighting DeleteSighting(Sighting sighting);
+         Sighting RestoreSighting(Sighting SightingToRestore);
       
     }
 
@@ -159,6 +159,27 @@ namespace whale_spotting.Repositories
             return sighting;
         }
 
+        public Sighting ConfirmSighting(Sighting SightingToConfirm)
+        {
+            if (SightingToConfirm.ConfirmState == ConfirmState.Confirmed)
+            {
+                SightingToConfirm.ConfirmState = ConfirmState.Review;
+            } else
+            {
+                SightingToConfirm.ConfirmState = ConfirmState.Confirmed;
+            }   
+            var ConfirmedSighting = _context.Update<Sighting>(SightingToConfirm);
+            _context.SaveChanges();
+            return ConfirmedSighting.Entity;
+        }
+        
+        public Sighting UpdateAndConfirmSighting(Sighting SightingToUpdate)
+        {
+            var UpdatedSighting = _context.Update<Sighting>(SightingToUpdate);
+            _context.SaveChanges();
+            return UpdatedSighting.Entity;
+        }
+        
         public Sighting DeleteSighting(Sighting sighting)
         {
             sighting.ConfirmState = ConfirmState.Deleted;
@@ -166,6 +187,13 @@ namespace whale_spotting.Repositories
             _context.SaveChanges();
             return sightingDeleted.Entity;
         }
-
+        
+        public Sighting RestoreSighting(Sighting SightingToRestore) 
+        {
+            SightingToRestore.ConfirmState = ConfirmState.Review;
+            var sightingRestored = _context.Update<Sighting>(SightingToRestore);
+            _context.SaveChanges();
+            return sightingRestored.Entity;
+        }
     }
 }
