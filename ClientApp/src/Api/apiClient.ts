@@ -101,8 +101,22 @@ export async function confirmSighting(Id: number): Promise<SightingResponse> {
   return await response.json();
 }
 
-export async function deleteSighting(Id:number) {
+export async function deleteSighting(Id: number) 
+{
   const response = await fetch(`/admin/deleteSighting/${Id}`, {
+    method: "POST",
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+
+  return await response.json();
+}
+
+export async function restoreSighting(Id: number)
+{
+  const response = await fetch(`/admin/restoreSighting/${Id}`, {
     method: "POST",
   });
 
