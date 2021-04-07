@@ -34,7 +34,6 @@ namespace whale_spotting
                     options
                          .UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL")));
 
-
             services.AddDatabaseDeveloperPageExceptionFilter();
            
             // services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = true)

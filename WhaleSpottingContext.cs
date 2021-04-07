@@ -17,9 +17,7 @@ namespace whale_spotting
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         { 
-            // optionsBuilder.UseNpgsql("Server=localhost;port=5432;Database=WhaleSpottingDb;user id=postgres;password=TechSwitch;");
             optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL"));
-
         }
     }
 }
