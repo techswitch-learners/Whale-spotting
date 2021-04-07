@@ -84,3 +84,12 @@ export async function fetchUnconfirmedSightings(): Promise<null | ListSightings>
   return await response.json();
 }
 
+export async function delSighting(Id:number) {
+  const response = await fetch(`/admin/deleteSighting/${Id}`, {
+    method: "POST",
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+}
