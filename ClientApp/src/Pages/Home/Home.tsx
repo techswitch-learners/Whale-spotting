@@ -1,19 +1,18 @@
 import React, { Component, useEffect, useState } from 'react';
 import './Home.scss';
 import { GetSightings } from './GetSightings';
-import {getRecentSightings} from '../../Api/apiClient';
-import {SightingResponse, RecentSightingResponseList} from '../../Api/apiClient';
+import { getRecentSightings } from '../../Api/apiClient';
+import { SightingResponse, RecentSightingResponseList } from '../../Api/apiClient';
 
 function Home() {
 
-  const [myData, setMyData] = useState<RecentSightingResponseList | null>(null);
+  const [mySightings, setMySightings] = useState<RecentSightingResponseList | null>(null);
 
   useEffect(() => {
-   getRecentSightings()
-   .then(data => setMyData(data));
+    getRecentSightings()
+      .then(data => setMySightings(data));
   }, []);
 
-  
   return (
     <div className="content-container">
       <h1 className="title">Welcome to the World of Whale Watching!</h1>
@@ -44,27 +43,22 @@ function Home() {
           {/* this table is a placeholder, feel free to delete when inserting the actual table */}
           <table className="sightings-table">
             <thead>
-            <tr>
-              <td>Location</td>
-              <td>Species</td>
-              <td>Number of Whales Spotted</td>
-              <td>Seen on</td>
-            </tr> 
+              <tr>
+                <td>Location</td>
+                <td>Species</td>
+                <td>Number of Whales Spotted</td>
+                <td>Seen on</td>
+              </tr>
             </thead>
-            <tbody>   
-              
-          {myData?.recentSightingsList.map(sighting=> <GetSightings sighting={sighting} />)}
-          
-          </tbody> 
-      </table>
+            <tbody>
+              {mySightings?.recentSightingsList.map(sighting => <GetSightings sighting={sighting} />)}
+            </tbody>
+          </table>
 
+        </div>
       </div>
-          </div>
     </div>
-
   );
-
-
 }
-export { Home}
-    
+
+export { Home }
