@@ -15,7 +15,7 @@ where the user id and password are your own PSQL credentials (note: the default 
 
 Running a `dotnet run` will create the database (if it does not already exist) and apply all existing migrations.
 
-If you need to create a new migration to create a new column, for example, (i.e. run a `dotnet ef migrations add [migration name]`), you will need to comment out the following line in the `WhaleSpottingContext.cs` file:
+If you need to create a new migration to create a new column, for example, (i.e. run a `dotnet ef migrations add [migration name]`), you will need to comment out the following line in the `WhaleSpottingContext.cs` file and in `Startup.cs`:
 ```
 optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL"));
 ```

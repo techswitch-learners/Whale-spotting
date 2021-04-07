@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PagedList;
 using whale_spotting.Models.Database;
 using whale_spotting.Models.Request;
 using whale_spotting.Request;
@@ -118,18 +117,40 @@ namespace whale_spotting.Repositories
                 .Skip((searchRequest.Page - 1) * searchRequest.PageSize)
                 .Take(searchRequest.PageSize);
         }
-        public int Count(SightingSearchRequest search)
+        public int Count(SightingSearchRequest searchRequest)
         {
-            return _context.Sightings
-                .Count(s => search.Search == null || 
-                            (
-                                s.Species.ToLower().Contains(search.Search) ||
-                                s.Location.ToLower().Contains(search.Search) ||
-                                s.SightedAt >= DateTime.Parse(search.Search) &&
+            IQueryable<Sighting> query = _context.Sightings;
+            if (!string.IsNullOrEmpty(searchRequest.Species))
+            {
+                query =
+                    query
+                        .Where(s =>
+                            s
+                                .Species
+                                .ToLower()
+                                .Contains(searchRequest.Species.ToLower()));
+            }
+            if (searchRequest.SightedAt.HasValue)
+            {
+                query =
+                    query
+                        .Where(s =>
+                            s.SightedAt >= searchRequest.SightedAt.Value &&
                             s.SightedAt <
-                            DateTime.Parse(search.Search).AddDays(1))
-                            );
-        }
+                            searchRequest.SightedAt.Value.AddDays(1));
+            }
+            if (!string.IsNullOrEmpty(searchRequest.Location))
+            {
+                query =
+                    query
+                        .Where(s =>
+                            s
+                                .Location
+                                .ToLower()
+                                .Contains(searchRequest.Location.ToLower()));
+            }
+            return query.Count;
+               };
 
         public Sighting SelectSightingById(int Id)
         {
