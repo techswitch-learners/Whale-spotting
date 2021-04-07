@@ -67,7 +67,7 @@ export async function submitSighting(newSighting: NewSighting) {
 
 export async function submitSearch(species: string, location: string, sightedAt: string): Promise<null | ListSightings> {
   const response =await fetch(
-    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}`);
+    `api/search?species=${species}&location=${location}&sightedAt=${sightedAt}`);
     return await response.json();
 }
 
