@@ -73,8 +73,7 @@ jest.mock("../../Api/apiClient", () => {
         "submittedByName": "Roshni",
         "submittedByEmail": "r@r.com"
       }
-
-     ]} );
+     ]});
     }),
   };
 });
@@ -87,6 +86,3 @@ it('renders homeform successfully', async () => {
     </MemoryRouter>, div);
   await new Promise(resolve => setTimeout(resolve, 1000));
 });
-
-
-

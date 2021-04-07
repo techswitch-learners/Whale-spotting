@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import {
   fetchUnconfirmedSightings,
   ListSightings,
-  Sighting,
+  SightingResponse,
 } from "../../Api/apiClient";
 import "./AdminSightingsList.scss";
 
-export function TableRow(data: Sighting): JSX.Element {
+export function TableRow(data: SightingResponse): JSX.Element {
   return (
     <tr>
       <td>{data.id}</td>

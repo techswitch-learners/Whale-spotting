@@ -9,22 +9,9 @@
   submittedByName: string;
   submittedByEmail: string;
 }
-export interface Sighting {
-  id: number;
-  species: string;
-  quantity: string;
-  location: string;
-  latitude: number;
-  longitude: number;
-  description: string;
-  sightedAt: string;
-  submittedByName: string;
-  submittedByEmail: string;
-  confirmState: number;
-}
 
 export interface ListSightings {
-  sightings: Sighting[];
+  sightings: SightingResponse[];
 }
 
 export interface SightingResponse {
@@ -39,6 +26,7 @@ export interface SightingResponse {
   sightedAt: string;
   submittedByName: string;
   submittedByEmail: string;
+  confirmState: number;
 }
 
 export async function submitSighting(newSighting: NewSighting) {
@@ -55,21 +43,8 @@ export async function submitSighting(newSighting: NewSighting) {
   }
 }
 
-export interface RecentSightingResponse {
-  apiId: string;
-  species: string;
-  quantity: string;
-  location: string;
-  latitude: number;
-  longitude: number;
-  description: string;
-  sightedAt: string;
-  submittedByName: string;
-  submittedByEmail: string;
-}
-
 export interface RecentSightingResponseList {
-  recentSightingsList: RecentSightingResponse[];
+  recentSightingsList: SightingResponse[];
 }
 
 export async function getRecentSightings(): Promise<RecentSightingResponseList> {
@@ -92,4 +67,3 @@ export async function fetchUnconfirmedSightings(): Promise<null | ListSightings>
   const response = await fetch(`/api/confirm-sighting`);
   return await response.json();
 }
-

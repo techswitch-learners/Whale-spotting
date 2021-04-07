@@ -2,15 +2,15 @@ import React, { Component, useEffect, useState } from 'react';
 import './Home.scss';
 import { GetSightings } from './GetSightings';
 import {getRecentSightings} from '../../Api/apiClient';
-import {RecentSightingResponse, RecentSightingResponseList} from '../../Api/apiClient';
+import { RecentSightingResponseList} from '../../Api/apiClient';
 
 function Home() {
 
-  const [myData, setMyData] = useState<RecentSightingResponseList | null>(null);
+  const [recentSightings, setRecentSightings] = useState<RecentSightingResponseList | null>(null);
 
   useEffect(() => {
    getRecentSightings()
-   .then(data => setMyData(data));
+   .then(data => setRecentSightings(data));
   }, []);
 
   
@@ -53,7 +53,7 @@ function Home() {
             </thead>
             <tbody>   
               
-          {myData?.recentSightingsList.map(sighting=> <GetSightings sighting={sighting} />)}
+          {recentSightings?.recentSightingsList.map(sighting=> <GetSightings sighting={sighting} />)}
           
           </tbody> 
       </table>
