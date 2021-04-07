@@ -58,7 +58,7 @@ export class AuthorizeService {
                 const popUpUser = await this.userManager.signinPopup(this.createArguments());
                 this.updateState(popUpUser);
                 return this.success(state);
-            } catch (popUpError) {
+                } catch (popUpError) {
                 if (popUpError.message === "Popup window closed") {
                     // The user explicitly cancelled the login action by closing an opened popup.
                     return this.error("The user closed the window.");
@@ -105,7 +105,7 @@ export class AuthorizeService {
             await this.userManager.signoutPopup(this.createArguments());
             this.updateState(undefined);
             return this.success(state);
-        } catch (popupSignOutError) {
+            } catch (popupSignOutError) {
             console.log("Popup signout error: ", popupSignOutError);
             try {
                 await this.userManager.signoutRedirect(this.createArguments(state));

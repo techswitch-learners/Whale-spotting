@@ -65,7 +65,7 @@ namespace whale_spotting
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMigrationsEndPoint(); // 
+                app.UseMigrationsEndPoint();
             }
             else
             {

@@ -21,7 +21,5 @@ namespace whale_spotting.Repositories
         {
             _context = context;
         }
-
-       
     }
 }
