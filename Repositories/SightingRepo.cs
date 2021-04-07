@@ -149,8 +149,8 @@ namespace whale_spotting.Repositories
                                 .ToLower()
                                 .Contains(searchRequest.Location.ToLower()));
             }
-            return query.Count;
-               };
+            return query.Count();
+               }
 
         public Sighting SelectSightingById(int Id)
         {

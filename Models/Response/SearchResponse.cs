@@ -5,7 +5,7 @@ using whale_spotting.Request;
 
 namespace whale_spotting.Models.Response
 {
-    public class ListResponse
+    public class SearchResponse
     {
         public IEnumerable<SightingResponse> Sightings { get; }
 
@@ -15,14 +15,23 @@ namespace whale_spotting.Models.Response
 
         public int PageSize { get; }
 
-        public ListResponse(SearchRequest search, IEnumerable<SightingResponse> sightings,int totalNumberOfItems)
+        public SearchResponse(
+            SearchRequest search,
+            IEnumerable<SightingResponse> sightings,
+            int totalNumberOfItems
+        )
         {
             Sightings = sightings;
             TotalNumberOfItems = totalNumberOfItems;
             Page = search.Page;
             PageSize = search.PageSize;
         }
-        public static ListResponse Create(SearchRequest search, IEnumerable<Sighting> sightings, int totalNumberOfItems)
+
+        public static SearchResponse Create(
+            SearchRequest search,
+            IEnumerable<Sighting> sightings,
+            int totalNumberOfItems
+        )
         {
             var sightingModels =
                 sightings.Select(sighting => new SightingResponse(sighting));

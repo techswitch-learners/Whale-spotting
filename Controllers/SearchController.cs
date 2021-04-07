@@ -2,9 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using whale_spotting.Models.Response;
 using whale_spotting.Repositories;
 using whale_spotting.Request;
-using PagedList;
-using PagedList.Mvc;
-
 
 namespace whale_spotting.Controllers
 {
@@ -19,11 +16,15 @@ namespace whale_spotting.Controllers
         }
 
         [HttpGet("")]
-        public ActionResult<SearchResponse> Search([FromQuery] SightingSearchRequest searchRequest, int totalNumberOfItems)
+        public ActionResult<SearchResponse> Search(
+            [FromQuery] SightingSearchRequest searchRequest,
+            int totalNumberOfItems
+        )
         {
             var sightings = _sightings.Search(searchRequest);
             var sightingsCount = _sightings.Count(searchRequest);
-            return SearchResponse.Create(searchRequest, sightings, sightingsCount);
+            return SearchResponse
+                .Create(searchRequest, sightings, sightingsCount);
         }
     }
 }
