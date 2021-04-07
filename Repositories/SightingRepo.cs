@@ -18,6 +18,7 @@ namespace whale_spotting.Repositories
         Sighting SelectSightingById(int Id);
         Sighting DeleteSighting(Sighting sighting);
         public IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
+        Sighting SelectLatestApiSighting();
     }
 
     public class SightingRepo : ISightingRepo
@@ -43,7 +44,8 @@ namespace whale_spotting.Repositories
                         Description = create.Description,
                         SightedAt = create.SightedAt,
                         SubmittedByName = create.SubmittedByName,
-                        SubmittedByEmail = create.SubmittedByEmail
+                        SubmittedByEmail = create.SubmittedByEmail,
+                        CreatedAt = DateTime.Now
                     });
             _context.SaveChanges();
 
@@ -129,6 +131,16 @@ namespace whale_spotting.Repositories
             var sightingDeleted = _context.Update<Sighting>(sighting);
             _context.SaveChanges();
             return sightingDeleted.Entity;
+        }
+
+        public Sighting SelectLatestApiSighting()
+        {
+            var sighting =
+                _context.Sightings
+                .OrderByDescending(x => x.CreatedAt)
+                .Where(s => s.ApiId != null)
+                .FirstOrDefault();
+            return sighting;
         }
 
     }
