@@ -5,14 +5,14 @@ import {
   ListSightings,
   Sighting,
 } from "../../Api/apiClient";
-import { delSighting } from "../../Api/apiClient";
+import { deleteSighting } from "../../Api/apiClient";
 import "./AdminSightingsList.scss";
 
 export function TableRow(data: Sighting): JSX.Element {
   const [deleteClicked, setDeleteClicked] = useState(false);
   
   function DeleteSightingRequest(id: number) {
-    delSighting(id)
+    deleteSighting(id)
     .then(() => setDeleteClicked(true));
   }
   return (
