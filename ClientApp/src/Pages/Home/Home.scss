@@ -19,7 +19,7 @@
 
 .whale-sightings-container table {
     border-collapse: separate;
-    border-spacing: 10px;
+    border-spacing: 15px;
 }
 
 @media only screen and (min-width: $two-column-min-pixels){
@@ -48,7 +48,7 @@
         max-width: 100%;
         width: fit-content;
         font-size: 16px;
-        border-spacing: 6px;
+        border-spacing: 10px;
     }    
 
     .hide-mobile {

@@ -33,16 +33,12 @@ namespace whale_spotting.Controllers
         }
 
         [HttpPost("updateAndConfirmSighting/{id}")]
-        public IActionResult updateAndConfirmSighting([FromBody] Sighting SightingToUpdate)
+        public Sighting updateAndConfirmSighting([FromBody] Sighting SightingToUpdate)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var sightingUpdated =_sightings.UpdateAndConfirmSighting(SightingToUpdate);
 
-            _sightings.UpdateAndConfirmSighting(SightingToUpdate);
-
-            return StatusCode(200);
+            // return StatusCode(200);
+            return sightingUpdated;
         }
 
         [HttpPost("deleteSighting/{id}")]
