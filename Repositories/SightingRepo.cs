@@ -17,12 +17,8 @@ namespace whale_spotting.Repositories
         IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
         Sighting UpdateAndConfirmSighting(Sighting SightingToUpdate);
         Sighting DeleteSighting(Sighting sighting);
-<<<<<<< HEAD
-        public IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
         Sighting SelectLatestApiSighting();
-=======
         Sighting RestoreSighting(Sighting SightingToRestore);
->>>>>>> main
     }
 
     public class SightingRepo : ISightingRepo
