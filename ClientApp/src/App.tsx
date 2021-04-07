@@ -8,6 +8,7 @@ import "bootstrap";
 import "./custom.css";
 import { SubmitSightingForm } from "./Pages/SubmitSighting/SubmitSighting";
 import { Conservation } from "./Pages/Conservation/Conservation";
+import { WhaleSpecies } from "./Pages/WhaleSpecies/WhaleSpecies";
 import { ListOfUnconfirmed } from "./Pages/AdminSightingsList/AdminSightingsList";
 import { ConfirmSightingForm } from './Pages/ConfirmSighting/ConfirmSighting';
 
@@ -21,6 +22,7 @@ export default class App extends Component {
         <Route exact path="/getting-started" component={GettingStarted} />        
         <Route path="/submit-sighting" component={SubmitSightingForm} />
         <Route path="/conservation" component={Conservation} />
+        <Route path="/whale-species" component={WhaleSpecies} />
         <Route exact path="/admin" component={AdminLogin} />               
         <Route exact path="/admin/confirm-sighting" component={ListOfUnconfirmed} />
         <Route path='/admin/confirm-sighting/:id' component={ConfirmSightingForm} />
