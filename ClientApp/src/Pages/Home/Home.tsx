@@ -29,7 +29,7 @@ function Home() {
         </div>
 
         <div className="whale-sightings-container">
-          <h2 className="sub-heading">Recent Whale Sightings</h2>
+          <h2 className="sub-heading">Recent Sightings</h2>
           {/* this table is a placeholder, feel free to delete when inserting the actual table */}
           <table className="body-text">
             <thead>
@@ -37,7 +37,7 @@ function Home() {
                 <th> Location </th>
                 <th> Species </th>
                 <th> Date </th> 
-                <th> Submitted By </th>
+                <th className="hide-mobile"> Submitted By </th>
               </tr>
             </thead>
             <tbody>
@@ -45,8 +45,8 @@ function Home() {
                 <td> Canada </td> 
                 <td> Orca </td>
                 <td> 22/02/2021</td>
-                <td> Chloe </td>
-                <td> <a href='/'> More Info </a>  </td>
+                <td className="hide-mobile"> Chloe </td>
+                <td> <a href='/'> More </a>  </td>
               </tr>
             </tbody>
           </table>
