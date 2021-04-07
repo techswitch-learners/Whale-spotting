@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using whale_spotting.Models.Response;
 using whale_spotting.Repositories;
 using whale_spotting.Request;
-using PagedList;
-using PagedList.Mvc;
 
 
 namespace whale_spotting.Controllers
