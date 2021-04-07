@@ -1,6 +1,8 @@
 import React, { FormEvent, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { getSighting } from "../../Api/apiClient";
+import { deleteSighting } from "../../Api/apiClient";
 import "./ConfirmSighting.scss";
 
 export function ConfirmSightingForm(): JSX.Element {
@@ -17,6 +19,9 @@ export function ConfirmSightingForm(): JSX.Element {
   const [submittedByName, setSubmittedByName] = useState("");
   const [submittedByEmail, setSubmittedByEmail] = useState("");
   const { id } = useParams<{ id: string }>();
+  const [status, setStatus] = useState<FormStatus>("READY");
+
+  type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
   
   useEffect(() => {
     getSighting(parseInt(id))
@@ -40,8 +45,22 @@ export function ConfirmSightingForm(): JSX.Element {
     if (button == "confirm") {
       // call the function to update the database
     } else if (button == "delete") {
-      // delete the record
+      setStatus("SUBMITTING");
+      deleteSighting(parseInt(id))
+      .then(() => setStatus("FINISHED"))
+      .catch(() => setStatus("ERROR"));
     }
+  }
+
+  if (status === "FINISHED" && button == "delete") {
+    return (
+      <div className="content-container">
+        <p className="body-text">Sighting deleted Successfully!</p>
+        <Link to="/admin/confirm-sighting" className="body-text">Confirm another sighting?</Link>
+        <br></br>
+        <Link to="/" className="body-text">Return to Homepage?</Link>
+      </div>
+    );
   }
 
   return (
@@ -115,7 +134,6 @@ export function ConfirmSightingForm(): JSX.Element {
               className="form-input"
               value={sightedAt}
               onChange={(event) => setSightedAt(event.target.value)}
-              type="date"
               required
             />
           </label>
