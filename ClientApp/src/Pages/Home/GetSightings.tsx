@@ -8,7 +8,6 @@ interface Sighting {
     species: string,
     quantity: string,
     sightedAt: string,
-
   }
 }
 

@@ -9,22 +9,9 @@
   submittedByName: string;
   submittedByEmail: string;
 }
-export interface Sighting {
-  id: number;
-  species: string;
-  quantity: string;
-  location: string;
-  latitude: number;
-  longitude: number;
-  description: string;
-  sightedAt: string;
-  submittedByName: string;
-  submittedByEmail: string;
-  confirmState: number;
-}
 
 export interface ListSightings {
-  sightings: Sighting[];
+  sightings: SightingResponse[];
 }
 
 export interface SightingResponse {
@@ -39,6 +26,15 @@ export interface SightingResponse {
   sightedAt: string;
   submittedByName: string;
   submittedByEmail: string;
+  confirmState: number;
+}
+
+export interface ListResponse<T> {
+  items: T[];
+  // totalNumberOfItems: number;
+  // page: number;
+  // nextPage: string;
+  // previousPage: string;
 }
 
 export async function submitSighting(newSighting: NewSighting) {
@@ -55,21 +51,8 @@ export async function submitSighting(newSighting: NewSighting) {
   }
 }
 
-export interface RecentSightingResponse {
-  apiId: string;
-  species: string;
-  quantity: string;
-  location: string;
-  latitude: number;
-  longitude: number;
-  description: string;
-  sightedAt: string;
-  submittedByName: string;
-  submittedByEmail: string;
-}
-
 export interface RecentSightingResponseList {
-  recentSightingsList: RecentSightingResponse[];
+  recentSightingsList:SightingResponse[];
 }
 
 export async function getRecentSightings(): Promise<RecentSightingResponseList> {
@@ -78,6 +61,12 @@ export async function getRecentSightings(): Promise<RecentSightingResponseList> 
     throw new Error(await response.json());
   }
   return await response.json();
+}
+
+export async function submitSearch(species: string, location: string, sightedAt: string): Promise<null | ListSightings> {
+  const response =await fetch(
+    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}`);
+    return await response.json();
 }
 
 export async function getSighting(Id: number): Promise<SightingResponse> {
@@ -93,3 +82,12 @@ export async function fetchUnconfirmedSightings(): Promise<null | ListSightings>
   return await response.json();
 }
 
+export async function deleteSighting(Id:number) {
+  const response = await fetch(`/admin/deleteSighting/${Id}`, {
+    method: "POST",
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+}

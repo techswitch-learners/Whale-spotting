@@ -1,0 +1,27 @@
+@import "../../Styles/constants";
+@import '../../Styles/styles';
+
+
+.search-sighting-page {
+    margin: $gutter-width;
+    height: 100%;
+  }
+  
+  .search-sighting-form {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    
+  
+    .form-label {
+      @include formLabel;
+    }
+  
+    .form-input {
+      @include formInput;
+    }
+  
+    .submit-button {
+      @include primaryButton;
+    }
+  }
