@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RPauth.Data;
+using whale_spotting.Models.Database;
+
 
 [assembly: HostingStartup(typeof(whale_spotting.Areas.Identity.IdentityHostingStartup))]
 namespace whale_spotting.Areas.Identity
@@ -16,11 +18,16 @@ namespace whale_spotting.Areas.Identity
         {
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<WhaleSpottingContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("WhaleSpottingContextConnection")));
+                    // options.UseSqlServer(
+                    //     context.Configuration.GetConnectionString("WhaleSpottingContextConnection")));
+                    options
+                         .UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL")));
 
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+
+                services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<WhaleSpottingContext>();
+                    // .AddUserManager<ApplicationUserManager>()      // <- use only if use have custom implementation
+                    // .AddSignInManager<ApplicationSignInManager>(); // <- use only if use have custom implementation
             });
         }
     }

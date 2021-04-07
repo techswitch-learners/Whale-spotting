@@ -37,8 +37,8 @@ namespace whale_spotting
 
             services.AddDatabaseDeveloperPageExceptionFilter();
            
-            services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<WhaleSpottingContext>();
+            // services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //     .AddEntityFrameworkStores<WhaleSpottingContext>();
 
             services.AddIdentityServer()
                 .AddApiAuthorization<AdminUser, WhaleSpottingContext>();
