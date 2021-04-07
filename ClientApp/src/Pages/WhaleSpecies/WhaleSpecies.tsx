@@ -27,6 +27,7 @@ export function WhaleSpecies(): JSX.Element {
     return (
  <section className ="section">
     <div className="container" >
+    <h1 className="title">Whale species</h1>
         <div className="carousel" >
             <input type="radio" name="slides" checked id="slide-1" />
             <input type="radio" name="slides" id="slide-2" />
