@@ -9,7 +9,7 @@ using whale_spotting.Models.Database;
 using whale_spotting.Repositories;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace whale_spotting.Controllers
 {
@@ -73,7 +73,7 @@ namespace whale_spotting.Controllers
             {    
                 _sightings.AddNewSightings(sightingsToAdd);
             }      
-            return NoContent();  
+            return Ok();  
         }
     }
 }

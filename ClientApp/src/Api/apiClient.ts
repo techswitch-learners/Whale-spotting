@@ -154,3 +154,15 @@ export async function updateAndConfirmSighting(sightingToUpdate: Sighting)
 
   return await response.json();
 }
+
+export async function fetchApiData() 
+{
+  const response = await fetch(`/getapidata`, {
+    method: "POST",
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  return await response.status;
+}

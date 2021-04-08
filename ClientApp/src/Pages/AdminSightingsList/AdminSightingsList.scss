@@ -1,3 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
-@import "../../Styles/styles.scss";
+@import "../../Styles/constants";
+@import "../../Styles/styles";
+
+.submit-button {
+    @include primaryButton;
+  }
 
