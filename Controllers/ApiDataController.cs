@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace whale_spotting.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("/getapidata")]
     public class ApiDataController : ControllerBase

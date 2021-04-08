@@ -1,4 +1,6 @@
-﻿export interface NewSighting {
+﻿import authService from '../components/api-authorization/AuthorizeService'
+
+export interface NewSighting {
   species: string;
   quantity: string;
   location: string;
@@ -157,8 +159,10 @@ export async function updateAndConfirmSighting(sightingToUpdate: Sighting)
 
 export async function fetchApiData() 
 {
+  const token = await authService.getAccessToken();
   const response = await fetch(`/getapidata`, {
     method: "POST",
+    headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
   });
 
   if (!response.ok) {
