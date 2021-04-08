@@ -34,7 +34,7 @@ function NavBar() {
                         <li className="web-nav-bar-list-item"><Link to="/getting-started" className={selectedPage == 'started' ? 'active' : 'inactive'} onClick={() => setSelectedPage('started')}>Getting Started</Link></li>
                         <li className="web-nav-bar-list-item"><Link to="/submit-sighting" className={selectedPage == 'submit-sighting' ? 'active' : 'inactive'} onClick={() => setSelectedPage('submit-sighting')}>Submit a Sighting</Link></li>
                         <li className="web-nav-bar-list-item"><Link to="/conservation" className={selectedPage == 'conservation' ? 'active' : 'inactive'} onClick={() => setSelectedPage('conservation')} >Conservation</Link></li>
-                        <li className="web-nav-bar-list-item"><Link to="/whale-species" className={selectedPage == 'whale-species' ? 'active' : 'inactive'} onClick={() => setSelectedPage('whale-species')} >Whale Species</Link></li>
+                        {/* <li className="web-nav-bar-list-item"><Link to="/authetication/logout" className={selectedPage == 'logout' ? 'active' : 'inactive'} onClick={() => setSelectedPage('conservation')} >Logout</Link></li> */}
                     </div>
                 </ul>
             </nav>
@@ -62,6 +62,7 @@ function NavBar() {
                         }} />
                 </div>
             </div>
+
         </div>
     );
 }
