@@ -125,18 +125,11 @@ namespace whale_spotting.Repositories
 
         public Sighting ConfirmSighting(Sighting SightingToConfirm)
         {
-            if (SightingToConfirm.ConfirmState == ConfirmState.Confirmed)
-            {
-                SightingToConfirm.ConfirmState = ConfirmState.Review;
-            } else
-            {
-                SightingToConfirm.ConfirmState = ConfirmState.Confirmed;
-            }   
+            SightingToConfirm.ConfirmState = ConfirmState.Confirmed;
             var ConfirmedSighting = _context.Update<Sighting>(SightingToConfirm);
             _context.SaveChanges();
             return ConfirmedSighting.Entity;
-        }
-        
+        }        
         public Sighting UpdateAndConfirmSighting(Sighting SightingToUpdate)
         {
             var UpdatedSighting = _context.Update<Sighting>(SightingToUpdate);
