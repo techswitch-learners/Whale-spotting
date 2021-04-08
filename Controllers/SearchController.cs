@@ -16,10 +16,13 @@ namespace whale_spotting.Controllers
         }
 
         [HttpGet("")]
-        public ActionResult<SearchResponse> Search([FromQuery] SightingSearchRequest searchRequest)
+        public ActionResult<SearchResponse>
+        Search([FromQuery] SightingSearchRequest searchRequest)
         {
             var sightings = _sightings.Search(searchRequest);
-            return SearchResponse.Create(searchRequest, sightings);
+            var sightingsCount = _sightings.Count(searchRequest);
+            return SearchResponse
+                .Create(searchRequest, sightings, sightingsCount);
         }
     }
 }
