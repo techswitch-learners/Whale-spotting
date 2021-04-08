@@ -11,6 +11,7 @@ namespace whale_spotting.Repositories
     {
         Sighting Submit(SubmitSightingRequest create);
 
+        List<Sighting> GetRecentSightings();
         IEnumerable<Sighting> GetByConfirmState();
 
         void AddNewSightings(List<Sighting> sightingsToAdd);
@@ -44,7 +45,8 @@ namespace whale_spotting.Repositories
             var insertResponse =
                 _context
                     .Sightings
-                    .Add(new Sighting {
+                    .Add(new Sighting
+                    {
                         Species = create.Species,
                         Quantity = create.Quantity,
                         Location = create.Location,
@@ -168,6 +170,14 @@ namespace whale_spotting.Repositories
             return sighting;
         }
 
+        public List<Sighting> GetRecentSightings()
+        {
+            var sightingList = _context.Sightings.Where(s => s.ConfirmState == ConfirmState.Confirmed)
+                                                 .OrderByDescending(x => x.SightedAt)
+                                                 .Take(5)
+                                                 .ToList();
+            return sightingList;
+        }
         public Sighting ConfirmSighting(Sighting SightingToConfirm)
         {
             if (SightingToConfirm.ConfirmState == ConfirmState.Confirmed)
