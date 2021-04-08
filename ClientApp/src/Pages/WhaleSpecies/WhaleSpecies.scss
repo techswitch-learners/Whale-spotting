@@ -178,7 +178,7 @@ section {
   background-color: #022140;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: $two-column-max-pixels) {
   .carousel__slide {
     position: relative;
     display: flex;
@@ -214,4 +214,3 @@ section {
     flex-direction: column;
   }
 }
-@import "../../Styles/styles";
