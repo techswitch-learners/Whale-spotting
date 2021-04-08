@@ -7,7 +7,7 @@ import { WhaleCardData, WhaleData } from "./WhaleSpeciesData";
 function Photo(data: WhaleCardData): JSX.Element {
     return (
 <li className="carousel__slide">
-<figure>
+<figure className = "small-screen">
     <div>
     <img src={data.imgSrc} alt={data.title} />
     </div>
@@ -25,7 +25,7 @@ function Photo(data: WhaleCardData): JSX.Element {
 
 export function WhaleSpecies(): JSX.Element {
     return (
- <section className ="section">
+ <section className ="section content-container" >
     <div className="container" >
     <h1 className="title">Whale species</h1>
         <div className="carousel" >

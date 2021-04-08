@@ -22,5 +22,3 @@ export interface WhaleCardData{
     siteLink: "https://www.whalefacts.org/sperm-whale-facts/"
   }
 ]
-
-
