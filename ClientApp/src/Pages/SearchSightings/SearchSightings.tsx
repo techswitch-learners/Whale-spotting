@@ -38,11 +38,11 @@ export function SearchSightingForm(): JSX.Element {
 
     function results(){
       return (
+        <div>
+        <p>Showing results {(page*10) - 9} - {page*10}</p>
         <table className="results-table">
-        
-          <p>Showing results {(page*10) - 9} - {page*10}</p>
-          
-        <tr>
+     
+        <tr className="first-row">
           <th scope="col">ID</th>
           <th scope="col">Species</th>
           <th scope="col">Quantity</th>
@@ -54,6 +54,7 @@ export function SearchSightingForm(): JSX.Element {
 
         {searchResults?.sightings?.map(x => searchRow(x))}
       </table>
+      </div>
       )
     }
 
@@ -110,9 +111,6 @@ export function SearchSightingForm(): JSX.Element {
       ).then((data) => setSearchResults(data));
       setPage(page + 1)
     }
-    
-
-    
 
       if (pageStatus === "RESULTS") {
         return (

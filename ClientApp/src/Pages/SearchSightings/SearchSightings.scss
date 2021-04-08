@@ -26,12 +26,16 @@
      @include primaryButton;
   }
 }
-
-
+tr:first-child{
+  background-color: $dark-bg
+}
 tr:nth-child(even){
-
   background-color: $accent-color
 }
+.results-table{
+  background-color: $accent-color-dark
+}
+
 
 td,th {
   padding-left: 8px;
