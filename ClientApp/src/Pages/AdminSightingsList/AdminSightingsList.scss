@@ -5,22 +5,27 @@
     background-color: $dark-bg !important;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 .btn-mobile {
     display: none;
     font-size: 12px;
 }
 
-@media only screen and (max-width: 650px) {
-    .btn-mobile {
-        display: unset;
-    }
+.btn-responsive {
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+}
 
-    .btn-desktop {
+@media only screen and (max-width: $two-column-min-pixels)
+{
+    .hide-tablet {
         display: none;
     }
 
-    .hide-mobile {
-        display: none;
+    .btn-responsive {
+        @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
     }
 }
 
@@ -34,9 +39,37 @@
     }
 } 
 
-@media only screen and (max-width: 1260px)
-{
-    .hide-tablet {
+@media only screen and (max-width: 650px) {
+    .btn-mobile {
+        display: unset;
+    }
+
+    .btn-column {
+        padding: 3px !important;
+    }
+
+    .btn-desktop {
         display: none;
     }
+
+    .hide-mobile {
+        display: none;
+    }
+
+    .admin-table {
+        font-size: 14px !important;
+    }
 }
+
+@media only screen and (max-width: 480px) {
+    .admin-table td {
+        padding: 3px;
+    }       
+}
+
+@media only screen and (max-width: 400px) {
+    .btn-mobile {
+        padding: 4px;
+    }
+}
+
