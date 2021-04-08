@@ -1,5 +1,5 @@
 import React, { FormEvent, useState, useEffect } from "react";
-import { submitSearch, Sighting, ListSightings } from "../../Api/apiClient";
+import { submitSearch, Sighting, SearchResponse } from "../../Api/apiClient";
 import { Link } from "react-router-dom";
 import "./SearchSightings.scss";
 import { resourceLimits } from "node:worker_threads";
@@ -15,10 +15,26 @@ export function SearchSightingForm(): JSX.Element {
     const [sightedAt, setSightedAt] = useState("");
     const [formStatus, setFormStatus] = useState<FormStatus>("READY");
     const [pageStatus, setPageStatus] = useState<PageStatus>("INITIAL");
-    const [searchResults, setSearchResults] = useState<null | ListSightings>(null);
+    const [searchResults, setSearchResults] = useState<null | SearchResponse>(null);
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
 
+
+    function submitForm(event: FormEvent) {
+      event.preventDefault();
+      setPage(1);
+      setFormStatus("SUBMITTING");
+      submitSearch(
+        species,
+        location,
+        sightedAt,
+        page,
+        pageSize
+      ).then((data) => setSearchResults(data))
+      .catch(() => setFormStatus("ERROR"))
+      .then(() => setPageStatus("RESULTS"))
+      .then(() => setFormStatus("READY"));     
+    }
 
     function results(){
       return (
@@ -57,22 +73,43 @@ export function SearchSightingForm(): JSX.Element {
           </tr>
         );
     }
-    
 
-    function submitForm(event: FormEvent) {
-      event.preventDefault();
-      setFormStatus("SUBMITTING");
+    function previousPageButton(){
+      return(
+        <button className="previous-button" onClick={() => previousPage()} > previous </button>
+      )
+    }
+
+    function previousPage(){
+      setPage(page - 1);
       submitSearch(
         species,
         location,
         sightedAt,
         page,
         pageSize
-      ).then((data) => setSearchResults(data))
-      .catch(() => setFormStatus("ERROR"))
-      .then(() => setPageStatus("RESULTS"))
-      .then(() => setFormStatus("READY"));     
+      )
     }
+
+    function nextPageButton(){
+      return(
+        <button className="next-button" onClick={() => nextPage()} > next </button>
+      )
+    }
+
+    function nextPage(){
+      setPage(page + 1);
+      submitSearch(
+        species,
+        location,
+        sightedAt,
+        page,
+        pageSize
+      )
+    }
+    
+
+    
 
       if (pageStatus === "RESULTS") {
         return (
@@ -125,7 +162,12 @@ export function SearchSightingForm(): JSX.Element {
         
         {searchResults?.sightings && searchResults.sightings.length> 0 ? results() : noResults() }
         
-       
+       {/* Check for next or previous page button */}
+       <div className="pagination">
+         {page > 1? previousPageButton(): "" }
+         <p>{page}</p>
+         {searchResults?.totalNumberOfItems &&  searchResults?.totalNumberOfItems - (pageSize * page)? nextPageButton(): null }
+       </div>
         
         </div>
         );

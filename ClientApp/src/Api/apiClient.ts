@@ -45,9 +45,9 @@ export interface SightingResponse {
 export interface SearchResponse {
   sightings: Sighting[];
   totalNumberOfItems: number;
-  page: number;
-  nextPage: string;
-  previousPage: string;
+  // page: number;
+  // nextPage: string;
+  // previousPage: string;
 }
 
 
