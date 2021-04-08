@@ -44,7 +44,6 @@ export function ConfirmSightingForm(): JSX.Element {
     if (button == "confirm") 
     {
       setStatus("SUBMITTING");
-      console.log(status);
       updateAndConfirmSighting({
         id: parseInt(id),
         species,
@@ -60,7 +59,6 @@ export function ConfirmSightingForm(): JSX.Element {
       })
         .then(() => setStatus("FINISHED"))
         .catch(() => setStatus("ERROR"));
-      console.log(status);
     } 
     else if (button == "delete") 
     {
