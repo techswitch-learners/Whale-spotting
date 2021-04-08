@@ -36,9 +36,6 @@ namespace whale_spotting
                         .UseNpgsql(connectionString));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
-           
-            // services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //     .AddEntityFrameworkStores<WhaleSpottingContext>();
 
             services.AddIdentityServer()
                 .AddApiAuthorization<AdminUser, WhaleSpottingContext>();
