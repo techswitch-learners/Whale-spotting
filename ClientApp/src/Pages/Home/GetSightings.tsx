@@ -3,11 +3,11 @@ import "./Home.scss";
 
 interface Sighting {
   sighting: {
-    location: string;
-    species: string;
-    quantity: string;
-    sightedAt: string;
-  };
+    location: string,
+    species: string,
+    quantity: string,
+    sightedAt: string,
+  }
 }
 
 function GetSightings(props: Sighting) {
@@ -25,4 +25,4 @@ function GetSightings(props: Sighting) {
   );
 }
 
-export { GetSightings };
+export { GetSightings }

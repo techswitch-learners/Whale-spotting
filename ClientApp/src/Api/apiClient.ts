@@ -51,7 +51,6 @@ export interface ListResponse<T> {
   // previousPage: string;
 }
 
-
 export async function submitSighting(newSighting: NewSighting) {
   const response = await fetch(`/api/submit-sighting/submit`, {
     method: "POST",
@@ -67,7 +66,7 @@ export async function submitSighting(newSighting: NewSighting) {
 }
 
 export interface RecentSightingResponseList {
-  recentSightingsList: SightingResponse[];
+  recentSightingsList:SightingResponse[];
 }
 
 export async function getRecentSightings(): Promise<RecentSightingResponseList> {
@@ -76,8 +75,8 @@ export async function getRecentSightings(): Promise<RecentSightingResponseList> 
     throw new Error(await response.json());
   }
   return await response.json();
-
 }
+
 export async function submitSearch(species: string, location: string, sightedAt: string): Promise<null | ListSightings> {
   const response =await fetch(
     `api/search?species=${species}&location=${location}&sightedAt=${sightedAt}`);
@@ -121,6 +120,7 @@ export async function deleteSighting(Id: number)
   if (!response.ok) {
     throw new Error(await response.json());
   }
+
 
   return await response.json();
 }

@@ -7,6 +7,5 @@ namespace whale_spotting.Models.Response
     public class RecentSightingsListResponse
     {
          public List<SightingResponse> RecentSightingsList {get; set;}
-
     }
 }

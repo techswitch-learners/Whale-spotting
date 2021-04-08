@@ -1,3 +1,4 @@
+
 export interface WhaleCardData{
     title: string;
     imgSrc: string;
@@ -22,3 +23,6 @@ export interface WhaleCardData{
     siteLink: "https://www.whalefacts.org/sperm-whale-facts/"
   }
 ]
+ 
+
+
