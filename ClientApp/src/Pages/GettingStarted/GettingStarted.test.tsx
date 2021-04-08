@@ -14,7 +14,6 @@ test('Onclick Event is working, Canada button works', () => {
       expect(canadaButton.className).toBe('btn btn-outline-primary')
       fireEvent.click(canadaButton)
       expect(canadaButton.className).toBe('btn btn-primary')
-
 })
 
 test('Scotland is selected by default and unselected when Australia is clicked', () => {
@@ -26,7 +25,6 @@ test('Scotland is selected by default and unselected when Australia is clicked',
       fireEvent.click(australiaButton)
       expect(scotlandButton.className).toBe('btn btn-outline-primary')
       expect(australiaButton.className).toBe('btn btn-primary')
-
 })
 
 test('LocationSummary for Australia is shown when Australia is clicked', () => {

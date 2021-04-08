@@ -44,7 +44,7 @@
     height: 400px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: $two-column-max-pixels) {
 
     .image-and-text {
         display: flex;
@@ -67,7 +67,7 @@
     }
 }
 
-@media only screen and (min-width: 1001px) {
+@media only screen and (min-width: $two-column-min-pixels) {
     .location-image {
         padding-right: 25px;
     }
