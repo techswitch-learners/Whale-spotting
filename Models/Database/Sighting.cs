@@ -28,6 +28,7 @@ namespace whale_spotting.Models.Database
         public string SubmittedByName { get; set; }
         public string SubmittedByEmail { get; set; }
         public ConfirmState ConfirmState { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public Sighting()
         {
@@ -43,6 +44,7 @@ namespace whale_spotting.Models.Database
             Longitude = apiModel.Longitude;
             Description = apiModel.Description;
             SightedAt = apiModel.SightedAt;
+            CreatedAt = apiModel.CreatedAt;
         }
     }
 }
