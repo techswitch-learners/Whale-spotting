@@ -16,18 +16,15 @@ namespace whale_spotting.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
+            var connectionString = ConnectionStringerHelper.GetConnectionString();
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<WhaleSpottingContext>(options =>
-                    // options.UseSqlServer(
-                    //     context.Configuration.GetConnectionString("WhaleSpottingContextConnection")));
                     options
-                         .UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL")));
-
+                         .UseNpgsql(connectionString));
 
                 services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<WhaleSpottingContext>();
-                    // .AddUserManager<ApplicationUserManager>()      // <- use only if use have custom implementation
-                    // .AddSignInManager<ApplicationSignInManager>(); // <- use only if use have custom implementation
+
             });
         }
     }
