@@ -15,13 +15,13 @@ namespace whale_spotting
             var uri = new Uri(databaseUrl);
             var username = uri.UserInfo.Split(':')[0];
             var password = uri.UserInfo.Split(':')[1];
-            var connectionString = 
-            "; Database=" + uri.AbsolutePath.Substring(1) +
-            "; Username=" + username +
-            "; Password=" + password + 
-            "; Port=" + uri.Port +
-            "; SSL Mode=Require; Trust Server Certificate=true;";
-
+            var connectionString = "User ID=" + username + 
+                ";Password=" + password + 
+                ";Host=" + uri.Host + 
+                ";Port=" + uri.Port + 
+                ";Database=" + uri.AbsolutePath.Substring(1) +
+                ";Pooling=true;Use SSL Stream=True;SSL Mode=Require;TrustServerCertificate=True;";
+            Console.WriteLine(connectionString);
             return connectionString;
         }
     }
