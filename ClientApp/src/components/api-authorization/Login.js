@@ -26,10 +26,10 @@ export class Login extends Component {
             case LoginActions.LoginCallback:
                 this.processLoginCallback();
                 break;
-            case LoginActions.LoginFailed:
+            case LoginActions.LoginFailed:{
                 const params = new URLSearchParams(window.location.search);
                 const error = params.get(QueryParameterNames.Message);
-                this.setState({ message: error });
+                this.setState({ message: error });}
                 break;
             case LoginActions.Profile:
                 this.redirectToProfile();
