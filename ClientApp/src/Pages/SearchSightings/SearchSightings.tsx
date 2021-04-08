@@ -28,7 +28,7 @@ export function SearchSightingForm(): JSX.Element {
         species,
         location,
         sightedAt,
-        page,
+        1,
         pageSize
       ).then((data) => setSearchResults(data))
       .catch(() => setFormStatus("ERROR"))
@@ -39,6 +39,9 @@ export function SearchSightingForm(): JSX.Element {
     function results(){
       return (
         <table className="results-table">
+        
+          <p>Showing results {(page*10) - 9} - {page*10}</p>
+          
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Species</th>
@@ -76,36 +79,36 @@ export function SearchSightingForm(): JSX.Element {
 
     function previousPageButton(){
       return(
-        <button className="previous-button" onClick={() => previousPage()} > previous </button>
+        <a className="previous-button" onClick={() => previousPage()} > &lt; </a>
       )
     }
 
-    function previousPage(){
-      setPage(page - 1);
-      submitSearch(
+    function previousPage(){ 
+     submitSearch(
         species,
         location,
         sightedAt,
-        page,
+        page - 1,
         pageSize
-      ).then((data) => setSearchResults(data))
+      ).then((data) => setSearchResults(data));
+      setPage(page - 1)
     }
 
     function nextPageButton(){
       return(
-        <button className="next-button" onClick={() => nextPage()} > next </button>
+        <a className="next-button" onClick={() => nextPage()} > &gt; </a>
       )
     }
 
     function nextPage(){
-      setPage(page + 1);
       submitSearch(
         species,
         location,
         sightedAt,
-        page,
+        page + 1 ,
         pageSize
-      ).then((data) => setSearchResults(data))
+      ).then((data) => setSearchResults(data));
+      setPage(page + 1)
     }
     
 
@@ -116,7 +119,7 @@ export function SearchSightingForm(): JSX.Element {
           // Returns search bar at top, with list of matched items underneath
           <div> 
           <h1 className="title">Results:</h1>
-          <form className="update-sighting-form" onSubmit={submitForm}>
+          <form className="update-search-form" onSubmit={submitForm}>
 
 
             <label className="form-label">
@@ -151,7 +154,7 @@ export function SearchSightingForm(): JSX.Element {
           </label>
     
             <button
-              className="search-button"
+              className="update-search-button"
               disabled={formStatus === "SUBMITTING"}
               type="submit"
             >
@@ -165,7 +168,7 @@ export function SearchSightingForm(): JSX.Element {
        {/* Check for next or previous page button */}
        <div className="pagination">
          {page > 1? previousPageButton(): "" }
-         <p>{page}</p>
+         <p className="page">  {page}  </p>
          {searchResults?.totalNumberOfItems &&  searchResults?.totalNumberOfItems - (pageSize * page)? nextPageButton(): null }
        </div>
         
