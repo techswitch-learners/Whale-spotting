@@ -100,6 +100,9 @@ li a:hover {
   background-color: $accent-color-dark;
   color: $light-text;
 }
+.hide{
+  display: none;
+}
 
 @media only screen and (min-width: $two-column-max-pixels){
   .mobile-nav-bar{
@@ -113,5 +116,24 @@ li a:hover {
 @media only screen and (max-width: $two-column-min-pixels){
   .web-nav-bar{
     display: none;
+  }
+}
+@media only screen and (min-width: 1100px) and  (max-width: 1300px){
+  .page-headers{
+    margin-left: 5%;
+  }
+}
+@media only screen and (min-width: 1000px) and  (max-width: 1101px){
+  .page-headers{
+    margin-left: 4%;
+  }
+  li a {
+    padding: 14px 10px;
+  }
+}
+@media only screen and (min-width: 1300px){
+  page-headers{
+    display: flex;
+    justify-content: center;
   }
 }
