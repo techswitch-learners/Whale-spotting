@@ -97,7 +97,7 @@ export function ListOfUnconfirmed(): JSX.Element {
   return (
     <div className="content-container">
       <h1 className="title">Review Sightings</h1>
-      <table className="table table-hover body-text admin-table">
+      <table className="table table-hover body-text admin-table" id="admin-table">
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Species</th>
