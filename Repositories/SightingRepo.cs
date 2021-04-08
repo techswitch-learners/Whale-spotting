@@ -220,7 +220,6 @@ namespace whale_spotting.Repositories
                 .FirstOrDefault();
             return sighting;
         }
-
         
         public Sighting RestoreSighting(Sighting SightingToRestore)
         {
