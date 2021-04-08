@@ -1,0 +1,50 @@
+@import "../../Styles/constants";
+@import '../../Styles/styles';
+
+
+
+.search-sighting-page {
+  margin: $gutter-width;
+  height: 100%;
+}
+  
+.search-sighting-form {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+    
+  
+  .form-label {
+    @include formLabel;
+  }
+  
+  .form-input {
+    @include formInput;
+  }
+  
+  .submit-button {
+     @include primaryButton;
+  }
+}
+
+
+tr:nth-child(even){
+
+  background-color: $accent-color
+}
+
+td,th {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
+.update-sighting-form{
+  .form-label {
+    padding: 7.5px
+  }
+  .form-input{
+    margin-left: 5px
+  }
+
+
+}
