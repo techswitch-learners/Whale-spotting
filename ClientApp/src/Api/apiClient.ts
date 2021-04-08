@@ -10,6 +10,20 @@
   submittedByEmail: string;
 }
 
+export interface Sighting {
+  id: number;
+  species: string;
+  quantity: string;
+  location: string;
+  latitude: number;
+  longitude: number;
+  description: string;
+  sightedAt: string;
+  submittedByName: string;
+  submittedByEmail: string;
+  confirmState: number;
+}
+
 export interface ListSightings {
   sightings: SightingResponse[];
 }
@@ -65,7 +79,7 @@ export async function getRecentSightings(): Promise<RecentSightingResponseList> 
 
 export async function submitSearch(species: string, location: string, sightedAt: string): Promise<null | ListSightings> {
   const response =await fetch(
-    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}`);
+    `api/search?species=${species}&location=${location}&sightedAt=${sightedAt}`);
     return await response.json();
 }
 
@@ -82,7 +96,23 @@ export async function fetchUnconfirmedSightings(): Promise<null | ListSightings>
   return await response.json();
 }
 
-export async function deleteSighting(Id:number) {
+export async function confirmSighting(Id: number): Promise<SightingResponse> {
+  const response = await fetch(`/admin/confirmSighting/${Id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+
+  return await response.json();
+}
+
+export async function deleteSighting(Id: number) 
+{
   const response = await fetch(`/admin/deleteSighting/${Id}`, {
     method: "POST",
   });
@@ -90,4 +120,37 @@ export async function deleteSighting(Id:number) {
   if (!response.ok) {
     throw new Error(await response.json());
   }
+
+
+  return await response.json();
+}
+
+export async function restoreSighting(Id: number)
+{
+  const response = await fetch(`/admin/restoreSighting/${Id}`, {
+    method: "POST",
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+
+  return await response.json();
+}
+
+export async function updateAndConfirmSighting(sightingToUpdate: Sighting) 
+{
+  const response = await fetch(`admin/updateAndConfirmSighting/${sightingToUpdate.id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sightingToUpdate),
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+
+  return await response.json();
 }

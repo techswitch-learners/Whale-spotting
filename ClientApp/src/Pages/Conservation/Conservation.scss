@@ -28,6 +28,15 @@ $margin-bottom: 30px;
   padding: 10px 10px;
 }
 
+.card, .card-body {
+  background-color: $dark-text !important;
+  color: $light-text !important;
+}
+
+.card {
+  margin-top: 8px;
+}
+
 @media only screen and (max-width: 600 px) {
   .card {
     width: 90%;
