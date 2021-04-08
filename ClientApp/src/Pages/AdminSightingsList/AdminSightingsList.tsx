@@ -6,7 +6,8 @@ import {
   ListSightings,
   Sighting,
   deleteSighting,
-  restoreSighting
+  restoreSighting,
+  updateAndConfirmSighting
 } from "../../Api/apiClient";
 import "./AdminSightingsList.scss";
 
@@ -16,8 +17,15 @@ export function TableRow(data: Sighting): JSX.Element {
   const [deleteClicked, setDeleteClicked] = useState(false);
   
   function ConfirmSightingRequest(id: number) {
-    confirmSighting(id)
-    .then(() => setConfirmClicked(!confirmClicked));
+    if (!confirmClicked)
+    {
+      confirmSighting(id)
+      .then(() => setConfirmClicked(!confirmClicked));
+    } else
+    {
+      restoreSighting(id)
+      .then(() => setConfirmClicked(!confirmClicked));
+    }
   }  
   
   function DeleteSightingRequest(id: number) {
@@ -29,8 +37,7 @@ export function TableRow(data: Sighting): JSX.Element {
     {
       restoreSighting(id)
       .then(() => setDeleteClicked(!deleteClicked));
-    }
-    
+    }    
   }
   
   return (
