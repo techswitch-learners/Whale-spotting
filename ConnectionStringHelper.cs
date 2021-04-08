@@ -20,7 +20,7 @@ namespace whale_spotting
                 ";Host=" + uri.Host + 
                 ";Port=" + uri.Port + 
                 ";Database=" + uri.AbsolutePath.Substring(1) +
-                ";Pooling=true;Use SSL Stream=True;SSL Mode=Require;TrustServerCertificate=True;";
+                ";Pooling=true;SSL Mode=Require;TrustServerCertificate=True;";
             Console.WriteLine(connectionString);
             return connectionString;
         }
