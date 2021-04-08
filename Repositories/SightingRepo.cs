@@ -13,12 +13,21 @@ namespace whale_spotting.Repositories
 
         List<Sighting> GetRecentSightings();
         IEnumerable<Sighting> GetByConfirmState();
+
         void AddNewSightings(List<Sighting> sightingsToAdd);
+
         Sighting SelectSightingById(int Id);
-        Sighting ConfirmSighting(Sighting SightingToConfirm);
+
         IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
+
+        int Count(SightingSearchRequest search);
+
+        Sighting ConfirmSighting(Sighting SightingToConfirm);
+
         Sighting UpdateAndConfirmSighting(Sighting SightingToUpdate);
+
         Sighting DeleteSighting(Sighting sighting);
+
         Sighting RestoreSighting(Sighting SightingToRestore);
     }
 
@@ -119,6 +128,41 @@ namespace whale_spotting.Repositories
                 .Take(searchRequest.PageSize);
         }
 
+        public int Count(SightingSearchRequest searchRequest)
+        {
+            IQueryable<Sighting> query = _context.Sightings;
+            if (!string.IsNullOrEmpty(searchRequest.Species))
+            {
+                query =
+                    query
+                        .Where(s =>
+                            s
+                                .Species
+                                .ToLower()
+                                .Contains(searchRequest.Species.ToLower()));
+            }
+            if (searchRequest.SightedAt.HasValue)
+            {
+                query =
+                    query
+                        .Where(s =>
+                            s.SightedAt >= searchRequest.SightedAt.Value &&
+                            s.SightedAt <
+                            searchRequest.SightedAt.Value.AddDays(1));
+            }
+            if (!string.IsNullOrEmpty(searchRequest.Location))
+            {
+                query =
+                    query
+                        .Where(s =>
+                            s
+                                .Location
+                                .ToLower()
+                                .Contains(searchRequest.Location.ToLower()));
+            }
+            return query.Count();
+        }
+
         public Sighting SelectSightingById(int Id)
         {
             var sighting =
@@ -139,22 +183,24 @@ namespace whale_spotting.Repositories
             if (SightingToConfirm.ConfirmState == ConfirmState.Confirmed)
             {
                 SightingToConfirm.ConfirmState = ConfirmState.Review;
-            } else
+            }
+            else
             {
                 SightingToConfirm.ConfirmState = ConfirmState.Confirmed;
-            }   
-            var ConfirmedSighting = _context.Update<Sighting>(SightingToConfirm);
+            }
+            var ConfirmedSighting =
+                _context.Update<Sighting>(SightingToConfirm);
             _context.SaveChanges();
             return ConfirmedSighting.Entity;
         }
-        
+
         public Sighting UpdateAndConfirmSighting(Sighting SightingToUpdate)
         {
             var UpdatedSighting = _context.Update<Sighting>(SightingToUpdate);
             _context.SaveChanges();
             return UpdatedSighting.Entity;
         }
-        
+
         public Sighting DeleteSighting(Sighting sighting)
         {
             sighting.ConfirmState = ConfirmState.Deleted;
@@ -162,8 +208,8 @@ namespace whale_spotting.Repositories
             _context.SaveChanges();
             return sightingDeleted.Entity;
         }
-        
-        public Sighting RestoreSighting(Sighting SightingToRestore) 
+
+        public Sighting RestoreSighting(Sighting SightingToRestore)
         {
             SightingToRestore.ConfirmState = ConfirmState.Review;
             var sightingRestored = _context.Update<Sighting>(SightingToRestore);
