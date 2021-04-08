@@ -1,7 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import './Home.scss';
+import { GetSightings } from './GetSightings';
+import { getRecentSightings } from '../../Api/apiClient';
+import { SightingResponse, RecentSightingResponseList } from '../../Api/apiClient';
 
 function Home() {
+
+  const [mySightings, setMySightings] = useState<RecentSightingResponseList | null>(null);
+
+  useEffect(() => {
+    getRecentSightings()
+      .then(data => setMySightings(data));
+  }, []);
+
   return (
     <div className="content-container">
       <h1 className="title">Welcome to the World of Whale Watching!</h1>
@@ -17,44 +28,37 @@ function Home() {
 
       <p className="body-text">An estimated 13 million people went whale watching globally in 2008 and the numbers are growing. Responsible whale watching
       has benefitted conservation efforts through education and raising awareness of the challenges that whales and orcas currently face.
-      Many species of whales and orcas are currently listed as endangered. The responsibilty lies with us, together we can help change
+      Many species of whales and orcas are currently listed as endangered. The responsibility lies with us, together we can help change
       and stop harmful practices that negatively impact the whale and orca populations.</p>
-      
+
       <div className="video-and-sightings-container">
         <div className="watch-whales-container">
           <h2 className="sub-heading">Watch Whales Live</h2>
           <div className="video-container">
-              <iframe className="video" src="https://www.youtube.com/embed/FiaDOY06VwI" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
+            <iframe className="video" src="https://www.youtube.com/embed/FiaDOY06VwI" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
           </div>
         </div>
-
         <div className="whale-sightings-container">
-          <h2 className="sub-heading">Recent Whale Sightings</h2>
+          <h2 className="sub-heading">Recent Sightings</h2>
           {/* this table is a placeholder, feel free to delete when inserting the actual table */}
-          <table className="body-text">
+          <table className="sightings-table">
             <thead>
               <tr>
-                <th> Location </th>
-                <th> Species </th>
-                <th> Date </th> 
-                <th> Submitted By </th>
+                <td>Location</td>
+                <td>Species</td>
+                <td>Number of Whales Spotted</td>
+                <td>Seen on</td>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> Canada </td> 
-                <td> Orca </td>
-                <td> 22/02/2021</td>
-                <td> Chloe </td>
-                <td> <a href='/'> More Info </a>  </td>
-              </tr>
-            </tbody>
+              {mySightings?.recentSightingsList.map(sighting => <GetSightings sighting={sighting} />)}
+             </tbody>
           </table>
+
         </div>
       </div>
     </div>
   );
 }
-
 
 export { Home }
