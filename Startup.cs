@@ -1,6 +1,9 @@
 using System;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using whale_spotting.Repositories;
+using whale_spotting.Controllers;
+using whale_spotting.Models.Database;
+using whale_spotting.Models;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 
 namespace whale_spotting
 {
@@ -23,12 +30,24 @@ namespace whale_spotting
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            services
-                .AddDbContext<WhaleSpottingContext>(options =>
+            var connectionString = ConnectionStringerHelper.GetConnectionString();
+            services.AddDbContext<WhaleSpottingContext>(options =>
                     options
-                        .UseNpgsql(Environment
-                            .GetEnvironmentVariable("DATABASE_URL")));
+                        .UseNpgsql(connectionString));
+
+            services.AddDatabaseDeveloperPageExceptionFilter();
+           
+            services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<WhaleSpottingContext>();
+
+            services.AddIdentityServer()
+                .AddApiAuthorization<AdminUser, WhaleSpottingContext>();
+
+            services.AddAuthentication()
+                .AddIdentityServerJwt();
+
+            services.AddControllersWithViews();
+            services.AddRazorPages();
 
             // In production, the React files will be served from this directory
             services
@@ -38,6 +57,7 @@ namespace whale_spotting
                 });
 
             services.AddTransient<ISightingRepo, SightingRepo>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,11 +66,11 @@ namespace whale_spotting
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {
                 app.UseExceptionHandler("/Error");
-
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -61,16 +81,19 @@ namespace whale_spotting
 
             app.UseRouting();
 
-            app
-                .UseEndpoints(endpoints =>
+            app.UseAuthentication();
+            app.UseIdentityServer();
+            app.UseAuthorization(); 
+
+            app.UseEndpoints(endpoints =>
                 {
-                    endpoints
-                        .MapControllerRoute(name: "default",
+                    endpoints.MapControllerRoute(
+                        name: "default",
                         pattern: "{controller}/{action=Index}/{id?}");
+                    endpoints.MapRazorPages();
                 });
 
-            app
-                .UseSpa(spa =>
+            app.UseSpa(spa =>
                 {
                     spa.Options.SourcePath = "ClientApp";
 

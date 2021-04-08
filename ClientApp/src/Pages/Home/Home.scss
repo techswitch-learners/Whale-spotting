@@ -17,18 +17,9 @@
     height: 100%;
 }
 
-.sightings-table{
-    background-color:$light-bg;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
-    color:$light-text;
-    font-size: small;
-    text-align: center; 
-}
-
-.sightings-table,th, td {
-    border: 2px solid $accent-color-dark;  
+.whale-sightings-container table {
+    border-collapse: separate;
+    border-spacing: 10px;
 }
 
 @media only screen and (min-width: $two-column-min-pixels){
@@ -43,6 +34,25 @@
     }
     .video-and-sightings-container {
         display: flex    
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .content-container {
+        width: 96%;
+        margin-left: 2% !important;
+        margin-right: 2% !important;
+    }
+
+    .whale-sightings-container table {
+        max-width: 100%;
+        width: fit-content;
+        font-size: 16px;
+        border-spacing: 6px;
+    }    
+
+    .hide-mobile {
+        display: none;
     }
 }
 

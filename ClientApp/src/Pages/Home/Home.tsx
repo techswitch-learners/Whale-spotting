@@ -29,7 +29,7 @@ function Home() {
 
       <p className="body-text">An estimated 13 million people went whale watching globally in 2008 and the numbers are growing. Responsible whale watching
       has benefitted conservation efforts through education and raising awareness of the challenges that whales and orcas currently face.
-      Many species of whales and orcas are currently listed as endangered. The responsibilty lies with us, together we can help change
+      Many species of whales and orcas are currently listed as endangered. The responsibility lies with us, together we can help change
       and stop harmful practices that negatively impact the whale and orca populations.</p>
 
       <div className="video-and-sightings-container">
@@ -40,7 +40,7 @@ function Home() {
           </div>
         </div>
         <div className="whale-sightings-container">
-          <h2 className="sub-heading">Recent Whale Sightings</h2>
+          <h2 className="sub-heading">Recent Sightings</h2>
           {/* this table is a placeholder, feel free to delete when inserting the actual table */}
           <table className="sightings-table">
             <thead>
