@@ -7,6 +7,7 @@ import './custom.css'
 import { SubmitSightingForm } from './Pages/SubmitSighting/SubmitSighting';
 import { GettingStarted } from './Pages/GettingStarted/GettingStarted';
 import { Conservation } from './Pages/Conservation/Conservation';
+import { WhaleSpecies } from './Pages/WhaleSpecies/WhaleSpecies';
 import { ListOfUnconfirmed } from "./Pages/AdminSightingsList/AdminSightingsList";
 import { ConfirmSightingForm } from './Pages/ConfirmSighting/ConfirmSighting';
 import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
@@ -25,6 +26,7 @@ export default class App extends Component {
         <Route path="/submit-sighting" component={SubmitSightingForm} />
         <Route path='/search-sighting' component={SearchSightingForm} />
         <Route path="/conservation" component={Conservation} />
+        <Route path="/whale-species" component={WhaleSpecies} />
         <AuthorizeRoute exact path="/admin" component={ListOfUnconfirmed} />               
         <AuthorizeRoute exact path="/admin/confirm-sighting" component={ListOfUnconfirmed} />
         <AuthorizeRoute exact path='/admin/confirm-sighting/:id' component={ConfirmSightingForm} />

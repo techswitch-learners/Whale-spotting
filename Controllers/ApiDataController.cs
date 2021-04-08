@@ -30,21 +30,44 @@ namespace whale_spotting.Controllers
             bool pageHasResults = true;
             var client = new RestClient("http://hotline.whalemuseum.org");
             List<Sighting> sightingsToAdd = new List<Sighting>();
+
+            var latestApiSighting = _sightings.SelectLatestApiSighting();
             
-            while (pageHasResults == true)
+            if (latestApiSighting != null)
             {
-                var request = new RestRequest($"api.json?limit=1000&page={page}", DataFormat.Json);
-                var apiSightings = await client.GetAsync<List<SightingApiModel>>(request);
-                if (apiSightings.Any())
-                {
-                    sightingsToAdd.AddRange(apiSightings.Select(apiSighting => new Sighting(apiSighting)).ToList());
-                    page++;                              
+                var latestCreatedAt = (latestApiSighting.CreatedAt).AddMonths(-1);
+                while (pageHasResults == true)
+                {   
+                    var request = new RestRequest($"api.json?limit=1000&page={page}&since={latestCreatedAt}", DataFormat.Json);
+                    var apiSightings = await client.GetAsync<List<SightingApiModel>>(request);
+                    if (apiSightings.Any())
+                    {
+                        sightingsToAdd.AddRange(apiSightings.Select(apiSighting => new Sighting(apiSighting)).ToList());
+                        page++;                              
+                    }
+                    else 
+                    {
+                        pageHasResults = false;
+                    }                
+                }     
+            }
+            else
+            {
+                while (pageHasResults == true)
+                {   
+                    var request = new RestRequest($"api.json?limit=1000&page={page}", DataFormat.Json);
+                    var apiSightings = await client.GetAsync<List<SightingApiModel>>(request);
+                    if (apiSightings.Any())
+                    {
+                        sightingsToAdd.AddRange(apiSightings.Select(apiSighting => new Sighting(apiSighting)).ToList());
+                        page++;                              
+                    }
+                    else 
+                    {
+                        pageHasResults = false;
+                    }                
                 }
-                else 
-                {
-                    pageHasResults = false;
-                }                
-            }          
+            }      
 
             if (sightingsToAdd.Any())            
             {    
