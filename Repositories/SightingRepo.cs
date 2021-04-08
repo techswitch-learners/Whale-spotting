@@ -10,24 +10,16 @@ namespace whale_spotting.Repositories
     public interface ISightingRepo
     {
         Sighting Submit(SubmitSightingRequest create);
-
         List<Sighting> GetRecentSightings();
         IEnumerable<Sighting> GetByConfirmState();
-
         void AddNewSightings(List<Sighting> sightingsToAdd);
-
         Sighting SelectSightingById(int Id);
-
         IEnumerable<Sighting> Search(SightingSearchRequest searchRequest);
-
         int Count(SightingSearchRequest search);
-
         Sighting ConfirmSighting(Sighting SightingToConfirm);
-
         Sighting UpdateAndConfirmSighting(Sighting SightingToUpdate);
-
         Sighting DeleteSighting(Sighting sighting);
-
+        Sighting SelectLatestApiSighting();
         Sighting RestoreSighting(Sighting SightingToRestore);
     }
 
@@ -55,7 +47,8 @@ namespace whale_spotting.Repositories
                         Description = create.Description,
                         SightedAt = create.SightedAt,
                         SubmittedByName = create.SubmittedByName,
-                        SubmittedByEmail = create.SubmittedByEmail
+                        SubmittedByEmail = create.SubmittedByEmail,
+                        CreatedAt = DateTime.Now
                     });
             _context.SaveChanges();
 
@@ -207,6 +200,16 @@ namespace whale_spotting.Repositories
             var sightingDeleted = _context.Update<Sighting>(sighting);
             _context.SaveChanges();
             return sightingDeleted.Entity;
+        }
+
+        public Sighting SelectLatestApiSighting()
+        {
+            var sighting =
+                _context.Sightings
+                .OrderByDescending(x => x.CreatedAt)
+                .Where(s => s.ApiId != null)
+                .FirstOrDefault();
+            return sighting;
         }
 
         public Sighting RestoreSighting(Sighting SightingToRestore)
