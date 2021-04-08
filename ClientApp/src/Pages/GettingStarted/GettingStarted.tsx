@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './GettingStarted.scss';
+import "bootstrap";
 import { GetLocationData } from './GetLocationData';
 import { GetLocationSummary } from './GetLocationData';
 
@@ -36,9 +37,9 @@ function GettingStarted() {
 
                 <h1 className="title">Getting Started: Find the Perfect Whalespotting Location</h1>
                 <div className="places body-text">
-                    <button data-testid={"ScotlandButton"} className={selectedLocation === Locations.Scotland ? 'selected-icon' : 'unselected-icon'} onClick={() => setSelectedLocation(Locations.Scotland)}>Scotland</button>
-                    <button data-testid={"CanadaButton"} className={selectedLocation === Locations.Canada ? 'selected-icon' : 'unselected-icon'} onClick={() => setSelectedLocation(Locations.Canada)}>Canada</button>
-                    <button data-testid={"AustraliaButton"} className={selectedLocation === Locations.Australia ? 'selected-icon' : 'unselected-icon'} onClick={() => setSelectedLocation(Locations.Australia)}>Australia</button>
+                    <button data-testid={"ScotlandButton"} className={selectedLocation === Locations.Scotland ? 'btn btn-primary' : 'btn btn-outline-primary'} onClick={() => setSelectedLocation(Locations.Scotland)}>Scotland</button>
+                    <button data-testid={"CanadaButton"} className={selectedLocation === Locations.Canada ? 'btn btn-primary' : 'btn btn-outline-primary'} onClick={() => setSelectedLocation(Locations.Canada)}>Canada</button>
+                    <button data-testid={"AustraliaButton"} className={selectedLocation === Locations.Australia ? 'btn btn-primary' : 'btn btn-outline-primary'} onClick={() => setSelectedLocation(Locations.Australia)}>Australia</button>
                 </div>
 
                 <LocationSummary location={locationSummary} />
