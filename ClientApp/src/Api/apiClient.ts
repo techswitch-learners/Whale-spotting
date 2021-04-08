@@ -41,12 +41,12 @@ export interface SightingResponse {
   submittedByEmail: string;  
 }
 
-export interface ListResponse<T> {
-  items: T[];
-  // totalNumberOfItems: number;
-  // page: number;
-  // nextPage: string;
-  // previousPage: string;
+export interface SearchResponse {
+  sightings: Sighting[];
+  totalNumberOfItems: number;
+  page: number;
+  nextPage: string;
+  previousPage: string;
 }
 
 
@@ -64,9 +64,9 @@ export async function submitSighting(newSighting: NewSighting) {
   }
 }
 
-export async function submitSearch(species: string, location: string, sightedAt: string): Promise<null | ListSightings> {
+export async function submitSearch(species: string, location: string, sightedAt: string, page: number, pageSize: number): Promise<null | SearchResponse> {
   const response =await fetch(
-    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}`);
+    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}&Page=${page}&PageSize=${pageSize}`);
     return await response.json();
 }
 

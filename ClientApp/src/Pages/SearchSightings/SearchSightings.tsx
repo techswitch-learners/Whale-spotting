@@ -14,6 +14,8 @@ export function SearchSightingForm(): JSX.Element {
     const [formStatus, setFormStatus] = useState<FormStatus>("READY");
     const [pageStatus, setPageStatus] = useState<PageStatus>("INITIAL");
     const [searchResults, setSearchResults] = useState<null | ListSightings>(null);
+    const [page, setPage] = useState(1);
+    const [pageSize, setPageSize] = useState(10);
 
 
     function searchRow(data: Sighting): JSX.Element {
@@ -32,19 +34,19 @@ export function SearchSightingForm(): JSX.Element {
     
 
     function submitForm(event: FormEvent) {
-        event.preventDefault();
-        setFormStatus("SUBMITTING");
-        submitSearch(
-          species,
-          location,
-          sightedAt 
-        ).then((data) => setSearchResults(data))
-          .catch(() => setFormStatus("ERROR"))
-          .then(() => setPageStatus("RESULTS"))
-          .then(() => setFormStatus("READY"));
-          
-          
-      }
+      event.preventDefault();
+      setFormStatus("SUBMITTING");
+      submitSearch(
+        species,
+        location,
+        sightedAt,
+        page,
+        pageSize
+      ).then((data) => setSearchResults(data))
+      .catch(() => setFormStatus("ERROR"))
+      .then(() => setPageStatus("RESULTS"))
+      .then(() => setFormStatus("READY"));     
+    }
 
       if (pageStatus === "RESULTS") {
         return (
