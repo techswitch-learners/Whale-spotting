@@ -88,7 +88,7 @@ export function SearchSightingForm(): JSX.Element {
         sightedAt,
         page,
         pageSize
-      )
+      ).then((data) => setSearchResults(data))
     }
 
     function nextPageButton(){
@@ -105,7 +105,7 @@ export function SearchSightingForm(): JSX.Element {
         sightedAt,
         page,
         pageSize
-      )
+      ).then((data) => setSearchResults(data))
     }
     
 
