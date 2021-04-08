@@ -51,8 +51,8 @@ function Home() {
               </tr>
             </thead>
             <tbody>
-              {mySightings?.recentSightingsList.map(sighting => <GetSightings sighting={sighting} />)}
-             </tbody>
+              {mySightings?.recentSightingsList.map((sighting) => <GetSightings sighting={sighting} key={sighting.id}/>)}
+            </tbody>
           </table>
 
         </div>

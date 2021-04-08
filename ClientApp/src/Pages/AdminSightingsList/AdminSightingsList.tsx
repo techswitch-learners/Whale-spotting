@@ -6,8 +6,7 @@ import {
   ListSightings,
   Sighting,
   deleteSighting,
-  restoreSighting,
-  updateAndConfirmSighting
+  restoreSighting
 } from "../../Api/apiClient";
 import "./AdminSightingsList.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -98,18 +97,22 @@ export function ListOfUnconfirmed(): JSX.Element {
     <div className="content-container">
       <h1 className="title">Review Sightings</h1>
       <table className="table table-hover body-text admin-table" id="admin-table">
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Species</th>
-          <th scope="col" className="hide-tablet">Quantity</th>
-          <th scope="col">Location</th>
-          <th scope="col" className="hide-tablet">Date</th>
-          <th scope="col" className="btn-column"></th>
-          <th scope="col" className="btn-column"></th>
-          <th scope="col" className="btn-column"></th>
-        </tr>
-
-        {unconfirmedSightingsData.sightings?.map((x) => <TableRow {...x} />)}
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Species</th>
+            <th scope="col" className="hide-tablet">Quantity</th>
+            <th scope="col">Location</th>
+            <th scope="col" className="hide-tablet">Date</th>
+            <th scope="col" className="btn-column"></th>
+            <th scope="col" className="btn-column"></th>
+            <th scope="col" className="btn-column"></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          {unconfirmedSightingsData.sightings?.map((x) => <TableRow {...x} />)}
+        </tbody>
       </table>
     </div>
   );
