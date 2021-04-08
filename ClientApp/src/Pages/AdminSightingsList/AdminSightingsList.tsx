@@ -117,10 +117,8 @@ export function ListOfUnconfirmed(): JSX.Element {
             className="submit-button"
             onClick={() => AdminFetchApiData()}
             type="submit"
-            disabled={fetchClicked} aria-disabled={fetchClicked}
-          >
+            disabled={fetchClicked} aria-disabled={fetchClicked}>
             {fetchClicked ? "Fetching Api Data" : "Fetch Api Data"}
-            
       </button>
     </div>
   );
