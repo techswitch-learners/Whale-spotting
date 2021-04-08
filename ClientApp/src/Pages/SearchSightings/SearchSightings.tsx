@@ -2,6 +2,8 @@ import React, { FormEvent, useState, useEffect } from "react";
 import { submitSearch, Sighting, ListSightings } from "../../Api/apiClient";
 import { Link } from "react-router-dom";
 import "./SearchSightings.scss";
+import { resourceLimits } from "node:worker_threads";
+
 
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
@@ -17,6 +19,30 @@ export function SearchSightingForm(): JSX.Element {
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
 
+
+    function results(){
+      return (
+        <table className="results-table">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Species</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Location</th>
+          <th scope="col">Description</th>
+          <th scope="col">Date</th>
+          <th scope="col">Submitted by</th>
+        </tr>
+
+        {searchResults?.sightings?.map(x => searchRow(x))}
+      </table>
+      )
+    }
+
+    function noResults(){
+      return (
+        <p>No Matching Results Found</p>
+      )
+    }
 
     function searchRow(data: Sighting): JSX.Element {
         return (
@@ -52,8 +78,9 @@ export function SearchSightingForm(): JSX.Element {
         return (
           // Returns search bar at top, with list of matched items underneath
           <div> 
-          <h1>Results:</h1>
+          <h1 className="title">Results:</h1>
           <form className="update-sighting-form" onSubmit={submitForm}>
+
 
             <label className="form-label">
               Species
@@ -96,19 +123,9 @@ export function SearchSightingForm(): JSX.Element {
             {formStatus === "ERROR" && <p>Something went wrong! Please try again.</p>}
           </form>
         
-        <table className="table table-striped table-hover">
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Species</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Location</th>
-          <th scope="col">Description</th>
-          <th scope="col">Date</th>
-          <th scope="col">Submitted by</th>
-        </tr>
-
-        {searchResults?.sightings?.map(x => searchRow(x))}
-      </table>
+        {searchResults?.sightings && searchResults.sightings.length> 0 ? results() : noResults() }
+        
+       
         
         </div>
         );
