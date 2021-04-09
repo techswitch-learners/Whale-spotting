@@ -7,6 +7,8 @@ interface Sighting {
     species: string;
     quantity: string;
     sightedAt: string;
+    lattitude: number;
+    longitude: number
   };
 }
 

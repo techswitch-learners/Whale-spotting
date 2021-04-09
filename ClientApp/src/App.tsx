@@ -14,7 +14,7 @@ import { ApplicationPaths } from "./components/api-authorization/ApiAuthorizatio
 import AuthorizeRoute from "./components/api-authorization/AuthorizeRoute";
 import ApiAuthorizationRoutes from "./components/api-authorization/ApiAuthorizationRoutes";
 import { SearchSightingForm } from "./Pages/SearchSightings/SearchSightings";
-import { Map } from "./Pages/Map/Map";
+import { LeafletMap } from "./Pages/Map/Map";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -28,7 +28,7 @@ export default class App extends Component {
         <Route path="/search-sighting" component={SearchSightingForm} />
         <Route path="/conservation" component={Conservation} />
         <Route path="/whale-species" component={WhaleSpecies} />
-        <Route path="/map" component={Map} />
+        <Route path="/map" component={LeafletMap} />
         <AuthorizeRoute exact path="/admin" component={ListOfUnconfirmed} />
         <AuthorizeRoute
           exact
