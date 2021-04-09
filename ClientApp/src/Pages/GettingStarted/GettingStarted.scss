@@ -1,4 +1,6 @@
 @import '../../Styles/styles.scss';
+@import "~bootstrap/scss/bootstrap";
+@import '../../Styles/constants.scss';
 
 .image-and-text {
     display: flex;
@@ -6,24 +8,22 @@
     flex-direction: row;
     width: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .getting-started {
     text-align: center;
 }
 
-.selected-icon {
-    padding-left: 5%;
-    padding-right: 5%;
-    background-color: orange;
-    font-size: x-large;
+.btn.btn-outline-primary {
+    background-color: rgb(255, 255, 255);
+    font-size: x-large
 }
-.unselected-icon {
-    padding-left: 5%;
-    padding-right: 5%;
-    font-size: x-large;
+
+.btn.btn-primary {
+    font-size: x-large
 }
+
 .places {
     display: flex;
     width: 100%;
@@ -36,7 +36,7 @@
     height: 10%;
 }
 .location-line-break {
-    padding-bottom: 70px;
+    padding-bottom: 30px;
 }
 
 .location-image {
@@ -44,7 +44,8 @@
     height: 400px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: $two-column-max-pixels) {
+
     .image-and-text {
         display: flex;
         flex-direction: column;
@@ -52,6 +53,24 @@
     }
 
     .location-line-break {
-        padding-bottom: 50px;
+        padding-bottom: 30px;
+    }
+
+    .location-image {
+        padding-bottom: 20px;
+    }
+
+    .image-container {
+        display: flex;
+        align-items: center;
+        align-self: center;
     }
 }
+
+@media only screen and (min-width: $two-column-min-pixels) {
+    .location-image {
+        padding-right: 25px;
+    }
+
+}
+
