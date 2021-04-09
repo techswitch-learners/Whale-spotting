@@ -33,8 +33,6 @@ function GettingStarted() {
         <div className="content-container">
             <div className="getting_started">
 
-                {/* <div className='top-page-break'></div> */}
-
                 <h1 className="title">Getting Started: Find the Perfect Whalespotting Location</h1>
                 <div className="places body-text">
                     <button data-testid={"ScotlandButton"} className={selectedLocation === Locations.Scotland ? 'btn btn-primary' : 'btn btn-outline-primary'} onClick={() => setSelectedLocation(Locations.Scotland)}>Scotland</button>
