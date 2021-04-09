@@ -205,6 +205,15 @@ export function ConfirmSightingForm(): JSX.Element {
             </div>
           </div>        
 
+          <Link to="/admin/confirm-sighting">
+            <button
+              className="submit-button"
+              type="button"
+              id="back-button"
+            >
+              Back
+            </button>
+          </Link>
           <button
             className="submit-button"
             id="confirm-button"
