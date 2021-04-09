@@ -5,10 +5,12 @@ using whale_spotting.Models.Request;
 using whale_spotting.Models.Response;
 using whale_spotting.Repositories;
 using whale_spotting.Models.Database;
+using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
 
 namespace whale_spotting.Controllers
 {
+    [Authorize]
     [Route("admin")]
     public class AdminController : ControllerBase
     {

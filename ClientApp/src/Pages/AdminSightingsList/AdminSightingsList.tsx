@@ -7,6 +7,7 @@ import {
   Sighting,
   deleteSighting,
   restoreSighting,
+  fetchApiData,
   updateAndConfirmSighting
 } from "../../Api/apiClient";
 import "./AdminSightingsList.scss";
@@ -39,7 +40,7 @@ export function TableRow(data: Sighting): JSX.Element {
       .then(() => setDeleteClicked(!deleteClicked));
     }    
   }
-  
+
   return (
     <tr>
       <td>{data.id}</td>
@@ -76,6 +77,8 @@ export function ListOfUnconfirmed(): JSX.Element {
     setUnconfirmedSightingsData,
   ] = useState<null | ListSightings>(null);
 
+  const [fetchClicked, setFetchClicked] = useState(false);
+
   useEffect(() => {
     fetchUnconfirmedSightings()
     .then((data) => setUnconfirmedSightingsData(data));
@@ -84,6 +87,12 @@ export function ListOfUnconfirmed(): JSX.Element {
   if (!unconfirmedSightingsData) {
     return <div className="content-container"> <p className="body-text">Waiting for data!</p></div>;
   }
+
+ function AdminFetchApiData() {
+  setFetchClicked(true);
+  fetchApiData()
+    .then(() => setFetchClicked(false));
+ }
 
   return (
     <div className="content-container">
@@ -104,6 +113,13 @@ export function ListOfUnconfirmed(): JSX.Element {
 
         {unconfirmedSightingsData.sightings?.map((x) => <TableRow {...x} />)}
       </table>
+      <button
+            className="submit-button"
+            onClick={() => AdminFetchApiData()}
+            type="submit"
+            disabled={fetchClicked} aria-disabled={fetchClicked}>
+            {fetchClicked ? "Fetching Api Data" : "Fetch Api Data"}
+      </button>
     </div>
   );
 }
