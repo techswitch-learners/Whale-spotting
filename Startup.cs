@@ -15,6 +15,8 @@ using whale_spotting.Controllers;
 using whale_spotting.Models.Database;
 using whale_spotting.Models;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Http;
 
 namespace whale_spotting
 {
@@ -54,7 +56,13 @@ namespace whale_spotting
                 });
 
             services.AddTransient<ISightingRepo, SightingRepo>();
-
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost;
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +88,18 @@ namespace whale_spotting
 
             app.UseAuthentication();
             app.UseIdentityServer();
-            app.UseAuthorization(); 
+            app.UseAuthorization();
+            app.UseForwardedHeaders();
+
+            app.Use((context, next) =>
+            {
+                context.Request.Protocol = "https";
+                context.Request.Host = new HostString("whale-spotting-stg.herokuapp.com:12345");
+                //  Only if you need it.
+                context.Request.PathBase = new PathString("/api/auth");
+
+                return next();
+            });
 
             app.UseEndpoints(endpoints =>
                 {
