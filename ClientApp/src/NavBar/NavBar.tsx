@@ -71,7 +71,7 @@ function NavBar() {
                     </div>
                 </div>
 
-                <div className="icon">
+                <div className="icon" id="hamburger-menu">
                     <Hamburger toggled={isOpen} toggle={setOpen} label="Show menu" rounded onToggle={
                         () => {
                             if (mobileNavState == 'closed') {

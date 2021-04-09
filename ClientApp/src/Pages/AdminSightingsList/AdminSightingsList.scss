@@ -1,3 +1,79 @@
 @import "~bootstrap/scss/bootstrap";
-@import "../../Styles/styles.scss";
+@import "../../Styles/constants";
+@import "../../Styles/styles";
 
+.submit-button {
+    @include primaryButton;
+  }
+
+#admin-table tr {
+    background-color: $dark-bg;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.btn-mobile {
+    display: none;
+    font-size: 12px;
+}
+
+.btn-responsive {
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+}
+
+@media only screen and (max-width: $two-column-min-pixels)
+{
+    .hide-tablet {
+        display: none;
+    }
+
+    .btn-responsive {
+        @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+    }
+}
+
+@media only screen and (max-width: $tablet-size-reg) {
+    #admin-table {
+        font-size: 16px;
+    }
+
+    .btn-responsive {
+        @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+    }
+} 
+
+@media only screen and (max-width: $tablet-size-sm) {
+    .btn-mobile {
+        display: unset;
+    }
+
+    #admin-table .btn-column {
+        padding: 3px;
+    }
+
+    .btn-desktop {
+        display: none;
+    }
+
+    .hide-mobile {
+        display: none;
+    }
+
+    #admin-table {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: $mobile-size-reg) {
+    .admin-table td {
+        padding: 3px;
+    }       
+}
+
+@media only screen and (max-width: $mobile-size-sm) {
+    .btn-mobile {
+        padding: 4px;
+    }
+}
