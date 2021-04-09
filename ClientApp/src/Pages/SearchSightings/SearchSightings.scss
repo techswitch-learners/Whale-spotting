@@ -26,25 +26,62 @@
      @include primaryButton;
   }
 }
-
-
+tr:first-child{
+  background-color: $dark-bg
+}
 tr:nth-child(even){
-
   background-color: $accent-color
 }
-
-td,th {
-  padding-left: 7.5px;
-  padding-right: 7.5px;
+.results-table{
+  background-color: $accent-color-dark
 }
 
-.update-sighting-form{
+
+td,th {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.update-search-form{
   .form-label {
     padding: 7.5px
   }
   .form-input{
     margin-left: 5px
   }
-
-
+  .update-search-button{
+    @include primaryButton;
+    margin-left: 16px
+  }
 }
+
+.pagination{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: x-large;
+  padding: 10px;
+
+  .page{
+    padding:5px
+  }
+  .previous-button,.next-button{
+    color: $light-text;
+    padding: 5px
+  }
+  .previous-button{
+    :hover > & {
+      cursor: pointer;
+      
+    }
+  }
+  
+  .next-button{
+    :hover > & {
+      cursor: pointer;
+      
+    }
+  }
+ 
+}
+
