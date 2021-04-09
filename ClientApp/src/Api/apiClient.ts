@@ -1,4 +1,6 @@
-﻿export interface NewSighting {
+﻿import authService from '../components/api-authorization/AuthorizeService'
+
+export interface NewSighting {
   species: string;
   quantity: string;
   location: string;
@@ -84,7 +86,11 @@ export async function submitSearch(species: string, location: string, sightedAt:
 }
 
 export async function getSighting(Id: number): Promise<SightingResponse> {
-  const response = await fetch(`/admin/getSighting/${Id}`);
+  const token = await authService.getAccessToken();
+  const response = await fetch(`/admin/getSighting/${Id}`, {
+    headers: !token ? {} : { 'Authorization': `Bearer ${token}`}
+  });
+  
   if (!response.ok) {
     throw new Error(await response.json());
   }
@@ -92,16 +98,18 @@ export async function getSighting(Id: number): Promise<SightingResponse> {
 }
 
 export async function fetchUnconfirmedSightings(): Promise<null | ListSightings> {
-  const response = await fetch(`/api/confirm-sighting`);
+  const token = await authService.getAccessToken();
+  const response = await fetch(`/api/confirm-sighting`, {
+    headers: !token ? {} : { 'Authorization': `Bearer ${token}`}
+  });
   return await response.json();
 }
 
 export async function confirmSighting(Id: number): Promise<SightingResponse> {
+  const token = await authService.getAccessToken();
   const response = await fetch(`/admin/confirmSighting/${Id}`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    }
+    headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
   });
 
   if (!response.ok) {
@@ -113,8 +121,10 @@ export async function confirmSighting(Id: number): Promise<SightingResponse> {
 
 export async function deleteSighting(Id: number) 
 {
+  const token = await authService.getAccessToken();
   const response = await fetch(`/admin/deleteSighting/${Id}`, {
     method: "POST",
+    headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
   });
 
   if (!response.ok) {
@@ -127,8 +137,10 @@ export async function deleteSighting(Id: number)
 
 export async function restoreSighting(Id: number)
 {
+  const token = await authService.getAccessToken();
   const response = await fetch(`/admin/restoreSighting/${Id}`, {
     method: "POST",
+    headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
   });
 
   if (!response.ok) {
@@ -140,10 +152,12 @@ export async function restoreSighting(Id: number)
 
 export async function updateAndConfirmSighting(sightingToUpdate: Sighting) 
 {
+  const token = await authService.getAccessToken();
   const response = await fetch(`admin/updateAndConfirmSighting/${sightingToUpdate.id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
     },
     body: JSON.stringify(sightingToUpdate),
   });
@@ -153,4 +167,18 @@ export async function updateAndConfirmSighting(sightingToUpdate: Sighting)
   }
 
   return await response.json();
+}
+
+export async function fetchApiData() 
+{
+  const token = await authService.getAccessToken();
+  const response = await fetch(`/getapidata`, {
+    method: "POST",
+    headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  return await response.status;
 }
