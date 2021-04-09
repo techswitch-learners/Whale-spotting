@@ -26,7 +26,7 @@ export function Conservation(): JSX.Element {
 
       <div className="container-fluid">
           <h1 className="title">Conservation</h1>
-          <p className="text-justify">
+          <p className="text-justify body-text">
             Some good work has been done in recent decades to reverse the trend of
             almost inevitable extinction for some species of cetaceans.
             Unfortunately, whales and dolphins continue to be threatened by:
