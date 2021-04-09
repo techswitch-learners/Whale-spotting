@@ -41,7 +41,8 @@ export function ConfirmSightingForm(): JSX.Element {
 
   function confirmOrDeleteSighting(event: FormEvent) {
     event.preventDefault();
-    if (button == "confirm") {
+    if (button == "confirm") 
+    {
       setStatus("SUBMITTING");
       updateAndConfirmSighting({
         id: parseInt(id),
@@ -58,7 +59,9 @@ export function ConfirmSightingForm(): JSX.Element {
       })
         .then(() => setStatus("FINISHED"))
         .catch(() => setStatus("ERROR"));
-    } else if (button == "delete") {
+    } 
+    else if (button == "delete") 
+    {
       setStatus("SUBMITTING");
       deleteSighting(parseInt(id))
       .then(() => setStatus("FINISHED"))

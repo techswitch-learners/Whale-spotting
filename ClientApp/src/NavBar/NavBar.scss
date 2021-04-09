@@ -82,8 +82,8 @@ li a:hover {
   z-index: 1001;
 }
 
-.hamburger-react {
-  background-color: rgba(255, 0, 0, 0) !important;
+#hamburger-menu, #hamburger-menu > *{
+  background-color: transparent;
 }
 
 .closed-nav-bar {

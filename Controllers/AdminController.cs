@@ -6,6 +6,7 @@ using whale_spotting.Models.Response;
 using whale_spotting.Repositories;
 using whale_spotting.Models.Database;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 namespace whale_spotting.Controllers
 {
@@ -35,16 +36,17 @@ namespace whale_spotting.Controllers
         }
 
         [HttpPost("updateAndConfirmSighting/{id}")]
-        public IActionResult updateAndConfirmSighting([FromBody] Sighting SightingToUpdate)
+        public ActionResult updateAndConfirmSighting([FromBody] Sighting SightingToUpdate)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                Response.StatusCode = 400;
+                return Content("Error");
             }
-
-            _sightings.UpdateAndConfirmSighting(SightingToUpdate);
-
-            return StatusCode(200);
+            
+            
+            var sightingUpdated =_sightings.UpdateAndConfirmSighting(SightingToUpdate);
+            return Ok(sightingUpdated);
         }
 
         [HttpPost("deleteSighting/{id}")]
