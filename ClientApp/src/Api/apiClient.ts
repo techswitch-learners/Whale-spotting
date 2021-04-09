@@ -47,12 +47,11 @@ export interface SightingResponse {
   confirmState: number;
 }
 
-export interface ListResponse<T> {
-  items: T[];
-  // totalNumberOfItems: number;
-  // page: number;
-  // nextPage: string;
-  // previousPage: string;
+export interface SearchResponse {
+  sightings: Sighting[];
+  totalNumberOfItems: number;
+  page: number;
+  pageSize: number;
 }
 
 export async function submitSighting(newSighting: NewSighting) {
@@ -81,10 +80,11 @@ export async function getRecentSightings(): Promise<RecentSightingResponseList> 
   return await response.json();
 }
 
-export async function submitSearch(species: string, location: string, sightedAt: string): Promise<null | ListSightings> {
-  const response = await fetch(
-    `api/search?species=${species}&location=${location}&sightedAt=${sightedAt}`);
-    return await response.json();
+export async function submitSearch(species: string, location: string, sightedAt: string, page: number, pageSize: number): Promise<null | SearchResponse> {
+  const response =await fetch(
+    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}&Page=${page}&PageSize=${pageSize}`
+  );
+  return await response.json();
 }
 
 export async function getSighting(Id: number): Promise<SightingResponse> {

@@ -1,5 +1,5 @@
 import React, { FormEvent, useState, useEffect } from "react";
-import { submitSearch, Sighting, ListSightings } from "../../Api/apiClient";
+import { submitSearch, Sighting, SearchResponse } from "../../Api/apiClient";
 import { Link } from "react-router-dom";
 import "./SearchSightings.scss";
 import { resourceLimits } from "node:worker_threads";
@@ -15,13 +15,34 @@ export function SearchSightingForm(): JSX.Element {
     const [sightedAt, setSightedAt] = useState("");
     const [formStatus, setFormStatus] = useState<FormStatus>("READY");
     const [pageStatus, setPageStatus] = useState<PageStatus>("INITIAL");
-    const [searchResults, setSearchResults] = useState<null | ListSightings>(null);
+    const [searchResults, setSearchResults] = useState<null | SearchResponse>(null);
+    const [page, setPage] = useState(1);
+    const [pageSize, setPageSize] = useState(10);
 
+
+    function submitForm(event: FormEvent) {
+      event.preventDefault();
+      setPage(1);
+      setFormStatus("SUBMITTING");
+      submitSearch(
+        species,
+        location,
+        sightedAt,
+        1,
+        pageSize
+      ).then((data) => setSearchResults(data))
+      .catch(() => setFormStatus("ERROR"))
+      .then(() => setPageStatus("RESULTS"))
+      .then(() => setFormStatus("READY"));     
+    }
 
     function results(){
       return (
+        <div>
+        <p>Showing results {(page*10) - 9} - {page*10}</p>
         <table className="results-table">
-        <tr>
+     
+        <tr className="first-row">
           <th scope="col">ID</th>
           <th scope="col">Species</th>
           <th scope="col">Quantity</th>
@@ -33,6 +54,7 @@ export function SearchSightingForm(): JSX.Element {
 
         {searchResults?.sightings?.map(x => searchRow(x))}
       </table>
+      </div>
       )
     }
 
@@ -55,29 +77,47 @@ export function SearchSightingForm(): JSX.Element {
           </tr>
         );
     }
-    
 
-    function submitForm(event: FormEvent) {
-        event.preventDefault();
-        setFormStatus("SUBMITTING");
-        submitSearch(
-          species,
-          location,
-          sightedAt 
-        ).then((data) => setSearchResults(data))
-          .catch(() => setFormStatus("ERROR"))
-          .then(() => setPageStatus("RESULTS"))
-          .then(() => setFormStatus("READY"));
-          
-          
-      }
+    function previousPageButton(){
+      return(
+        <a className="previous-button" onClick={() => previousPage()} > &lt; </a>
+      )
+    }
+
+    function previousPage(){ 
+     submitSearch(
+        species,
+        location,
+        sightedAt,
+        page - 1,
+        pageSize
+      ).then((data) => setSearchResults(data));
+      setPage(page - 1)
+    }
+
+    function nextPageButton(){
+      return(
+        <a className="next-button" onClick={() => nextPage()} > &gt; </a>
+      )
+    }
+
+    function nextPage(){
+      submitSearch(
+        species,
+        location,
+        sightedAt,
+        page + 1 ,
+        pageSize
+      ).then((data) => setSearchResults(data));
+      setPage(page + 1)
+    }
 
       if (pageStatus === "RESULTS") {
         return (
           // Returns search bar at top, with list of matched items underneath
           <div> 
           <h1 className="title">Results:</h1>
-          <form className="update-sighting-form" onSubmit={submitForm}>
+          <form className="update-search-form" onSubmit={submitForm}>
 
 
             <label className="form-label">
@@ -112,7 +152,7 @@ export function SearchSightingForm(): JSX.Element {
           </label>
     
             <button
-              className="search-button"
+              className="update-search-button"
               disabled={formStatus === "SUBMITTING"}
               type="submit"
             >
@@ -123,7 +163,12 @@ export function SearchSightingForm(): JSX.Element {
         
         {searchResults?.sightings && searchResults.sightings.length> 0 ? results() : noResults() }
         
-       
+       {/* Check for next or previous page button */}
+       <div className="pagination">
+         {page > 1? previousPageButton(): "" }
+         <p className="page">  {page}  </p>
+         {searchResults?.totalNumberOfItems &&  searchResults?.totalNumberOfItems - (pageSize * page)? nextPageButton(): null }
+       </div>
         
         </div>
         );
