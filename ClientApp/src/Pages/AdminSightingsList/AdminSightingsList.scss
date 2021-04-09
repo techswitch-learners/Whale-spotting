@@ -1,3 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
 @import "../../Styles/styles.scss";
 
+@media only screen and (max-width: 768px) 
+{
+    .admin-table {
+        font-size: 16px !important;
+    }
+
+    .btn-responsive {
+        @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+    }
+}
