@@ -21,6 +21,23 @@
     border-collapse: collapse;
     border-spacing: 15px;
     font-size: 18px;
+    width: 100%;
+}
+
+#sightings-table {
+  
+    thead tr {
+        font-weight: 400;
+        background-color: $accent-color-dark;
+    }
+
+    tbody tr {
+        background-color: $accent-color-dark;
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: $accent-color;
+    }
 }
 
 @media only screen and (min-width: $two-column-min-pixels){

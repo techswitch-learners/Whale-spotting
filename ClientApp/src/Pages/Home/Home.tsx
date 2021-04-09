@@ -38,7 +38,7 @@ function Home() {
             <iframe className="video" src="https://www.youtube.com/embed/FiaDOY06VwI" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
           </div>
         </div>
-        <div className="whale-sightings-container">
+        <div className="whale-sightings-container" id="whale-sightings-container">
           <h2 className="sub-heading">Recent Sightings</h2>
           {/* this table is a placeholder, feel free to delete when inserting the actual table */}
           <table className="sightings-table body-text" id="sightings-table">
