@@ -1,10 +1,6 @@
-import React, { FormEvent, useState, useEffect } from "react";
+import React, { FormEvent, useState } from "react";
 import { submitSearch, Sighting, SearchResponse } from "../../Api/apiClient";
-import { Link } from "react-router-dom";
 import "./SearchSightings.scss";
-import { resourceLimits } from "node:worker_threads";
-
-
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 type PageStatus = "INITIAL" | "RESULTS";
@@ -80,7 +76,7 @@ export function SearchSightingForm(): JSX.Element {
             <td>{data.quantity}</td>
             <td>{data.location}</td>
             <td>{data.description}</td>
-            <td>{data.sightedAt}</td>
+            <td className="nowrap">{data.sightedAt.substring(0,10)}</td>
             <td>{data.submittedByName}</td>
           </tr>
         );
@@ -123,7 +119,7 @@ export function SearchSightingForm(): JSX.Element {
       if (pageStatus === "RESULTS") {
         return (
           // Returns search bar at top, with list of matched items underneath
-          <div> 
+          <div className="content-container"> 
             <h1 className="title">Results:</h1>
             <form className="update-search-form" onSubmit={submitForm}>
               <label className="form-label">

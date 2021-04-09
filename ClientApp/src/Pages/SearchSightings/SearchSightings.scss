@@ -1,7 +1,18 @@
 @import "../../Styles/constants";
 @import '../../Styles/styles';
 
+.content-container:not(.title) {
+  font-family: $body-font;
+  font-weight: 300;
+}
 
+.results-table {
+  width: 100%;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
 
 .search-sighting-page {
   margin: $gutter-width;
@@ -56,11 +67,11 @@ td,th {
 }
 
 .pagination{
-  position: absolute;
+  position: relative;
   left: 50%;
-  transform: translateX(-50%);
   font-size: x-large;
   padding-top: 10px;
+  width: fit-content;
 
   .page{
     padding:5px
