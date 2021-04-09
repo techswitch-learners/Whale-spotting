@@ -33,7 +33,7 @@ export function ConfirmSightingForm(): JSX.Element {
       setLatitude(response.latitude.toString());
       setLongitude(response.longitude.toString());
       setDescription(response.description);
-      setSightedAt(response.sightedAt);
+      setSightedAt(response.sightedAt.substring(0,10));
       setSubmittedByName(response.submittedByName);
       setSubmittedByEmail(response.submittedByEmail);
     });
@@ -97,25 +97,31 @@ export function ConfirmSightingForm(): JSX.Element {
       {isLoading && <p className="body-text">Waiting for data!</p>}
       {!isLoading && 
         <form className="submit-sighting-form body-text" onSubmit={confirmOrDeleteSighting}>
-          <label className="form-label">
-            Species
-            <input
-              className="form-input"
-              value={species}
-              onChange={(event) => setSpecies(event.target.value)}
-              required
-            />
-          </label>
-  
-          <label className="form-label">
-            Quantity
-            <input
-              className="form-input"
-              value={quantity}
-              onChange={(event) => setQuantity(event.target.value)}
-            />
-          </label>
-  
+          <div className="row g-3">
+            <div className="col">
+              <label className="form-label">
+                Species
+                <input
+                  className="form-input"
+                  value={species}
+                  onChange={(event) => setSpecies(event.target.value)}
+                  required
+                />
+              </label>
+            </div>
+          
+            <div className="col">
+              <label className="form-label">
+                Quantity
+                <input
+                  className="form-input"
+                  value={quantity}
+                  onChange={(event) => setQuantity(event.target.value)}
+                />
+              </label>
+            </div>
+          </div>
+          
           <label className="form-label">
             Location
             <input
@@ -124,32 +130,36 @@ export function ConfirmSightingForm(): JSX.Element {
               onChange={(event) => setLocation(event.target.value)}
             />
           </label>
-  
-          <label className="form-label">
-            Latitude
-            <input
-              className="form-input"
-              value={latitude}
-              onChange={(event) => setLatitude(event.target.value)}
-              type="number"
-              required
-            />
-          </label>
-  
-          <label className="form-label">
-            Longitude
-                  <input
-              className="form-input"
-              value={longitude}
-              onChange={(event) => setLongitude(event.target.value)}
-              type="number"
-              required
-            />
-          </label>
+          <div className="row g-3">
+            <div className="col">
+              <label className="form-label">
+                Latitude
+                <input
+                  className="form-input"
+                  value={latitude}
+                  onChange={(event) => setLatitude(event.target.value)}
+                  type="number"
+                  required
+                />
+              </label>
+            </div>
+            <div className="col">
+              <label className="form-label">
+                Longitude
+                <input
+                  className="form-input"
+                  value={longitude}
+                  onChange={(event) => setLongitude(event.target.value)}
+                  type="number"
+                  required
+                />
+              </label>
+            </div>
+          </div>        
   
           <label className="form-label">
             Description
-                  <input
+            <input
               className="form-input"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
@@ -158,7 +168,7 @@ export function ConfirmSightingForm(): JSX.Element {
   
           <label className="form-label">
             Sighted at
-                  <input
+            <input
               className="form-input"
               value={sightedAt}
               onChange={(event) => setSightedAt(event.target.value)}
@@ -166,29 +176,35 @@ export function ConfirmSightingForm(): JSX.Element {
             />
           </label>
   
-          <label className="form-label">
-            Submitted by
-                  <input
-              className="form-input"
-              value={submittedByName}
-              onChange={(event) => setSubmittedByName(event.target.value)}
-              disabled
-            />
-          </label>
-  
-          <label className="form-label">
-            Email
-                  <input
-              className="form-input"
-              value={submittedByEmail}
-              onChange={(event) => setSubmittedByEmail(event.target.value)}
-              type="email"
-              disabled
-            />
-          </label>
-  
+          <div className="row g-3">
+            <div className="col">
+              <label className="form-label">
+                Submitted by
+                <input
+                  className="form-input"
+                  value={submittedByName}
+                  onChange={(event) => setSubmittedByName(event.target.value)}
+                  disabled
+                />
+              </label>
+            </div>
+            <div className="col">
+              <label className="form-label">
+                Email
+                <input
+                  className="form-input"
+                  value={submittedByEmail}
+                  onChange={(event) => setSubmittedByEmail(event.target.value)}
+                  type="email"
+                  disabled
+                />
+              </label>
+            </div>
+          </div>        
+
           <button
             className="submit-button"
+            id="confirm-button"
             onClick={() => setButton("confirm")}
             type="submit"
           >

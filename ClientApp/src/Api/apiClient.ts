@@ -80,7 +80,7 @@ export async function getRecentSightings(): Promise<RecentSightingResponseList> 
 }
 
 export async function submitSearch(species: string, location: string, sightedAt: string): Promise<null | ListSightings> {
-  const response =await fetch(
+  const response = await fetch(
     `api/search?species=${species}&location=${location}&sightedAt=${sightedAt}`);
     return await response.json();
 }
