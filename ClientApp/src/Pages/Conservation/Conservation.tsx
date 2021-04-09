@@ -33,7 +33,7 @@ export function Conservation(): JSX.Element {
           </p>
       </div>
 
-      <div className="container">
+      <div className="container-card">
 
         <div className="row">
 
