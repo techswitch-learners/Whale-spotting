@@ -1,5 +1,4 @@
-﻿import { ExecOptionsWithStringEncoding } from 'node:child_process';
-import authService from '../components/api-authorization/AuthorizeService'
+﻿import authService from '../components/api-authorization/AuthorizeService'
 
 export interface NewSighting {
   species: string;
