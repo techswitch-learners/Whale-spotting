@@ -47,6 +47,7 @@ function NavBar() {
                         <a href="/getting-started" className={selectedPage == 'started' ? 'active' : 'inactive'} onClick={() => setSelectedPage('started')}>Getting Started</a>
                         <a href="/submit-sighting" className={selectedPage == 'submit-sighting' ? 'active' : 'inactive'} onClick={() => setSelectedPage('submit-sighting')}>Submit a Sighting</a>
                         <a href="/conservation" className={selectedPage == 'conservation' ? 'active' : 'inactive'} onClick={() => setSelectedPage('conservation')} >Conservation</a>
+                        <a href="/whale-species" className={selectedPage == 'whale-species' ? 'active' : 'inactive'} onClick={() => setSelectedPage('whale-species')} >Whale Species</a>
                     </div>
                 </div>
 

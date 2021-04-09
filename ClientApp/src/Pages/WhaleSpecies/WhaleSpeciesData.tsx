@@ -1,31 +1,28 @@
-export interface WhaleData{
+
+export interface WhaleCardData{
     title: string;
     imgSrc: string;
     text: string;
     siteLink: string
   }
 
-  export const WhaleData: WhaleData[] =
- [  {title: "Pollution",
-    imgSrc: "https://images.unsplash.com/photo-1558640476-437a2b9438a2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&h=800",
-    text: "Studies of whale and dolphin tissues from around the world show significant levels of persistent organic pollutants (POPs) and endocrine disrupting chemicals (EDCs). In some cases, levels of these chemicals are high enough to cause damage to both reproductive and immune systems.",
-    siteLink: "https://wwf.panda.org/discover/knowledge_hub/endangered_species/cetaceans/threats/pollution/"
+  export const WhaleData: WhaleCardData[] =
+ [  {title: "Blue Whale",
+    imgSrc: "https://3.bp.blogspot.com/-Jf9ThZuZksc/VmDRHNsRaEI/AAAAAAAArh4/uhPjVPTMX-o/s1600/Whales-HD-Wallpapers1.jpg",
+    text: "The name “blue whale” comes from the fact that when this whale is submerged underwater it appears to be a purely blue color. What makes this whale so popular is its extremely large size. This massive whale is the largest living animal in existence growing to lengths in excess of 100 ft! These whales can be found traveling throughout all of the worlds major oceans.",
+    siteLink: "https://www.whalefacts.org/blue-whale-facts/"
   },
-   {title: "Nets",
-    imgSrc: "https://images.unsplash.com/photo-1525381098317-fc5822b4c483?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&h=800",
-    text: "Entanglement in fishing gear is the leading threat for whales and dolphins around the globe – estimated to cause at least 300,000 deaths per year.",
-    siteLink: "https://wwf.panda.org/discover/knowledge_hub/endangered_species/cetaceans/threats/bycatch/"
+   {title: "Humpback Whale",
+    imgSrc: "https://farm5.static.flickr.com/4017/4403314535_65355d4d51.jpg",
+    text: "Humpback whales are well-known for their majestic whale sounds which are often referred to as whale songs. These songs are strikingly similar to music composed by humans and can be heard many miles away.One of the things that fascinate scientists about this species is how they can be found singing in harmony together, even when separated by great distances. Aside from their beautiful harmonic sounds they are also known for their acrobatic nature. These whales are able to spy hop and continuously leaping out of the water despite their large size.",
+    siteLink: "https://www.whalefacts.org/humpback-whale-facts/"
   },
-   {title: "Whaling",
-    imgSrc: "https://images.unsplash.com/photo-1602025035269-40c624bfc2c9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&h=800",
-    text: "Contemporary whaling is subject to intense debate. Canada, Iceland, Japan, Norway, Russia, South Korea, the United States and the Danish dependencies of the Faroe Islands and Greenland continue to hunt in the 21st century.",
-    siteLink: "https://wwf.panda.org/discover/knowledge_hub/endangered_species/cetaceans/threats/whaling/"
-  },
-   {title:"Captivity",
-    imgSrc: "https://images.unsplash.com/photo-1522432214543-7ba98bbfa10f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&h=800",
-    text: "Killer whales have been kept in captivity since 1961, helpless victims of a blatantly commercial experiment which has seen dozens of wild orcas plucked from their families and forced to live in artificial social groupings which bear scant resemblance to their life in the wild.",
-    siteLink: "https://www.nationalgeographic.com/animals/article/orcas-captivity-welfare#:~:text=There%20are%20currently%2059%20orcas,San%20Diego%2C%20and%20San%20Antonio."
+   {title: "Sperm Whale",
+    imgSrc: "https://images.thestar.com/ZHY3IWTxWZQ9l6zchhIsKCj5auI=/1086x765/smart/filters:cb(2700061000)/https://www.thestar.com/content/dam/thestar/news/world/2011/03/17/sperm_whales_have_names_for_each_other/spermwhale.jpeg",
+    text: "The sperm whale is the largest of the toothed whale species growing to lengths of up to 67 ft. This whale gets its name from the spermaceti organ located in its head. At first it was believed that this organ was responsible for producing sperm due to the oil it secreted which very much resembles the appearance of sperm, but scientists discovered that this is not the case. Unfortunately they are still unsure of what this organ is responsible for however scientists have hypothesized that the oil may play a role in helping the whale adjust its buoyancy in the water so that it can dive and rise more effectively.",
+    siteLink: "https://www.whalefacts.org/sperm-whale-facts/"
   }
 ]
+ 
 
 
