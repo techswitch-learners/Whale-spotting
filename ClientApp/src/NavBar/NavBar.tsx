@@ -8,6 +8,7 @@ function NavBar() {
     const [selectedPage, setSelectedPage] = useState('null');
     const [mobileNavState, setMobileNavState] = useState('closed')
     const [isOpen, setOpen] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(false)
 
     const menuRef = useRef<HTMLDivElement>(null);
 
@@ -26,15 +27,13 @@ function NavBar() {
         }
     });
 
-    const [loggedIn, setLoggedIn] = useState(false)
     useEffect(() => {
         async function checkLoggedIn(){
             var userLoggedIn = await authService.isAuthenticated();
             setLoggedIn(userLoggedIn);
         }
         checkLoggedIn();
-    })
-
+    }, [])
     return (
         <div>
             <nav className="web-nav-bar">
@@ -46,7 +45,8 @@ function NavBar() {
                         <li className="web-nav-bar-list-item"><Link to="/whale-species" className={selectedPage == 'whale-species' ? 'active' : 'inactive'} onClick={() => setSelectedPage('whale-species')} >Whale Species</Link></li>
                         <li className="web-nav-bar-list-item"><Link to="/search-sighting" className={selectedPage == 'search-sighting' ? 'active' : 'inactive'} onClick={() => setSelectedPage('search-sighting')} >Search a Sighting</Link></li>
                         <li className="web-nav-bar-list-item"><Link to="/submit-sighting" className={selectedPage == 'submit-sighting' ? 'active' : 'inactive'} onClick={() => setSelectedPage('submit-sighting')}>Submit a Sighting</Link></li>
-                        <div className={loggedIn == false ? 'hide' : 'default'}>
+                        
+                        <div className={loggedIn === false ? 'hide' : 'default'}>
                             <li className="web-nav-bar-list-item"><Link to="/admin/confirm-sighting" className={selectedPage == 'confirm-sighting' ? 'active' : 'inactive'} onClick={() => setSelectedPage('confirm-sightings')} >Confirm Sightings</Link></li>
                             <li className="web-nav-bar-list-item"><a href="/identity/account/logout" className={selectedPage == 'logout' ? 'active' : 'inactive'} onClick={() => setLoggedIn(false) }>Log Out</a></li>
                         </div>
