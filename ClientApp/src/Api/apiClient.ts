@@ -21,6 +21,7 @@ export interface Sighting {
   longitude: number;
   description: string;
   sightedAt: string;
+  createdAt: string;
   submittedByName: string;
   submittedByEmail: string;
   confirmState: number;
@@ -40,6 +41,7 @@ export interface SightingResponse {
   longitude: number;
   description: string;
   sightedAt: string;
+  createdAt: string;
   submittedByName: string;
   submittedByEmail: string;
   confirmState: number;
@@ -80,8 +82,9 @@ export async function getRecentSightings(): Promise<RecentSightingResponseList> 
 
 export async function submitSearch(species: string, location: string, sightedAt: string, page: number, pageSize: number): Promise<null | SearchResponse> {
   const response =await fetch(
-    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}&Page=${page}&PageSize=${pageSize}`);
-    return await response.json();
+    `api/search?Species=${species}&Location=${location}&SightedAt=${sightedAt}&Page=${page}&PageSize=${pageSize}`
+  );
+  return await response.json();
 }
 
 export async function getSighting(Id: number): Promise<SightingResponse> {
