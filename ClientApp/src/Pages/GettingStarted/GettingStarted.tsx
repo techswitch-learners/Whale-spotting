@@ -33,7 +33,7 @@ function GettingStarted() {
         <div className="content-container">
             <div className="getting_started">
 
-                <div className='top-page-break'></div>
+                {/* <div className='top-page-break'></div> */}
 
                 <h1 className="title">Getting Started: Find the Perfect Whalespotting Location</h1>
                 <div className="places body-text">
