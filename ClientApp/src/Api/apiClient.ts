@@ -1,4 +1,5 @@
-﻿import authService from '../components/api-authorization/AuthorizeService'
+﻿import { ExecOptionsWithStringEncoding } from 'node:child_process';
+import authService from '../components/api-authorization/AuthorizeService'
 
 export interface NewSighting {
   species: string;
@@ -21,6 +22,7 @@ export interface Sighting {
   longitude: number;
   description: string;
   sightedAt: string;
+  createdAt: string;
   submittedByName: string;
   submittedByEmail: string;
   confirmState: number;
@@ -40,6 +42,7 @@ export interface SightingResponse {
   longitude: number;
   description: string;
   sightedAt: string;
+  createdAt: string;
   submittedByName: string;
   submittedByEmail: string;
   confirmState: number;

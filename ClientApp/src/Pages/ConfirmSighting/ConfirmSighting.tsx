@@ -15,6 +15,7 @@ export function ConfirmSightingForm(): JSX.Element {
   const [longitude, setLongitude] = useState("");
   const [description, setDescription] = useState("");
   const [sightedAt, setSightedAt] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
   const [submittedByName, setSubmittedByName] = useState("");
   const [submittedByEmail, setSubmittedByEmail] = useState("");
   const { id } = useParams<{ id: string }>();
@@ -34,6 +35,7 @@ export function ConfirmSightingForm(): JSX.Element {
       setLongitude(response.longitude.toString());
       setDescription(response.description);
       setSightedAt(response.sightedAt.substring(0,10));
+      setCreatedAt(response.createdAt);
       setSubmittedByName(response.submittedByName);
       setSubmittedByEmail(response.submittedByEmail);
     });
@@ -53,6 +55,7 @@ export function ConfirmSightingForm(): JSX.Element {
         longitude: parseFloat(longitude),
         description,
         sightedAt,
+        createdAt,
         submittedByName,
         submittedByEmail,
         confirmState: 1
