@@ -3,7 +3,7 @@ export interface WhaleCardData{
     title: string;
     imgSrc: string;
     text: string;
-    siteLink: string
+    siteLink: string;
   }
 
   export const WhaleData: WhaleCardData[] =
@@ -13,7 +13,7 @@ export interface WhaleCardData{
     siteLink: "https://www.whalefacts.org/blue-whale-facts/"
   },
    {title: "Humpback Whale",
-    imgSrc: "https://farm5.static.flickr.com/4017/4403314535_65355d4d51.jpg",
+    imgSrc: "https://th.bing.com/th/id/R8e73a26586b1b7e98790179c0349be96?rik=tnllxxanEIyFGA&riu=http%3a%2f%2fwallpapercave.com%2fwp%2f7RgZAPc.jpg&ehk=7SxLIBQLjyQfLoH1xRfZpjM68nyGCHdDipKDkHRGqlM%3d&risl=&pid=ImgRaw",
     text: "Humpback whales are well-known for their majestic whale sounds which are often referred to as whale songs. These songs are strikingly similar to music composed by humans and can be heard many miles away.One of the things that fascinate scientists about this species is how they can be found singing in harmony together, even when separated by great distances. Aside from their beautiful harmonic sounds they are also known for their acrobatic nature. These whales are able to spy hop and continuously leaping out of the water despite their large size.",
     siteLink: "https://www.whalefacts.org/humpback-whale-facts/"
   },
